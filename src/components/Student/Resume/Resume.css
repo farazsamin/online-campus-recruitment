@@ -1,0 +1,22 @@
+.sidebar {
+    width: 10%;
+    margin-top: 5%;
+    border: 1px solid lightgrey;
+    height: 100vh;
+}
+
+.sidebar a {
+    height: 20%;
+
+}
+
+.sidebar a:hover {
+    background-color: lightskyblue;
+}
+
+.content {
+    margin-top: 5%;
+    width: 100%;
+
+}
+

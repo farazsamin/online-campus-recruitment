@@ -1,0 +1,63 @@
+[
+    {
+       "name" : "Shakib Al Hasan",
+       "nationalTeam" : "Bangladesh",
+       "salary" : 1000,
+       "img": "http://t3.gstatic.com/images?q=tbn:ANd9GcSnn27coD_1wIFzntVYPE0JLeC3nuRD0TBfat56lur6gQbHFdUo0iqfQUj6sUHv"
+    },
+    {
+      "name" : "Mushfiqur Rahim",
+      "nationalTeam" : "Bangladesh",
+      "salary" : 1000,
+      "img": "http://t2.gstatic.com/images?q=tbn:ANd9GcTfcZjB4G7brLc0WCJTrGZg_zLhZmAvbKaflM7PLyprELSo7Zfgx4Ltn8Oa4S_i"
+   },
+   {
+    "name" : "Tamim Iqbal",
+    "nationalTeam" : "Bangladesh",
+    "salary" : 1000,
+    "img": "http://t2.gstatic.com/images?q=tbn:ANd9GcQxNsVq2juC7g3XiQ4avaKKF3IFGd5ziD1gpARMRFU8dFfLefPU9O3NajEWdsWn"
+ },
+ {
+  "name" : "Mahmudullah",
+  "nationalTeam" : "Bangladesh",
+  "salary" : 1000,
+  "img": "http://t3.gstatic.com/images?q=tbn:ANd9GcQCc4R-JU_z5fPf-0LeFWNDwiF88Ru1_5YiwFM4HC4mN5T8tLNAbtOiF7Y5WggT"
+},
+{
+  "name" : "Mashrafe Mortaza",
+  "nationalTeam" : "Bangladesh",
+  "salary" : 1000,
+  "img": "http://t3.gstatic.com/images?q=tbn:ANd9GcTUita0Dueq42YemMDjR5N_-zqVnytWS_Yh2uFatPvHCDq2H0_9XuIT0nRxVN-T"
+},
+{
+  "name" : "Mustafizur Rahman",
+  "nationalTeam" : "Bangladesh",
+  "salary" : 1000,
+  "img": "http://t0.gstatic.com/images?q=tbn:ANd9GcTl3uN5WsH81o0UU0iP7KS53zDvkZlX4IEsrCChcZJTunDJX_978F-u6Uf5KzJu"
+},
+{
+  "name" : "Steve Smith",
+  "nationalTeam" : "Australia",
+  "salary" : 3000,
+  "img": "http://t2.gstatic.com/images?q=tbn:ANd9GcRyiorQzQFdz0na23JqQZjygEqIMsrdszovClvhM_d2g0oXWKF1ArglNexm3zGb"
+},
+{
+  "name" : "Chris Gayle",
+  "nationalTeam" : "Westindies",
+  "salary" : 5000,
+  "img": "https://www.cricket.com.au/-/media/Players/Men/International/West%20Indies/ODIWC19/Chris-Gayle-CWC19.ashx"
+},
+{
+  "name" : "Joe Root",
+  "nationalTeam" : "England",
+  "salary" : 3300,
+  "img": "http://t2.gstatic.com/images?q=tbn:ANd9GcRV9MFZdhCiwVgLD0ALqUh5nH6UPj3rbwdDdQTQmpEPY2NzPfDoj4DmX7h9Tn2S"
+},
+{
+  "name" : "Ben Stokes",
+  "nationalTeam" : "England",
+  "salary" : 4400,
+  "img": "https://m.cricbuzz.com/a/img/v1/192x192/i1/c170950/ben-stokes.jpg"
+}
+    
+  ]
