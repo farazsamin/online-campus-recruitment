@@ -4,37 +4,37 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-solid-svg-icons'
 const Posts = (props) => {
   // const [postImage, setPostImage] = useState(null)
-  const { title,description ,image} = props.post;
-  
+  const { title, description, image } = props.post;
+
   // console.log( title + description +)
-  let img=new Buffer.from(image.data).toString('base64');           
-  img=`data:image/jpg;base64,${img}`;
+  let img = new Buffer.from(image.data).toString('base64');
+  img = `data:image/jpg;base64,${img}`;
   // setPostImage(img)
-  
+
   const [like, setLike] = useState('')
-  const handleLike =() =>{
+  const handleLike = () => {
     const color = like ? '' : 'red'
     setLike(color)
   }
   return (
     <div>
-      <div className="card mb-3" style={{ width: "80%" }}>
+      <div className="card mb-3" style={{ width: "80%", boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
 
-        <div className="card-body">
+        <div className="card-body pr-5 pl-5">
           <div className="row">
-            <div className="col-md-2"> <img style={{width : '100%', height: '65%' }} className="rounded-circle" src={img} alt="Card  cap" /> </div>
-            <div className="col-md-8"> <h5 className="mt-3">{title}</h5></div>
+            <div className="col-md-2"> <img style={{ width: '100%', height: '50%' }} className="rounded-circle" src={img} alt="Card  cap" /> </div>
+            <div className="col-md-8"> <span className="mt-3">{title}</span></div>
           </div>
-          <img style={{width : '100%', height: '30rem', objectFit : 'cover'}} className="" src={img} alt="Card  cap" />
+          <img style={{ width: '100%', height: '30rem', objectFit: 'cover' }} className="" src={img} alt="Card  cap" />
           <p className="card-text">{description}</p>
 
         </div>
-        <hr/>
+        <hr />
         <span>
-        <FontAwesomeIcon icon={faHeart} size='2x' className="" style={{marginLeft : '20%' ,marginBottom : '10px'}} onClick={handleLike} color={like}/>
-        <FontAwesomeIcon icon={faComment} size='2x' className="" style={{marginLeft : '40%' ,marginBottom : '10px'}} />
+          <FontAwesomeIcon icon={faHeart} size='2x' className="" style={{ marginLeft: '20%', marginBottom: '10px' }} onClick={handleLike} color={like} />
+          <FontAwesomeIcon icon={faComment} size='2x' className="" style={{ marginLeft: '40%', marginBottom: '10px' }} />
         </span>
-        
+
       </div>
     </div>
   );

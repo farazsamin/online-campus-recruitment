@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { SetToken } from '../../utilities/setToken';
-import innerBox from './ShowPic.css'
+import { Link } from 'react-router-dom';
 const ShowPic = () => {
 
     const [profilePic, setProfilePic] = useState([])
@@ -45,6 +45,13 @@ const ShowPic = () => {
 
     return (
         <div className="row mt-3 mb-5">
+
+            <div className="col-md-9 m-auto text-center ">
+                <Link to="resume/add"><button className="btn btn-success mr-4 mb-3">Add Info</button></Link>
+                <Link to="resume/add"><button disabled={profileInfo ? false : true} className="btn btn-success mr-4 mb-3">Edit Info</button></Link>
+                <Link to="resume/add"><button disabled={profileInfo ? false : true} className="btn btn-success mr-4 mb-3">Delete Info</button></Link>
+                {/* disabled={profileInfo ? true : false} */}
+            </div>
 
 
             <div className="col-md-9 m-auto text-center" style={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>

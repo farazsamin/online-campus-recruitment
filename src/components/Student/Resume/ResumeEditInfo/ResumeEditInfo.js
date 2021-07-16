@@ -58,6 +58,7 @@ const ResumeEditInfo = () => {
         <div className="p-5">
             <h1 className="text-center">Edit Your Info </h1>
             <hr />
+
             <button className="btn btn-primary m-2" onClick={handleAddInfo}>Add Info</button>
             <button className="btn btn-primary m-2" onClick={handleEditInfo}>Edit Info</button>
             <button className="btn btn-danger m-2" onClick={handleEditInfo}>Delete Info</button>
