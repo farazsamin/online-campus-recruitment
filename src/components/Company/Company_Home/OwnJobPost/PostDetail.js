@@ -4,18 +4,18 @@ import { SetToken } from '../../../utilities/setToken';
 
 const PostDetail = (props) => {
     const [appliedUsers, setAppliedUsers] = useState('')
-    const { title, description ,_id } = props.post;
+    const { title, description, _id } = props.post;
     useEffect(() => {
         SetToken(localStorage.getItem('userToken'));
         axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/job/${_id}/appliedUser`)
-        .then(response=>{
-            setAppliedUsers(response.data[0].appliedUsers[0].user.name)
-            console.log(response.data[0].appliedUsers[0].user.name)
-         
-        })
-        .catch(err=>{
-            console.log(err)
-        })
+            .then(response => {
+                setAppliedUsers(response.data[0].appliedUsers[0].user.name)
+                // console.log(response.data[0].appliedUsers[0].user.name)
+
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }, [])
     return (
         <div className="container">
@@ -24,14 +24,13 @@ const PostDetail = (props) => {
                     <h5 class="card-title">{title}</h5>
                     <p class="card-text">{description}</p>
                     <a href="f" class="btn btn-danger">Delete</a>
-                    <a style={{marginLeft : '3%'}} href="f" class="btn btn-primary">Edit</a>
+                    <a style={{ marginLeft: '3%' }} href="f" class="btn btn-primary">Edit</a>
                     <div>
-                        <h1>Applied Users : {appliedUsers}</h1>
-                        <h2> </h2>
+                        <h4>Applied Users : {appliedUsers}</h4>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     );
 };

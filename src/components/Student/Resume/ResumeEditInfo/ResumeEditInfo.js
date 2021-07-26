@@ -2,107 +2,356 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { SetToken } from '../../../utilities/setToken';
 const ResumeEditInfo = () => {
-    const [profileInfo, setProfileInfo] = useState([])
-    const [socialInfo, setSocialeInfo] = useState([])
+
+    //Edit
     const [name, setName] = useState('')
-    const [bio, setBio] = useState('')
-    const [facebook, setFacebook] = useState('')
+    const [skill, setSkill] = useState('')
+    const [loc, setLoc] = useState('')
+    const [bios, setBios] = useState('')
+    const [stat, setStat] = useState('')
+    const [web, setWeb] = useState('')
+    const [githubUserName, setGithubUserName] = useState('')
+    const [fb, setFb] = useState('')
+    const [ins, setIns] = useState('')
+    const [scl, setScl] = useState('')
+    const [clg, setClg] = useState('')
+    const [uni, setUni] = useState('')
+    const [fos, setFos] = useState('')
+    const [titles, setTitles] = useState('')
+    const [companies, setCompanies] = useState('')
+    const [comLoc, setComLoc] = useState('')
+    const [frm, setFrm] = useState('')
+    const [toEnd, setToEnd] = useState('')
+    const [desc, setDesc] = useState('')
+    const [profilePic, setProfilePic] = useState()
     const [success, setSuccess] = useState(false)
-    const [editInfo, setEditInfo] = useState(false)
+
+
+    //Get Start
+    const [pp, setPp] = useState([])
+    const [profileInfo, setProfileInfo] = useState([])
+    const [socialInfo, setSocialInfo] = useState([])
+    const [skills, setSkills] = useState([])
+    const [education, setEducation] = useState([])
+    const [experience, setExperience] = useState([])
+    const [id, setId] = useState()
 
     useEffect(() => {
         SetToken(localStorage.getItem('userToken'));
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/profilePic')
+            .then(response => {
+                setProfilePic(response.data.pic.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me')
             .then(response => {
                 setProfileInfo(response.data)
-                setSocialeInfo(response.data.social)
-                // console.log(response.data)
+                setSocialInfo(response.data.social)
+                setSkills(response.data.skills)
+                setEducation(response.data.education[0])
+                setExperience(response.data.experience[0])
+                setId(response.data._id)
+                console.log(response.data)
             })
             .catch(err => {
                 console.log(err)
             })
     }, [])
 
-    const handleAddInfo = () => {
-        setEditInfo(false)
-    }
+    const { company, bio, location, status, website } = profileInfo;
+    const { facebook, instagram } = socialInfo;
+    const { school, college, university, fieldOfStudy } = education;
+    const { description, from, to, title } = experience;
 
-    const handleEditInfo = () => {
-        setEditInfo(true)
-    }
+    //Get End
 
-    const handleSubmit = (e) => {
+    const handleAddToYourResume = (e) => {
         SetToken(localStorage.getItem('userToken'));
         e.preventDefault();
 
-        axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me', {
+        axios.patch('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me', {
             company: name,
-            // skills: skills,
-            // location: location,
-            bio: bio,
-            // status: status,
-            // website: website,
-            // githubUserName: githubUserName,
-            facebook: facebook,
-            // instagram: instagram
+            skills: skill,
+            location: loc,
+            bio: bios,
+            status: stat,
+            website: web,
+            githubUserName: githubUserName,
+            facebook: fb,
+            instagram: ins
         })
             .then(res => {
+                console.log(res)
+                setName('')
+                setSkill('')
+                setLoc('')
+                setBios('')
+                setStat('')
+                setWeb('')
+                setGithubUserName('')
+                setFb('')
+                setIns('')
                 setSuccess(true)
+
             })
             .catch(err => {
                 console.log(err)
             })
     }
 
+    const handleEduInfo = (e) => {
+        SetToken(localStorage.getItem('userToken'));
+        e.preventDefault();
+
+        axios.patch(`https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/education/${id}`, {
+            school: scl,
+            college: clg,
+            university: uni,
+            fieldOfStudy: fos
+        })
+            .then(res => {
+                console.log(res)
+                setScl('')
+                setClg('')
+                setUni('')
+                setFos('')
+                setSuccess(true)
+
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+
+    const handleExperience = (e) => {
+        SetToken(localStorage.getItem('userToken'));
+        e.preventDefault();
+
+        axios.patch(`https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/experience/${id}`, {
+            title: titles,
+            company: companies,
+            location: comLoc,
+            from: frm,
+            to: toEnd,
+            description: desc
+        })
+            .then(res => {
+                console.log(res)
+                setTitles('')
+                setCompanies('')
+                setComLoc('')
+                setFrm('')
+                setToEnd('')
+                setDesc('')
+                setSuccess(true)
+
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    const handleUploadPic = (e) => {
+        e.preventDefault();
+        let fd = new FormData();
+        fd.append('profilePic', profilePic);
+
+        axios.put('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/profilePic', fd)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+        // window.location.reload();
+
+    }
+
     return (
         <div className="p-5">
-            <h1 className="text-center">Edit Your Info </h1>
+
+            <h1 className="text-center">Edit Your Info</h1>
             <hr />
 
-            <button className="btn btn-primary m-2" onClick={handleAddInfo}>Add Info</button>
-            <button className="btn btn-primary m-2" onClick={handleEditInfo}>Edit Info</button>
-            <button className="btn btn-danger m-2" onClick={handleEditInfo}>Delete Info</button>
-            <hr />
-            {
-                editInfo ? <div>
-                    <label htmlFor="">Name</label>
-                    <input className="form-control" type="text" name="" id="" defaultValue={profileInfo.company} onChange={e => setName(e.target.value)} />
-                    {console.log(name)}
-                    <label htmlFor="">Bio</label>
-                    <input className="form-control" type="text" name="" id="" defaultValue={profileInfo.bio} onChange={e => setBio(e.target.value)} />
-                    <label htmlFor="">Facebook</label>
-
-                    <input className="form-control" type="text" name="" id="" defaultValue={socialInfo.facebook} onChange={e => setFacebook(e.target.value)} />
-                    <button onClick={handleSubmit} className="btn btn-primary mt-3">Edit</button>
-                    {
-                        success ? <div class="alert alert-success mt-3" role="alert">
-                            Info Added Successfully!
-                        </div> : <div></div>
+            <div>
+                <label htmlFor="">Name</label>
+                <input type="text" name="" id="" defaultValue={company} onChange={
+                    (event) => {
+                        setName(event.target.value);
                     }
-                </div>
-                    :
-                    <div>
-                        <label htmlFor="">Name</label>
-                        <input className="form-control" type="text" name="" id="" defaultValue={profileInfo.company} onChange={e => setName(e.target.value)} />
-                        {console.log(name)}
-                        <label htmlFor="">Bio</label>
-                        <input className="form-control" type="text" name="" id="" defaultValue={profileInfo.bio} onChange={e => setBio(e.target.value)} />
-                        <label htmlFor="">Facebook</label>
+                } />
+                <label htmlFor="">Skills</label>
+                <input type="text" name="" id="" defaultValue={skills} onChange={
+                    (event) => {
+                        setSkill(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Location</label>
+                <input type="text" name="" id="" defaultValue={location} onChange={
+                    (event) => {
+                        setLoc(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Bio</label>
+                <input type="text" name="" id="" defaultValue={bio} onChange={
+                    (event) => {
+                        setBios(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Status</label>
+                <input type="text" name="" id="" defaultValue={status} onChange={
+                    (event) => {
+                        setStat(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Website</label>
+                <input type="text" name="" id="" defaultValue={website} onChange={
+                    (event) => {
+                        setWeb(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Github Username</label>
+                <input type="text" name="" id="" defaultValue={githubUserName} onChange={
+                    (event) => {
+                        setGithubUserName(event.target.value);
+                    }
+                } />
+                <label htmlFor="">LinkedIn</label>
+                <input type="text" name="" id="" defaultValue={facebook} onChange={
+                    (event) => {
+                        setFb(event.target.value);
+                    }
+                } />
 
-                        <input className="form-control" type="text" name="" id="" defaultValue={socialInfo.facebook} onChange={e => setFacebook(e.target.value)} />
-                        <button onClick={handleSubmit} className="btn btn-primary mt-3">Add</button>
-                        {
-                            success ? <div class="alert alert-success mt-3" role="alert">
-                                Info Added Successfully!
-                            </div> : <div></div>
-                        }
-                    </div>
-            }
+                <button className="btn btn-success mt-3" onClick={handleAddToYourResume}>Add To Your Resume</button>
+                {
+                    success ?
+                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
+                            Data Updated Successfully!
+                        </div> :
+                        <div></div>
+                }
+            </div>
 
+
+
+
+
+            <h1 className="text-center mt-5">Edit Your Educational Info</h1>
+            <hr />
+
+            <div>
+                <label htmlFor="">School</label>
+                <input type="text" name="" id="" defaultValue={school} onChange={
+                    (event) => {
+                        setScl(event.target.value);
+                    }
+                } />
+                <label htmlFor="">College</label>
+                <input type="text" name="" id="" defaultValue={college} onChange={
+                    (event) => {
+                        setClg(event.target.value);
+                    }
+                } />
+                <label htmlFor="">University</label>
+                <input type="text" name="" id="" defaultValue={university} onChange={
+                    (event) => {
+                        setUni(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Field of Study</label>
+                <input type="text" name="" id="" defaultValue={fieldOfStudy} onChange={
+                    (event) => {
+                        setFos(event.target.value);
+                    }
+                } />
+
+                <button className="btn btn-success mt-3" onClick={handleEduInfo}>Add To Your Resume</button>
+                {
+                    success ?
+                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
+                            Data Updated Successfully!
+                        </div> :
+                        <div></div>
+                }
+            </div>
+
+
+
+            <h1 className="text-center mt-5">Edit Your Experience</h1>
+            <hr />
+
+            <div>
+                <label htmlFor="">Title</label>
+                <input type="text" name="" id="" defaultValue={title} onChange={
+                    (event) => {
+                        setTitles(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Company</label>
+                <input type="text" name="" id="" defaultValue={company} onChange={
+                    (event) => {
+                        setCompanies(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Location</label>
+                <input type="text" name="" id="" defaultValue={location} onChange={
+                    (event) => {
+                        setComLoc(event.target.value);
+                    }
+                } />
+                <label htmlFor="">From</label>
+                <input type="date" name="" id="" defaultValue={from} onChange={
+                    (event) => {
+                        setFrm(event.target.value);
+                    }
+                } />
+                <label htmlFor="">To</label>
+                <input type="date" name="" id="" defaultValue={to} onChange={
+                    (event) => {
+                        setToEnd(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Description</label>
+                <input type="text" name="" id="" defaultValue={description} onChange={
+                    (event) => {
+                        setDesc(event.target.value);
+                    }
+                } />
+
+
+                <button className="btn btn-success mt-3" onClick={handleExperience}>Add To Your Resume</button>
+                {
+                    success ?
+                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
+                            Data Updated Successfully!
+                        </div> :
+                        <div></div>
+                }
+            </div>
+
+
+
+            <div className="mt-5">
+                <h1 className="text-center">Edit Your Profile Picture</h1>
+                <hr />
+                <input style={{ width: '80%' }} type="file" accept="image/png, .jpeg, .jpg" name="post-image" id="" onChange={
+                    (event) => {
+                        setProfilePic(event.target.files[0]);
+                    }
+                } /> <br />
+                <button onClick={handleUploadPic} className="btn btn-success mt-3">Change  Profile Pic</button>
+            </div>
 
 
 
         </div>
+
     );
 };
 

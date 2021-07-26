@@ -1,79 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import Sidebar from '../Sidebar/Sidebar';
-import Posts from '../Posts/Posts';
-import AdminNavbar from '../Navbar/Navbar';
-import data from '../../../Data/data.json'
-import { post } from 'jquery';
-import axios from 'axios'
-const AlumniHome = () => {
-    const [posts, setposts] = useState([]);
-    const [postContent, setPostContent] = useState('')
-    const [postImage, setPostImage] = useState()
-    // const [posts, setPosts] = useState([])
-    // const [loading, setLoading] = useState(true)
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Navbar from '../Navbar/Navbar'
 
-    const handleAddPost = () => {
-        console.log(postContent)
-        axios.post('', {
-            postContent: postContent,
-            postImage : postImage
-        })
-            .then((response) => {
-                console.log(response)
-            })
-        // window.location.reload();
-    }
-
-    // useEffect(() => {
-    //     axios.get('').then((response) => {
-    //         setPosts(response.data)
-    //         setLoading(false)
-    //     })
-    // }, [])
-    useEffect(() => {
-        setposts(data);
-    }, [])
+const AdminHome = () => {
     return (
-        <>
-            <AdminNavbar></AdminNavbar>
-            <div className="row">
-                <div className="col-md-4 mt-5 pt-5">
-                    <Sidebar></Sidebar>
-                    <Sidebar></Sidebar>
-                    <Sidebar></Sidebar>
-                    <Sidebar></Sidebar>
-                    <Sidebar></Sidebar>
-                    <Sidebar></Sidebar>
-                    <Sidebar></Sidebar>
-                    <Sidebar></Sidebar>
-                    <Sidebar></Sidebar>
-                    <Sidebar></Sidebar>
-                    <Sidebar></Sidebar>
+        <div>
+            <Navbar></Navbar>
+            <div className="row justify-content-center text-center">
+                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
+                    <Link to="admin/user-blog/all"><h6>All User Blogs</h6></Link>
                 </div>
-                <div className="col-md-6">
-                    <div className="form-group">
-                        <p>Add Your Post : </p>
-                        <textarea style={{ width: '600px', height: '100px' }} type="text" name="post-content" id="" onChange={
-                            (event) => {
-                                setPostContent(event.target.value);
-                            }
-                        } /> <br />
-                         <input style={{width: '80%'}} type="file" name="post-image" id="" onChange={
-                            (event) => {
-                                setPostImage(event.target.value);
-                            }
-                        } /> <br/>
-                        <button onClick={handleAddPost} className="btn btn-success mt-3">Add Post</button>
-                    </div>
-                    {
-                        posts.map(post => <Posts post={post}></Posts>)
-                    }
-
+                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
+                    <h6>All Alumni Blogs</h6>
+                </div>
+                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
+                    <h6>Hi</h6>
+                </div>
+                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
+                    <h6>Hi</h6>
+                </div>
+                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
+                    <h6>Hi</h6>
+                </div>
+                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
+                    <h6>Hi</h6>
+                </div>
+                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
+                    <h6>Hi</h6>
                 </div>
             </div>
-        </>
-
+        </div>
     );
 };
 
-export default AlumniHome;
+export default AdminHome;

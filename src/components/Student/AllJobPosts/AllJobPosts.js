@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SetToken } from '../../utilities/setToken';
 import axios from 'axios'
 import JobPost from './JobPost';
+import StudentNavbar from '../Navbar/Navbar';
 const AllJobPosts = () => {
     const [jobPosts, setJobPosts] = useState([])
     useEffect(() => {
@@ -17,7 +18,8 @@ const AllJobPosts = () => {
     }, [])
     return (
         <div>
-            <h1>Job Posts</h1>
+            <StudentNavbar></StudentNavbar>
+            <h1 className="text-center mt-3 mb-3">All Job Posts</h1>
             {
                 jobPosts.map(post => <JobPost post={post}></JobPost>)
             }

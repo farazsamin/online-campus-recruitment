@@ -10,20 +10,22 @@ const OwnJobPost = () => {
     useEffect(() => {
         SetToken(localStorage.getItem('userToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/job/myJobsPost')
-        .then(response=>{
-            console.log(response.data)
-            setMyJobPosts(response.data)
-        })
-        .catch(err=>{
-            console.log(err)
-        })
+            .then(response => {
+                console.log(response.data)
+                setMyJobPosts(response.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }, [])
     return (
-        <div>
-            <h1 className="text-center mb-5 mt-3">My Job Posts</h1>
-            {
-                myJobPosts.map(post => <PostDetail post={post}></PostDetail>)
-            }
+        <div className="row">
+            <div className="col-md-9 m-auto">
+                <h1 className="text-center">My Job Posts</h1>
+                {
+                    myJobPosts.map(post => <PostDetail post={post}></PostDetail>)
+                }
+            </div>
         </div>
     );
 };

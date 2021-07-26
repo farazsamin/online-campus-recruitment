@@ -13,11 +13,28 @@ const CompanyInfoForm = () => {
     const [twitter, setTwitter] = useState('')
     const [website, setWebsite] = useState('')
     const [linkedin, setLinkedin] = useState('')
+    const [image, setImage] = useState()
     const [noOfEmployee, setNoOfEmployee] = useState(0)
 
     useEffect(() => {
         SetToken(localStorage.getItem('userToken'));
     }, [])
+
+    const handleAddProfilePic = (e) => {
+        e.preventDefault();
+        let fd = new FormData();
+        fd.append('profilePic', image);
+        axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/company/uploadProfilePic', fd)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+        // window.location.reload();
+
+    }
 
     const handleAddInfo = (e) => {
         e.preventDefault();
@@ -63,74 +80,84 @@ const CompanyInfoForm = () => {
             <h1 className="text-center mt-3 mb-3">Add Comapany Info</h1>
             <div className="row">
                 <div className="col-md-6 m-auto">
-                     <label htmlFor="">Establish Year : </label>
-                    <input type="text" name="" id="" onChange={
+                    <label htmlFor="">Establish Year : </label>
+                    <input className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
                         (event) => {
                             setEstablish(event.target.value);
                         }
                     } /> <br />
                     <label className="d-block" htmlFor="">Mission : </label>
-                    <textarea style={{ width: '600px', height: '100px' }} type="text"  id="" onChange={
+                    <textarea className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" id="" onChange={
                         (event) => {
                             setMission(event.target.value);
                         }
                     } /> <br />
                     <label className="d-block" htmlFor="">Vision</label>
-                    <textarea style={{ width: '600px', height: '100px' }} type="text"  id="" onChange={
+                    <textarea className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" id="" onChange={
                         (event) => {
                             setVision(event.target.value);
                         }
                     } /> <br />
                     <label className="d-block" htmlFor="">About</label>
-                    <textarea style={{ width: '600px', height: '100px' }} type="text"  id="" onChange={
+                    <textarea className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" id="" onChange={
                         (event) => {
                             setAbout(event.target.value);
                         }
                     } /> <br />
                     <label htmlFor="">Facebook: </label>
-                    <input type="text" name="" id="" onChange={
+                    <input className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
                         (event) => {
                             setFacebook(event.target.value);
                         }
                     } /> <br />
                     <label htmlFor="">Instagram: </label>
-                    <input type="text" name="" id="" onChange={
+                    <input className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
                         (event) => {
                             setInstagram(event.target.value);
                         }
                     } /> <br />
                     <label htmlFor="">Youtube: </label>
-                    <input type="text" name="" id="" onChange={
+                    <input className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
                         (event) => {
                             setYoutube(event.target.value);
                         }
                     } /> <br />
                     <label htmlFor="">Twitter : </label>
-                    <input type="text" name="" id="" onChange={
+                    <input className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
                         (event) => {
                             setTwitter(event.target.value);
                         }
                     } /> <br />
                     <label htmlFor="">Website: </label>
-                    <input type="text" name="" id="" onChange={
+                    <input className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
                         (event) => {
                             setWebsite(event.target.value);
                         }
                     } /> <br />
                     <label htmlFor="">Linkedin: </label>
-                    <input type="text" name="" id="" onChange={
+                    <input className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
                         (event) => {
                             setLinkedin(event.target.value);
                         }
                     } /> <br />
                     <label htmlFor="">No of Employees : </label>
-                    <input type="text" name="" id="" onChange={
+                    <input className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
                         (event) => {
                             setNoOfEmployee(event.target.value);
                         }
                     } /> <br />
 
                     <button onClick={handleAddInfo} className="btn btn-success mt-3">Add Info</button>
+
+
+                    <h6 className="mt-5">Add Profile Picture</h6>
+                    <input style={{ width: '80%' }} type="file" accept="image/png, .jpeg, .jpg" name="post-image" id="" onChange={
+                        (event) => {
+                            setImage(event.target.files[0]);
+                        }
+                    } /> <br />
+                    <button className="btn btn-primary" onClick={handleAddProfilePic}>Add Profile Picture</button>
+
                 </div>
             </div>
 
@@ -140,3 +167,7 @@ const CompanyInfoForm = () => {
 };
 
 export default CompanyInfoForm;
+
+
+
+

@@ -57,18 +57,22 @@ const Home = () => {
         <>
             <StudentNavbar></StudentNavbar>
             <div className="row">
-                <div className="col-md-3 mt-5 pt-5">
-                    <Link to="all_job_posts"><button className="btn btn-primary lg ml-2 mt-5 p-4">See All Job Posts</button></Link>
+                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 mb-3 text-center">
+                    <Link to="all_job_posts"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">See All Job Posts</button></Link>
+                    <Link to="all_job_posts"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">See All Job Posts</button></Link>
+                    <Link to="all_job_posts"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">See All Job Posts</button></Link>
+                    <Link to="all_job_posts"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">See All Job Posts</button></Link>
+                    <Link to="all_job_posts"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">See All Job Posts</button></Link>
                 </div>
-                <div className="col-md-7 ">
+                <div className="col-md-6 m-auto " style={{ width: "80%", boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
                     <div className="form-group">
-                        <p>Add Your Post : </p>
-                        <input type="text" name="" id="" value={title} onChange={
+                        <p className="mt-3">Add Your Post : </p>
+                        <input style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" className="p-2" placeholder="Your Post Title" value={title} onChange={
                             (event) => {
                                 setTitle(event.target.value);
                             }
                         } /> <br />
-                        <textarea style={{ width: '80%', height: '100px' }} value={description} type="text" name="post-content" id="" onChange={
+                        <textarea style={{ width: '100%', border: 'none', height: '100px', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="p-2 mb-3" placeholder="Your Post Content" value={description} type="text" name="post-content" id="" onChange={
                             (event) => {
                                 setDescription(event.target.value);
                             }

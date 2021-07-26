@@ -31,7 +31,7 @@ import CompanyInfoForm from './components/Company/Company_About/CompanyInfoForm/
 import AlumniProfile from './components/Alumni/AlumniProfile/AlumniProfile';
 import AddAlumniInfo from './components/Alumni/AlumniProfile/AddAlumniInfo/AddAlumniInfo';
 import ResumeAddButton from './components/Student/Resume/ResumeAddButton/ResumeAddButton';
-import ResumeAdd from './components/Student/ResumeEdit/ResumeAdd';
+import ResumeEditButton from './components/Student/Resume/ResumeEditButton/ResumeEditButton';
 
 export const userContext = createContext();
 function App() {
@@ -108,7 +108,7 @@ function App() {
             <ResumeAddButton></ResumeAddButton>
           </Route>
           <Route exact path="/resume/edit">
-            <ResumeAdd />
+            <ResumeEditButton></ResumeEditButton>
           </Route>
           <Route exact path="/all_job_posts">
             <AllJobPosts></AllJobPosts>
