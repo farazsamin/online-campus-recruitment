@@ -32,6 +32,11 @@ import AlumniProfile from './components/Alumni/AlumniProfile/AlumniProfile';
 import AddAlumniInfo from './components/Alumni/AlumniProfile/AddAlumniInfo/AddAlumniInfo';
 import ResumeAddButton from './components/Student/Resume/ResumeAddButton/ResumeAddButton';
 import ResumeEditButton from './components/Student/Resume/ResumeEditButton/ResumeEditButton';
+import UserBlog from './components/Admin/Blogs/UserBlog/UserBlog';
+import AlumniBlog from './components/Admin/Blogs/AlumniBlog/AlumniBlog';
+import AllCompany from './components/Admin/Company/AllCompany';
+import AllJobs from './components/Admin/Company/AllJobs';
+
 
 export const userContext = createContext();
 function App() {
@@ -40,6 +45,8 @@ function App() {
     <userContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
         <Switch>
+
+          {/* home */}
           <Route exact path="/">
             <Login />
           </Route>
@@ -70,9 +77,30 @@ function App() {
           <Route path="/registration/company">
             <CompanyRegistration></CompanyRegistration>
           </Route>
+
+          {/* Student */}
+
           <Route exact path="/student_home">
             <StudentHome></StudentHome>
           </Route>
+          <Route exact path="/all_students_list">
+            <AllStudentsList></AllStudentsList>
+          </Route>
+          <Route exact path="/resume">
+            <Resume />
+          </Route>
+          <Route exact path="/resume/add">
+            <ResumeAddButton></ResumeAddButton>
+          </Route>
+          <Route exact path="/resume/edit">
+            <ResumeEditButton></ResumeEditButton>
+          </Route>
+          <Route exact path="/all_job_posts">
+            <AllJobPosts></AllJobPosts>
+          </Route>
+
+
+          {/* Alumni */}
           <Route exact path="/alumni_home">
             <AlumniHome></AlumniHome>
           </Route>
@@ -85,33 +113,8 @@ function App() {
           <Route exact path="/alumni_list">
             <AlumniList></AlumniList>
           </Route>
-
-          <Route exact path="/admin_home">
-            <AdminHome></AdminHome>
-          </Route>
-
           <Route exact path="/all_alumnies_list">
             <AllAlumniesList></AllAlumniesList>
-          </Route>
-          <Route exact path="/all_students_list">
-            <AllStudentsList></AllStudentsList>
-          </Route>
-          <Route exact path="/all_companies_list">
-            <AllCompaniesList></AllCompaniesList>
-          </Route>
-
-
-          <Route exact path="/resume">
-            <Resume />
-          </Route>
-          <Route exact path="/resume/add">
-            <ResumeAddButton></ResumeAddButton>
-          </Route>
-          <Route exact path="/resume/edit">
-            <ResumeEditButton></ResumeEditButton>
-          </Route>
-          <Route exact path="/all_job_posts">
-            <AllJobPosts></AllJobPosts>
           </Route>
 
 
@@ -128,8 +131,29 @@ function App() {
           <Route exact path="/company/add_info">
             <CompanyInfoForm></CompanyInfoForm>
           </Route>
+          <Route exact path="/all_companies_list">
+            <AllCompaniesList></AllCompaniesList>
+          </Route>
 
 
+
+
+          {/* Admin */}
+          <Route exact path="/admin_home">
+            <AdminHome></AdminHome>
+          </Route>
+          <Route exact path="/admin/user_blog/all">
+            <UserBlog></UserBlog>
+          </Route>
+          <Route exact path="/admin/alumni_blog/all">
+            <AlumniBlog></AlumniBlog>
+          </Route>
+          <Route exact path="/admin/all/company">
+            <AllCompany></AllCompany>
+          </Route>
+          <Route exact path="/admin/allJobs">
+            <AllJobs></AllJobs>
+          </Route>
 
         </Switch>
       </Router>
