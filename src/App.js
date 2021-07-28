@@ -36,6 +36,9 @@ import UserBlog from './components/Admin/Blogs/UserBlog/UserBlog';
 import AlumniBlog from './components/Admin/Blogs/AlumniBlog/AlumniBlog';
 import AllCompany from './components/Admin/Company/AllCompany';
 import AllJobs from './components/Admin/Company/AllJobs';
+import AlumniPending from './components/Admin/PendingList/Alumni/AlumniPending';
+import CompanyPending from './components/Admin/PendingList/Company/CompanyPending';
+import LandingPage from './components/LandingPage/LandingPage'
 
 
 export const userContext = createContext();
@@ -48,7 +51,7 @@ function App() {
 
           {/* home */}
           <Route exact path="/">
-            <Login />
+            <LandingPage></LandingPage>
           </Route>
           <Route exact path="/login">
             <Login />
@@ -153,6 +156,12 @@ function App() {
           </Route>
           <Route exact path="/admin/allJobs">
             <AllJobs></AllJobs>
+          </Route>
+          <Route exact path="/temporary/company">
+            <CompanyPending></CompanyPending>
+          </Route>
+          <Route exact path="/temporary/alumni">
+            <AlumniPending></AlumniPending>
           </Route>
 
         </Switch>

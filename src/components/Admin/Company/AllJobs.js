@@ -16,6 +16,15 @@ const AllJobs = () => {
             .catch(err => {
                 console.log(err)
             })
+
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/company')
+            .then(response => {
+                console.log(response)
+                // setMyJobPosts(response.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }, [])
 
 

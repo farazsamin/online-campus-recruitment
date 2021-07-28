@@ -20,10 +20,10 @@ const AdminHome = () => {
                     <Link to="/admin/allJobs"><h6>All Jobs List</h6></Link>
                 </div>
                 <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
-                    <h6>Hi</h6>
+                    <Link to="/temporary/company"> <h6>Company Pending  Registration</h6></Link>
                 </div>
                 <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
-                    <h6>Hi</h6>
+                    <Link to="/temporary/alumni"> <h6>Alumni Pending  Registration</h6></Link>
                 </div>
                 <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
                     <h6>Hi</h6>
