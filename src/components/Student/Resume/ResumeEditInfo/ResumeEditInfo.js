@@ -34,7 +34,8 @@ const ResumeEditInfo = () => {
     const [skills, setSkills] = useState([])
     const [education, setEducation] = useState([])
     const [experience, setExperience] = useState([])
-    const [id, setId] = useState()
+    const [eduId, setEduId] = useState()
+    const [expId, setExpId] = useState()
 
     useEffect(() => {
         SetToken(localStorage.getItem('userToken'));
@@ -53,7 +54,8 @@ const ResumeEditInfo = () => {
                 setSkills(response.data.skills)
                 setEducation(response.data.education[0])
                 setExperience(response.data.experience[0])
-                setId(response.data._id)
+                setEduId(response.data.education[0]._id)
+                setExpId(response.data.experience[0]._id)
                 console.log(response.data)
             })
             .catch(err => {
@@ -106,7 +108,7 @@ const ResumeEditInfo = () => {
         SetToken(localStorage.getItem('userToken'));
         e.preventDefault();
 
-        axios.patch(`https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/education/${id}`, {
+        axios.patch(`https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/education/${eduId}`, {
             school: scl,
             college: clg,
             university: uni,
@@ -131,7 +133,7 @@ const ResumeEditInfo = () => {
         SetToken(localStorage.getItem('userToken'));
         e.preventDefault();
 
-        axios.patch(`https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/experience/${id}`, {
+        axios.patch(`https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/experience/${expId}`, {
             title: titles,
             company: companies,
             location: comLoc,

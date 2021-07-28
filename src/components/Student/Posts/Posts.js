@@ -7,8 +7,10 @@ import axios from 'axios';
 import { SetToken } from '../../utilities/setToken';
 const Posts = (props) => {
   const { _id, title, description, image } = props.post;
+
   let img = new Buffer.from(image.data).toString('base64');
   img = `data:image/jpg;base64,${img}`;
+
   const [like, setLike] = useState('')
   const [cmnt, setCmnt] = useState(false)
   const [comment, setComment] = useState('')

@@ -41,7 +41,7 @@ const AlumniHome = () => {
     // }, [])
 
     useEffect(() => {
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('companyToken'));
     }, [])
 
     return (
