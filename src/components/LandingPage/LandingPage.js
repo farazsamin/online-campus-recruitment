@@ -1,13 +1,18 @@
 import React from 'react';
 import Registration from '../Registration/Registration';
 import Login from '../Login/Login';
-
+import './LandingPage.css'
+import Navbar from '../Alumni/Navbar/Navbar'
 const LandingPage = () => {
     return (
-        <div>
+
+        <div className="bannerImg">
+
             <Login></Login>
-            <Registration></Registration>
+
         </div>
+
+
     );
 };
 

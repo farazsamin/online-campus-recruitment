@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { SetToken } from '../../utilities/setToken';
 
 const AllCompany = () => {
-    const [companies, setCompanies] = useState()
+    const [companies, setCompanies] = useState([])
     useEffect(() => {
         SetToken(localStorage.getItem('userToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/admin/all/company')

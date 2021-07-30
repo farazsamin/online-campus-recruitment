@@ -1,0 +1,19 @@
+.bannerImg{
+    position: relative;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.bannerImg::after{
+    content: "";
+  background: rgb(26, 31, 41) url('../images/landing-bg.jpg') no-repeat fixed top;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: -1;
+  height: 100vh;
+  filter: blur(2px);
+
+}

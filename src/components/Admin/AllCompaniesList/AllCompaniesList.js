@@ -24,7 +24,7 @@ const AllCompaniesList = () => {
             <div className="row">
                 <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-6 m-auto text-center">
                     {
-                        companyList.map(companyList => <Company companyList={companyList}></Company>)
+                        companyList.map(company => <Company companyList={company}></Company>)
                     }
                 </div>
             </div>
