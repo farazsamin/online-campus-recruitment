@@ -39,6 +39,10 @@ import AllJobs from './components/Admin/Company/AllJobs';
 import AlumniPending from './components/Admin/PendingList/Alumni/AlumniPending';
 import CompanyPending from './components/Admin/PendingList/Company/CompanyPending';
 import LandingPage from './components/LandingPage/LandingPage'
+import UserSearch from './components/Admin/Search/UserSearch/UserSearch';
+import CompanySearch from './components/Admin/Search/CompanySearch/CompanySearch';
+import AlumniSearch from './components/Admin/Search/AlumniSearch/AlumniSearch';
+import AlumniUserSearch from './components/Alumni/Search/AlumniUserSearch/AlumniUserSearch';
 
 
 export const userContext = createContext();
@@ -119,6 +123,9 @@ function App() {
           <Route exact path="/all_alumnies_list">
             <AllAlumniesList></AllAlumniesList>
           </Route>
+          <Route exact path="/search/user">
+            <AlumniUserSearch></AlumniUserSearch>
+          </Route>
 
 
           {/* Company */}
@@ -162,6 +169,15 @@ function App() {
           </Route>
           <Route exact path="/temporary/alumni">
             <AlumniPending></AlumniPending>
+          </Route>
+          <Route exact path="/admin/search/user">
+            <UserSearch></UserSearch>
+          </Route>
+          <Route exact path="/admin/search/company">
+            <CompanySearch></CompanySearch>
+          </Route>
+          <Route exact path="/admin/search/alumni">
+            <AlumniSearch></AlumniSearch>
           </Route>
 
         </Switch>

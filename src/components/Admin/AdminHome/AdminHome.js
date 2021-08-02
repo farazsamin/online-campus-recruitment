@@ -26,7 +26,13 @@ const AdminHome = () => {
                     <Link to="/temporary/alumni"> <h6>Alumni Pending  Registration</h6></Link>
                 </div>
                 <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
-                    <h6>Hi</h6>
+                    <Link to="/admin/search/user"> <h6>Search User</h6></Link>
+                </div>
+                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
+                    <Link to="/admin/search/company"> <h6>Search Company</h6></Link>
+                </div>
+                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
+                    <Link to="/admin/search/alumni"> <h6>Search Alumni</h6></Link>
                 </div>
             </div>
         </div>
