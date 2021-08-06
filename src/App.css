@@ -6,6 +6,11 @@
   height: 40vmin;
   pointer-events: none;
 }
+body{
+  font-family: 'Open Sans',Arial,sans-serif!important;
+  line-height: 26px;
+  letter-spacing: 1 inch;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

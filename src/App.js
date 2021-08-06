@@ -1,4 +1,3 @@
-
 import './App.css';
 import React, { createContext, useState } from "react";
 import {
@@ -29,7 +28,6 @@ import AllJobPosts from './components/Student/AllJobPosts/AllJobPosts';
 import OwnJobPost from './components/Company/Company_Home/OwnJobPost/OwnJobPost';
 import CompanyInfoForm from './components/Company/Company_About/CompanyInfoForm/CompanyInfoForm';
 import AlumniProfile from './components/Alumni/AlumniProfile/AlumniProfile';
-import AddAlumniInfo from './components/Alumni/AlumniProfile/AddAlumniInfo/AddAlumniInfo';
 import ResumeAddButton from './components/Student/Resume/ResumeAddButton/ResumeAddButton';
 import ResumeEditButton from './components/Student/Resume/ResumeEditButton/ResumeEditButton';
 import UserBlog from './components/Admin/Blogs/UserBlog/UserBlog';
@@ -43,6 +41,7 @@ import UserSearch from './components/Admin/Search/UserSearch/UserSearch';
 import CompanySearch from './components/Admin/Search/CompanySearch/CompanySearch';
 import AlumniSearch from './components/Admin/Search/AlumniSearch/AlumniSearch';
 import AlumniUserSearch from './components/Alumni/Search/AlumniUserSearch/AlumniUserSearch';
+import AlumniAddButton from './components/Alumni/AlumniProfile/AlumniAddButton/AlumniAddButton';
 
 
 export const userContext = createContext();
@@ -114,9 +113,6 @@ function App() {
           <Route exact path="/profile/alumni/me">
             <AlumniProfile></AlumniProfile>
           </Route>
-          <Route exact path="/alumni/profile/add_info">
-            <AddAlumniInfo></AddAlumniInfo>
-          </Route>
           <Route exact path="/alumni_list">
             <AlumniList></AlumniList>
           </Route>
@@ -125,6 +121,9 @@ function App() {
           </Route>
           <Route exact path="/search/user">
             <AlumniUserSearch></AlumniUserSearch>
+          </Route>
+          <Route exact path="/alumni_profile/add">
+            <AlumniAddButton></AlumniAddButton>
           </Route>
 
 
