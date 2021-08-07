@@ -1,58 +1,51 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { set } from 'react-hook-form';
 import { SetToken } from '../../../utilities/setToken';
 
 const AlumniAdd = () => {
 
-    const [name, setName] = useState('')
-    const [skills, setSkills] = useState('')
-    const [location, setLocation] = useState('')
-    const [bio, setBio] = useState('')
+    const [passingYear, setPassingYear] = useState('')
     const [status, setStatus] = useState('')
+    const [currentJob, setCurrentJob] = useState('')
+    const [githubusername, setGithubusername] = useState('')
+    const [codeforcesusername, setCodeforcesusername] = useState('')
+    const [linkedin, setLinkedin] = useState('')
     const [website, setWebsite] = useState('')
-    const [githubUserName, setGithubUserName] = useState('')
-    const [facebook, setFacebook] = useState('')
-    const [instagram, setInstagram] = useState('')
     const [school, setSchool] = useState('')
-    const [clg, setClg] = useState('')
-    const [uni, setUni] = useState('')
-    const [fos, setFos] = useState('')
+    const [college, setCollege] = useState('')
+    const [bscPassingYear, setBscPassingYear] = useState('')
     const [title, setTitle] = useState('')
     const [company, setCompany] = useState('')
-    const [comLoc, setComLoc] = useState('')
+    const [location, setLocation] = useState('')
     const [from, setFrom] = useState('')
     const [to, setTo] = useState('')
-    const [desc, setDesc] = useState('')
+    const [description, setDescription] = useState('')
     const [profilePic, setProfilePic] = useState()
-
     const [success, setSuccess] = useState(false)
 
     const handleAddToYourResume = (e) => {
         SetToken(localStorage.getItem('alumniToken'));
         e.preventDefault();
 
-        axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me', {
-            company: name,
-            skills: skills,
-            location: location,
-            bio: bio,
+        axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/alumni/me', {
+            passingYear: passingYear,
             status: status,
+            currentJob: currentJob,
+            githubusername: githubusername,
+            codeforceusername: codeforcesusername,
             website: website,
-            githubUserName: githubUserName,
-            facebook: facebook,
-            instagram: instagram
+            linkedin: linkedin
         })
             .then(res => {
                 console.log(res)
-                setName('')
-                setSkills('')
-                setLocation('')
-                setBio('')
+                setPassingYear('')
                 setStatus('')
+                setCurrentJob('')
+                setGithubusername('')
+                setCodeforcesusername('')
                 setWebsite('')
-                setGithubUserName('')
-                setFacebook('')
-                setInstagram('')
+                setLinkedin('')
                 setSuccess(true)
 
             })
@@ -65,18 +58,16 @@ const AlumniAdd = () => {
         SetToken(localStorage.getItem('alumniToken'));
         e.preventDefault();
 
-        axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/education', {
+        axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/alumni/education', {
             school: school,
-            college: clg,
-            university: uni,
-            fieldOfStudy: fos
+            college: college,
+            BscPassingYear: bscPassingYear
         })
             .then(res => {
                 console.log(res)
                 setSchool('')
-                setClg('')
-                setUni('')
-                setFos('')
+                setCollege('')
+                setBscPassingYear('')
                 setSuccess(true)
 
             })
@@ -90,22 +81,22 @@ const AlumniAdd = () => {
         SetToken(localStorage.getItem('alumniToken'));
         e.preventDefault();
 
-        axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/experience', {
+        axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/alumni/experience', {
             title: title,
             company: company,
-            location: comLoc,
+            location: location,
             from: from,
             to: to,
-            description: desc
+            description: description
         })
             .then(res => {
                 console.log(res)
                 setTitle('')
                 setCompany('')
-                setComLoc('')
                 setFrom('')
                 setTo('')
-                setDesc('')
+                setLocation('')
+                setDescription('')
                 setSuccess(true)
 
             })
@@ -138,28 +129,10 @@ const AlumniAdd = () => {
             <hr />
 
             <div>
-                <label htmlFor="">Name</label>
-                <input type="text" name="" id="" value={name} onChange={
+                <label htmlFor="">Passing Year</label>
+                <input type="text" name="" id="" value={passingYear} onChange={
                     (event) => {
-                        setName(event.target.value);
-                    }
-                } />
-                <label htmlFor="">Skills</label>
-                <input type="text" name="" id="" value={skills} onChange={
-                    (event) => {
-                        setSkills(event.target.value);
-                    }
-                } />
-                <label htmlFor="">Location</label>
-                <input type="text" name="" id="" value={location} onChange={
-                    (event) => {
-                        setLocation(event.target.value);
-                    }
-                } />
-                <label htmlFor="">Bio</label>
-                <input type="text" name="" id="" value={bio} onChange={
-                    (event) => {
-                        setBio(event.target.value);
+                        setPassingYear(event.target.value);
                     }
                 } />
                 <label htmlFor="">Status</label>
@@ -168,26 +141,39 @@ const AlumniAdd = () => {
                         setStatus(event.target.value);
                     }
                 } />
+                <label htmlFor="">Current Job</label>
+                <input type="text" name="" id="" value={currentJob} onChange={
+                    (event) => {
+                        setCurrentJob(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Github User Name</label>
+                <input type="text" name="" id="" value={githubusername} onChange={
+                    (event) => {
+                        setGithubusername(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Codeforces User Name</label>
+                <input type="text" name="" id="" value={codeforcesusername} onChange={
+                    (event) => {
+                        setCodeforcesusername(event.target.value);
+                    }
+                } />
                 <label htmlFor="">Website</label>
                 <input type="text" name="" id="" value={website} onChange={
                     (event) => {
                         setWebsite(event.target.value);
                     }
                 } />
-                <label htmlFor="">Github Username</label>
-                <input type="text" name="" id="" value={githubUserName} onChange={
-                    (event) => {
-                        setGithubUserName(event.target.value);
-                    }
-                } />
+
                 <label htmlFor="">LinkedIn</label>
-                <input type="text" name="" id="" value={facebook} onChange={
+                <input type="text" name="" id="" value={linkedin} onChange={
                     (event) => {
-                        setFacebook(event.target.value);
+                        setLinkedin(event.target.value);
                     }
                 } />
 
-                <button className="btn btn-success mt-3" disabled={name && skills && location && bio && status && website && githubUserName && facebook ? false : true} onClick={handleAddToYourResume}>Add To Your Resume</button>
+                <button className="btn btn-success mt-3" disabled={passingYear && status && currentJob && githubusername && codeforcesusername && website && linkedin ? false : true} onClick={handleAddToYourResume}>Add To Your Resume</button>
                 {
                     success ?
                         <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
@@ -212,25 +198,20 @@ const AlumniAdd = () => {
                     }
                 } />
                 <label htmlFor="">College</label>
-                <input type="text" name="" id="" value={clg} onChange={
+                <input type="text" name="" id="" value={college} onChange={
                     (event) => {
-                        setClg(event.target.value);
+                        setCollege(event.target.value);
                     }
                 } />
-                <label htmlFor="">University</label>
-                <input type="text" name="" id="" value={uni} onChange={
+                <label htmlFor=""> Bsc Passing Year </label>
+                <input type="text" name="" id="" value={bscPassingYear} onChange={
                     (event) => {
-                        setUni(event.target.value);
-                    }
-                } />
-                <label htmlFor="">Field of Study</label>
-                <input type="text" name="" id="" value={fos} onChange={
-                    (event) => {
-                        setFos(event.target.value);
+                        setBscPassingYear(event.target.value);
                     }
                 } />
 
-                <button className="btn btn-success mt-3" disabled={school && clg && uni && fos ? false : true} onClick={handleEduInfo}>Add To Your Resume</button>
+
+                <button className="btn btn-success mt-3" disabled={school && college && bscPassingYear ? false : true} onClick={handleEduInfo}>Add To Your Resume</button>
                 {
                     success ?
                         <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
@@ -239,7 +220,6 @@ const AlumniAdd = () => {
                         <div></div>
                 }
             </div>
-
 
 
             <h1 className="text-center mt-5">Add Your Experience</h1>
@@ -259,9 +239,9 @@ const AlumniAdd = () => {
                     }
                 } />
                 <label htmlFor="">Location</label>
-                <input type="text" name="" id="" value={comLoc} onChange={
+                <input type="text" name="" id="" value={location} onChange={
                     (event) => {
-                        setComLoc(event.target.value);
+                        setLocation(event.target.value);
                     }
                 } />
                 <label htmlFor="">From</label>
@@ -277,14 +257,14 @@ const AlumniAdd = () => {
                     }
                 } />
                 <label htmlFor="">Description</label>
-                <input type="text" name="" id="" value={desc} onChange={
+                <input type="text" name="" id="" value={description} onChange={
                     (event) => {
-                        setDesc(event.target.value);
+                        setDescription(event.target.value);
                     }
                 } />
 
 
-                <button className="btn btn-success mt-3" disabled={title && company && comLoc && from && to && desc ? false : true} onClick={handleExperience}>Add To Your Resume</button>
+                <button className="btn btn-success mt-3" disabled={title && company && location && from && to && description ? false : true} onClick={handleExperience}>Add To Your Resume</button>
                 {
                     success ?
                         <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">

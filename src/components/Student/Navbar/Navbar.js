@@ -2,12 +2,13 @@ import React from 'react';
 import {
     Link, Redirect, useHistory
 } from "react-router-dom";
+
 const StudentNavbar = () => {
     const history = useHistory();
     const handleLogout = () => {
         localStorage.removeItem('userToken');
 
-        history.push('/login/student')
+        history.push('/')
     }
     return (
         <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} >
@@ -29,7 +30,7 @@ const StudentNavbar = () => {
                             <Link className="nav-link" to="/resume">Your Resume</Link>
                         </li>
                         <li className="nav-item">
-                            <Link onClick={() => handleLogout()} className="nav-link" href="/login">Logout</Link>
+                            <Link onClick={() => handleLogout()} className="nav-link" href="/">Logout</Link>
                         </li>
 
                     </ul>

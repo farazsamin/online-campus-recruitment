@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { SetToken } from '../../utilities/setToken';
 import { Link } from 'react-router-dom';
+import './CV.css'
 const ShowPic = () => {
 
     const [profilePic, setProfilePic] = useState([])
@@ -90,11 +91,24 @@ const ShowPic = () => {
                 <h2 className="mb-2" style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>Projects</h2>
                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
                     <h2 className="mb-2">Education </h2>
-                    <p>University : {university}</p>
-                    <p>Field of Study : {fieldOfStudy}</p>
-                    <p>HSC : {college}</p>
-                    <p>SSC : {school}</p>
-                    <br />
+                    <div className="row m-3">
+                        <div className="col-md-6 divider">
+                            <p>University</p>
+                            <p>Field of Study </p>
+                            <p>HSC </p>
+                            <p>SSC </p>
+                            <br />
+                        </div>
+                        <div className="col-md-6">
+                            <p>{university}</p>
+                            <p>{fieldOfStudy}</p>
+                            <p>{college}</p>
+                            <p>{school}</p>
+                            <br />
+                        </div>
+                    </div>
+
+
                 </div>
                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
                     <h2>Experience</h2>

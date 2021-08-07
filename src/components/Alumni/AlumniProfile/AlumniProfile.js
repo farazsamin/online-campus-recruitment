@@ -54,7 +54,11 @@ const AlumniProfile = () => {
                     {/* { console.log(img)} */}
                     <img style={{ margin: '1%', height: '20%', width: '20%', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px' }} className="rounded-circle" src={img} alt="" />
 
+
+
                 </div>
+
+
 
 
 

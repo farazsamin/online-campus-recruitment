@@ -1,8 +1,14 @@
 import React from 'react';
 import {
-    Link
+    Link, useHistory
 } from "react-router-dom";
 const AlumniNavbar = () => {
+    const history = useHistory();
+    const handleLogout = () => {
+        localStorage.removeItem('alumniToken');
+
+        history.push('/')
+    }
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light mb-3">
@@ -23,7 +29,7 @@ const AlumniNavbar = () => {
                             <Link className="nav-link" to="/company_about">About</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/login">Logout</a>
+                            <a onClick={() => handleLogout()} className="nav-link" href="/">Logout</a>
                         </li>
 
                     </ul>
