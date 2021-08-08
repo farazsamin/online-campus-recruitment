@@ -4,3 +4,10 @@
 .login-button{
     color: white;
 }
+.login-button:hover{
+    background-color: black;
+    color : white;
+}
+.login-nav-link{
+    color: white!important;
+}

@@ -28,7 +28,7 @@ const ShowPic = () => {
                 setSocialInfo(response.data.social)
                 setSkills(response.data.skills)
                 setEducation(response.data.education[0])
-                setExperience(response.data.experience[0])
+                setExperience(response.data.experience)
                 console.log(response.data)
             })
             .catch(err => {
@@ -112,12 +112,21 @@ const ShowPic = () => {
                 </div>
                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
                     <h2>Experience</h2>
-                    <p>Company Name : {experience.company}</p>
-                    <p>Title : {title}</p>
-                    <p>Description : {description}</p>
-                    <p>From : {from}</p>
-                    <p>To : {to}</p>
-                    <p>Location : {experience.location}</p>
+                    {
+                        experience.map(ex => {
+                            return (
+                                <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
+                                    <p>Company Name : {ex.company}</p>
+                                    <p>Title : {ex.title}</p>
+                                    <p>Description : {ex.description}</p>
+                                    <p>From : {ex.from}</p>
+                                    <p>To : {ex.to}</p>
+                                    <p>Location : {ex.location}</p>
+                                </div>
+                            )
+                        })
+                    }
+
                 </div>
 
             </div>

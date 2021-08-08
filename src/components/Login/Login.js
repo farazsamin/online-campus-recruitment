@@ -1,16 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css'
+
 const Login = () => {
     return (
         <div style={{ height: '100vh' }}>
+            <div >
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a style={{ color: 'white' }} class="navbar-brand" href="#">IIUC Campus Recruitment System</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link login-nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link login-nav-link" href="#">CSE</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link login-nav-link" href="#">About Us</a>
+                            </li>
 
+                        </ul>
+                    </div>
+                </nav>
+            </div>
             <div className="row">
                 <div className="col-md-5 mt-5 pt-5">
                     <div className=" h-100 d-flex justify-content-center align-items-center">
                         <div>
-                            <h1>Connect with .....</h1>
-                            <h4>In ONE place...</h4>
+                            <h1>Connect with </h1>
+
+                            {/* <h4>In ONE place...</h4> */}
 
                         </div>
                     </div>

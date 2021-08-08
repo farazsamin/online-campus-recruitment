@@ -3,6 +3,7 @@ import Registration from '../Registration/Registration';
 import Login from '../Login/Login';
 import './LandingPage.css'
 import Navbar from '../Alumni/Navbar/Navbar'
+import AlumniNavbar from '../Alumni/Navbar/Navbar';
 const LandingPage = () => {
     return (
 
