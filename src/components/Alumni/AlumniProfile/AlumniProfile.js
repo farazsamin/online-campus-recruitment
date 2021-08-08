@@ -37,6 +37,11 @@ const AlumniProfile = () => {
     }, [])
     let img = new Buffer.from(profilePic).toString('base64');
     img = `data:image/jpg;base64,${img}`;
+
+    const { status, about, currentJob, passingYear, githubusername, website, codeforceusername } = profileInfo
+    const { facebook, linkdein } = socialInfo
+    const { BscPassingYear, college, school } = education
+    const { company, location, title, from, to, description } = experience
     return (
         <div>
             <AlumniNavbar></AlumniNavbar>
@@ -54,7 +59,63 @@ const AlumniProfile = () => {
                     {/* { console.log(img)} */}
                     <img style={{ margin: '1%', height: '20%', width: '20%', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px' }} className="rounded-circle" src={img} alt="" />
 
+                    <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
+                        <h2>Hello , I am {about}</h2>
+                        <h5>{status}</h5>
+                        <p>Current Job : {currentJob}</p>
+                        <a class="btn btn-primary" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={website} role="button"
+                        ><i class="fab fa-facebook-f">Website</i>
+                        </a>
+                        <a class="btn btn-primary m-2" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={facebook} role="button"
+                        ><i class="fab fa-facebook-f">Facebook</i>
+                        </a>
+                        <a class="btn btn-primary" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={linkdein} role="button"
+                        ><i class="fab fa-facebook-f">LinkedIn</i>
+                        </a>
 
+                        <p>Location :  {location}</p>
+                        <br />
+                    </div>
+
+
+                    <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
+                        <h2 className="mb-2">Education </h2>
+                        <div className="row m-3">
+                            <div className="col-md-6 divider">
+                                <p> Bsc Passing Year </p>
+                                <p>HSC </p>
+                                <p>SSC </p>
+                                <br />
+                            </div>
+                            <div className="col-md-6">
+                                <p>{BscPassingYear}</p>
+                                <p>{college}</p>
+                                <p>{school}</p>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
+                        <h2>Experience</h2>
+                        <div className="row mt-3">
+                            <div className="col-md-6 divider">
+                                <p>Company </p>
+                                <p>Title </p>
+                                <p>Description</p>
+                                <p>From </p>
+                                <p>To </p>
+                                <p>Location </p>
+                            </div>
+                            <div className="col-md-6">
+                                <p>{company}</p>
+                                <p>{title}</p>
+                                <p>{description}</p>
+                                <p>{from}</p>
+                                <p>{location}</p>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
