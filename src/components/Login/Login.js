@@ -1,3 +1,5 @@
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css'
@@ -28,12 +30,37 @@ const Login = () => {
                 </nav>
             </div>
             <div className="row">
-                <div className="col-md-5 mt-5 pt-5">
+                <div className="col-md-6 mt-5 pt-5">
                     <div className=" h-100 d-flex justify-content-center align-items-center">
                         <div>
                             <h1>Connect with </h1>
+                            <div className="row mt-1">
+                                <div className="col-md-2">
+                                    <FontAwesomeIcon icon={faCheckCircle} size='2x' className="inline-block" style={{ marginBottom: '10px' }} />
+                                </div>
+                                <div className="col-md-9">
+                                    <h3 className="typing-demo">Student</h3>
+                                </div>
+                            </div>
+                            <div className="row mt-1">
+                                <div className="col-md-2">
+                                    <FontAwesomeIcon icon={faCheckCircle} size='2x' className="inline-block" style={{ marginBottom: '10px' }} />
+                                </div>
+                                <div className="col-md-9">
+                                    <h3 className="typing-demo">Company</h3>
+                                </div>
+                            </div>
+                            <div className="row mt-1">
+                                <div className="col-md-2">
+                                    <FontAwesomeIcon icon={faCheckCircle} size='2x' className="inline-block" style={{ marginBottom: '10px' }} />
+                                </div>
+                                <div className="col-md-9">
+                                    <h3 className="typing-demo">Alumni</h3>
+                                </div>
+                            </div>
 
-                            {/* <h4>In ONE place...</h4> */}
+
+
 
                         </div>
                     </div>
@@ -42,7 +69,7 @@ const Login = () => {
 
                 </div>
 
-                <div className="col-md-6 mt-5 pt-5 ">
+                <div className="col-md-4 mt-5 pt-5 ">
 
                     <Link to="/login/student"><button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Login As Student</button></Link>
                     <Link to="/login/alumni"><button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Login As Alumni</button></Link>

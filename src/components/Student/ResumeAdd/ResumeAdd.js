@@ -23,13 +23,13 @@ const ResumeAdd = () => {
     const [to, setTo] = useState('')
     const [desc, setDesc] = useState('')
     const [profilePic, setProfilePic] = useState()
-
+    const [codeforceusername, setCodeforceusername] = useState('')
     const [success, setSuccess] = useState(false)
 
     const handleAddToYourResume = (e) => {
         SetToken(localStorage.getItem('userToken'));
         e.preventDefault();
-
+        console.log(githubUserName)
         axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me', {
             company: name,
             skills: skills,
@@ -37,9 +37,10 @@ const ResumeAdd = () => {
             bio: bio,
             status: status,
             website: website,
-            githubUserName: githubUserName,
+            githubusername: githubUserName,
             facebook: facebook,
-            instagram: instagram
+            instagram: instagram,
+            codeforceusername: codeforceusername
         })
             .then(res => {
                 console.log(res)
@@ -52,6 +53,7 @@ const ResumeAdd = () => {
                 setGithubUserName('')
                 setFacebook('')
                 setInstagram('')
+                setCodeforceusername('')
                 setSuccess(true)
 
             })
@@ -171,6 +173,12 @@ const ResumeAdd = () => {
                 <input type="text" name="" id="" value={website} onChange={
                     (event) => {
                         setWebsite(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Codeforces Username</label>
+                <input type="text" name="" id="" value={codeforceusername} onChange={
+                    (event) => {
+                        setCodeforceusername(event.target.value);
                     }
                 } />
                 <label htmlFor="">Github Username</label>

@@ -11,12 +11,31 @@ const ShowPic = () => {
     const [skills, setSkills] = useState([])
     const [education, setEducation] = useState([])
     const [experience, setExperience] = useState([])
+    const [codeforces, setCodeforces] = useState([])
+    const [github, setGithub] = useState([])
 
     useEffect(() => {
         SetToken(localStorage.getItem('userToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/profilePic')
             .then(response => {
                 setProfilePic(response.data.pic.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/codeforceRatings')
+            .then(response => {
+                setCodeforces(response.data.result)
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/githubRepos')
+            .then(response => {
+                setGithub(response.data)
+                console.log(response.data)
             })
             .catch(err => {
                 console.log(err)
@@ -122,6 +141,37 @@ const ShowPic = () => {
                                     <p>From : {ex.from}</p>
                                     <p>To : {ex.to}</p>
                                     <p>Location : {ex.location}</p>
+                                </div>
+                            )
+                        })
+                    }
+
+                </div>
+
+                <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
+                    <h2>Codeforces Rating</h2>
+
+                    {
+                        codeforces.slice(0).reverse().map(cd => {
+                            return (
+                                <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
+                                    <p>Current Rating : {cd.newRating}</p>
+                                </div>
+                            )
+                        })
+                    }
+
+                </div>
+                <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
+                    <h2>Github Repositories</h2>
+
+                    {
+                        github.map(gh => {
+                            return (
+                                <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
+                                    <p>Project Name : {gh.name}</p>
+                                    <a href={gh.clone_url} target="_blank">Clone</a>
+
                                 </div>
                             )
                         })
