@@ -8,7 +8,7 @@ const Company_About = () => {
     const [profilePic, setProfilePic] = useState([])
 
     useEffect(() => {
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('companyToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/profile/company/me')
             .then(response => {
                 console.log(response.data)

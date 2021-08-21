@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { SetToken } from '../../utilities/setToken';
 
 const Comment = (props) => {
-    const { _id } = props;
+    const { } = props;
 
     return (
         <div>

@@ -14,6 +14,7 @@ const Posts = (props) => {
   const [like, setLike] = useState('')
   const [cmnt, setCmnt] = useState(false)
   const [comment, setComment] = useState('')
+  const [userComments, setUserComments] = useState([])
 
   const handleAddComment = () => {
     axios.post(`https://iiuc-campus-recuitement-system.herokuapp.com/blog/user/${_id}/usercomment`, {
@@ -22,8 +23,6 @@ const Posts = (props) => {
       .then(res => {
         console.log(res)
         setComment('')
-
-
       })
       .catch(err => {
         console.log(err)
@@ -40,13 +39,13 @@ const Posts = (props) => {
 
   useEffect(() => {
     SetToken(localStorage.getItem('userToken'));
-    axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/blog/user/${_id}/allComments`)
+    axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/blog/user/${_id}/allComments/user`)
       .then(response => {
         console.log(response)
-        // setComments(response.data.blogs)
+        setUserComments(response.data)
       })
       .catch(err => {
-        console.log(err)
+        console.log(err.error)
       })
   }, [])
 
@@ -60,25 +59,32 @@ const Posts = (props) => {
 
       <span>
         <FontAwesomeIcon icon={faHeart} size='2x' className="" style={{ marginLeft: '20%' }} onClick={handleLike} color={like} />
-        <FontAwesomeIcon onClick={handleComment} icon={faComment} size='2x' className="" style={{ marginLeft: '40%', color: 'grey' }} />
+        <FontAwesomeIcon onClick={handleComment} icon={faComment} size='2x' className="" style={{ marginLeft: '40%', marginRight: '1%', color: 'grey' }} />
+        <span style={{ color: 'green', fontWeight: 'bolder' }}>{userComments.length}</span>
         {/* <button onClick={handleComment}></button> */}
       </span>
       <hr />
       <div className="row">
-        <div className="col-md-9">
+        <div className="col-md-10">
           <input onChange={
             (event) => {
               setComment(event.target.value);
             }
           } placeholder="Write Your Comment" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="p-2" type="textarea" name="" id="" />
         </div>
-        <div className="col-md-3">
-          <button onClick={handleAddComment} className="btn btn-primary">Add Comment</button>
+        <div className="col-md-2">
+          <button onClick={handleAddComment} className="btn btn-primary">Comment</button>
         </div>
       </div>
-      {cmnt ? <Comment></Comment> : <></>}
-
-
+      {cmnt ? userComments.map(uc => {
+        const { comment, userCommentMaker } = uc;
+        return (
+          <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', marginTop: '1%', padding: '1%' }}>
+            <p style={{ fontWeight: '500', fontSize: '20px' }}> {userCommentMaker.name} </p>
+            <p>{comment}</p>
+          </div>
+        )
+      }) : <></>}
 
     </div>
   );

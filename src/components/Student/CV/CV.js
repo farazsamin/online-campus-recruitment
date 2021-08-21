@@ -23,6 +23,14 @@ const ShowPic = () => {
             .catch(err => {
                 console.log(err)
             })
+        axios.get(`https://codeforces.com/api/user.info?handles=DmitriyH;Fefer_Ivan`)
+            .then(response => {
+                console.log(response)
+                // setProfilePic(response.data.pic.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
 
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/codeforceRatings')
             .then(response => {

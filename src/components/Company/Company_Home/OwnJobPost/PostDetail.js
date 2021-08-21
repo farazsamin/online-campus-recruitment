@@ -6,11 +6,11 @@ const PostDetail = (props) => {
     const [appliedUsers, setAppliedUsers] = useState('')
     const { title, description, _id } = props.post;
     useEffect(() => {
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('companyToken'));
         axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/job/${_id}/appliedUser`)
             .then(response => {
                 setAppliedUsers(response.data[0].appliedUsers[0].user.name)
-                // console.log(response.data[0].appliedUsers[0].user.name)
+                console.log(response.data[0])
 
             })
             .catch(err => {

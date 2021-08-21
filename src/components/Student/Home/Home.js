@@ -44,6 +44,7 @@ const Home = () => {
         SetToken(localStorage.getItem('userToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/blog/user/all/user')
             .then(response => {
+                console.log(response)
                 setPosts(response.data.blogs)
             })
             .catch(err => {

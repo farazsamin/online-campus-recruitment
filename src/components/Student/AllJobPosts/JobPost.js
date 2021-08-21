@@ -22,11 +22,12 @@ const JobPost = (props) => {
     )
       .then((response) => {
         console.log(response)
-        setText('Already Applied')
+        setText('Applied')
         setDisable(true)
       })
       .catch((error) => {
         console.log(error.response.data.err)
+        setText(error.response.data.err)
       })
   }
   const handleLike = () => {

@@ -8,7 +8,7 @@ import PostDetail from './PostDetail';
 const OwnJobPost = () => {
     const [myJobPosts, setMyJobPosts] = useState([])
     useEffect(() => {
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('companyToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/job/myJobsPost')
             .then(response => {
                 console.log(response.data)
