@@ -42,8 +42,8 @@ import CompanySearch from './components/Admin/Search/CompanySearch/CompanySearch
 import AlumniSearch from './components/Admin/Search/AlumniSearch/AlumniSearch';
 import AlumniUserSearch from './components/Alumni/Search/AlumniUserSearch/AlumniUserSearch';
 import AlumniAddButton from './components/Alumni/AlumniProfile/AlumniAddButton/AlumniAddButton';
-
-
+import AllBlogs from './components/Student/BlogsByAlumni/AllBlogs'
+import AllBlogsUser from './components/Alumni/BlogsByUser/AllBlogsUser'
 export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
@@ -104,6 +104,9 @@ function App() {
           <Route exact path="/all_job_posts">
             <AllJobPosts></AllJobPosts>
           </Route>
+          <Route exact path="/blog/alumni/all/user">
+            <AllBlogs></AllBlogs>
+          </Route>
 
 
           {/* Alumni */}
@@ -124,6 +127,9 @@ function App() {
           </Route>
           <Route exact path="/alumni_profile/add">
             <AlumniAddButton></AlumniAddButton>
+          </Route>
+          <Route exact path="/blog/user/all/alumni">
+            <AllBlogsUser></AllBlogsUser>
           </Route>
 
 

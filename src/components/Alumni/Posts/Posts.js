@@ -74,10 +74,10 @@ const Posts = (props) => {
         </div>
       </div>
       {cmnt ? alumniComments.map(ac => {
-        const { comment, alumniCommentMaker } = ac;
+        const { comment, alumniCommentMaker, userCommentMaker } = ac;
         return (
           <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', marginTop: '1%', padding: '1%' }}>
-            <p style={{ fontWeight: '500', fontSize: '20px' }}> {alumniCommentMaker.name} </p>
+            {alumniCommentMaker ? <p>{alumniCommentMaker.name} <sup>alumni</sup></p> : <p>{userCommentMaker.name} <sup>student</sup></p>}
             <p>{comment}</p>
           </div>
         )

@@ -20,6 +20,9 @@ const AlumniNavbar = () => {
                             <Link className="nav-link" to="/alumni_home">Alumni Home</Link>
                         </li>
                         <li className="nav-item active">
+                            <Link className="nav-link" to="/blog/user/all/alumni">Student Blogs</Link>
+                        </li>
+                        <li className="nav-item active">
                             <Link className="nav-link" to="/alumni_list">All Alumnies</Link>
                         </li>
                         <li className="nav-item active">
