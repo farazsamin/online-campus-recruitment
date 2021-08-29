@@ -12,11 +12,23 @@ const AlumniUserSearch = () => {
     }, [])
 
     const handleUserSearch = () => {
-        console.log("Clicked")
+        // console.log("Clicked")
         axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/search/user?search=${userInput}`)
             .then(response => {
                 console.log(response.data)
                 setUsers(response.data.user)
+
+            })
+            .catch(err => {
+                console.log(err.response)
+            })
+    }
+    const handleUserProfile = (_id) => {
+        console.log('clicked')
+        axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/alumni/watch/user/${_id}`)
+            .then(response => {
+                console.log(response)
+                // setUsers(response.data.user)
 
             })
             .catch(err => {
@@ -44,11 +56,13 @@ const AlumniUserSearch = () => {
                     {
 
                         users.map(userList => {
-                            const { name, email } = userList
+                            const { name, email, _id } = userList
                             return (
                                 <div className="m-3 p-2" style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
+                                    {/* <p>{_id}</p> */}
                                     <p >Name : {name}</p>
                                     <p>Email: {email}</p>
+                                    <button onclick={() => handleUserProfile(_id)} className="btn btn-success">See Profile</button>
                                 </div>
                             );
                         })

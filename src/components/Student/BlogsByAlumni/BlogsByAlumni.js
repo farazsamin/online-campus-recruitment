@@ -26,6 +26,15 @@ const Posts = (props) => {
             .catch(err => {
                 console.log(err)
             })
+
+        axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/blog/alumni/${_id}/allComments/user`)
+            .then(response => {
+                console.log(response)
+                setUserComments(response.data)
+            })
+            .catch(err => {
+                console.log(err.error)
+            })
     }
 
     const handleComment = () => {
@@ -69,7 +78,7 @@ const Posts = (props) => {
                         (event) => {
                             setComment(event.target.value);
                         }
-                    } placeholder="Write Your Comment" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="p-2" type="textarea" name="" id="" />
+                    } placeholder="Write Your Comment" value={comment} style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="p-2" type="textarea" name="" id="" />
                 </div>
                 <div className="col-md-2">
                     <button onClick={handleAddComment} className="btn btn-primary">Comment</button>
