@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import SeeUserProfile from '../../../SeeUserProfile/SeeUserProfile';
 import { SetToken } from '../../../utilities/setToken';
 
 const AppliedUsers = (props) => {
@@ -22,8 +24,8 @@ const AppliedUsers = (props) => {
             {
                 appliedUsers.map(au => {
 
-                    const { name } = au.user
-                    console.log(au.user)
+                    const { name, _id } = au.user
+                    {/* console.log(au.user) */ }
                     return (
                         <div>
 
@@ -32,7 +34,8 @@ const AppliedUsers = (props) => {
                                     <p className="text-center">{name}</p>
                                 </div>
                                 <div className="col-md-4">
-                                    <button className="btn btn-success text-center">See Profile</button>
+                                    <Link to={`/see-user-profile/${_id}`}><button className="btn btn-success text-center">See Profile</button></Link>
+                                    {/* <SeeUserProfile _id={_id}></SeeUserProfile> */}
                                 </div>
                             </div>
                             {/* <p>{user.name}</p> */}

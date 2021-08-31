@@ -44,6 +44,7 @@ import AlumniUserSearch from './components/Alumni/Search/AlumniUserSearch/Alumni
 import AlumniAddButton from './components/Alumni/AlumniProfile/AlumniAddButton/AlumniAddButton';
 import AllBlogs from './components/Student/BlogsByAlumni/AllBlogs'
 import AllBlogsUser from './components/Alumni/BlogsByUser/AllBlogsUser'
+import SeeUserProfile from './components/SeeUserProfile/SeeUserProfile';
 export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
@@ -183,6 +184,12 @@ function App() {
           </Route>
           <Route exact path="/admin/search/alumni">
             <AlumniSearch></AlumniSearch>
+          </Route>
+
+
+          {/* See User Profile */}
+          <Route exact path="/see-user-profile/:_id">
+            <SeeUserProfile></SeeUserProfile>
           </Route>
 
         </Switch>
