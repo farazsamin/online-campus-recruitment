@@ -6,7 +6,7 @@ import axios from 'axios';
 import { SetToken } from '../../utilities/setToken';
 
 const Posts = (props) => {
-  const { _id, title, description, image } = props.post;
+  const { _id, title, description, image, React } = props.post;
   const [like, setLike] = useState('')
   const [comment, setComment] = useState('')
   const [alumniComments, setAlumniComments] = useState([])
@@ -79,6 +79,7 @@ const Posts = (props) => {
       <p className="mt-2">{description}</p>
       <hr />
       <span>
+        <span>{React.length}</span>
         <FontAwesomeIcon icon={faHeart} size='2x' className="" style={{ marginLeft: '20%', marginBottom: '10px' }} onClick={handleLike} color={like} />
         <FontAwesomeIcon icon={faComment} size='2x' className="" style={{ marginLeft: '40%', marginBottom: '10px' }} onClick={handleComment} /> <span style={{ color: 'green', fontWeight: 'bolder' }}>{alumniComments.length}</span>
       </span>
