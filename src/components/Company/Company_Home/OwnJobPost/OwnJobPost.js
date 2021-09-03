@@ -8,11 +8,21 @@ import AppliedUsers from './AppliedUsers';
 
 const OwnJobPost = () => {
     const [myJobPosts, setMyJobPosts] = useState([])
-    const handleDeleteJobPost = () => {
+
+    const handleDeleteJobPost = (_id) => {
         SetToken(localStorage.getItem('companyToken'));
-        axios.delete('https://iiuc-campus-recuitement-system.herokuapp.com/')
+        axios.delete(`https://iiuc-campus-recuitement-system.herokuapp.com/job/myJob/${_id}`)
             .then(response => {
                 console.log(response.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/job/myJobsPost')
+            .then(response => {
+                console.log(response.data)
+                setMyJobPosts(response.data)
             })
             .catch(err => {
                 console.log(err)
@@ -20,6 +30,9 @@ const OwnJobPost = () => {
     }
     useEffect(() => {
         SetToken(localStorage.getItem('companyToken'));
+        const allJobPost = () => {
+
+        }
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/job/myJobsPost')
             .then(response => {
                 console.log(response.data)
@@ -42,7 +55,7 @@ const OwnJobPost = () => {
                                     <div class="card-body">
                                         <h5 class="card-title">{title}</h5>
                                         <p class="card-text">{description}</p>
-                                        <button onClick={handleDeleteJobPost} className="btn btn-danger">Delete</button>
+                                        <button onClick={() => handleDeleteJobPost(_id)} className="btn btn-danger">Delete</button>
                                         {/* <a style={{ marginLeft: '3%' }} href="f" class="btn btn-primary">Edit</a> */}
                                         <div>
                                             <h2 className="text-center mt-2 mb-2">Applied Users</h2>
@@ -58,7 +71,7 @@ const OwnJobPost = () => {
                     })
                 }
             </div>
-        </div >
+        </div>
     );
 };
 

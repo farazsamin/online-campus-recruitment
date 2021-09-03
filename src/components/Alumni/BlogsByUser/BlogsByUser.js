@@ -4,8 +4,9 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 import { SetToken } from '../../utilities/setToken';
+import { Link } from 'react-router-dom';
 const Posts = (props) => {
-    const { _id, title, description, image } = props.post;
+    const { _id, title, description, image, Author } = props.post;
 
     let img = new Buffer.from(image.data).toString('base64');
     img = `data:image/jpg;base64,${img}`;
@@ -59,7 +60,7 @@ const Posts = (props) => {
 
     return (
         <div className="m-2 p-3 " style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
-            <p>Author</p>
+            <Link to={`/see-user-profile/${Author._id}`}><p>{Author.name}</p></Link>
             <h5 className="mt-3 mb-3">{title}</h5>
             <img style={{ width: '100%' }} className="img-responsive" src={img} alt="Card  cap" />
             <p className="mt-2">{description}</p>

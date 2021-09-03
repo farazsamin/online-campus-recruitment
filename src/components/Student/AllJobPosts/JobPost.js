@@ -4,6 +4,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import { SetToken } from '../../utilities/setToken';
+import { Link } from 'react-router-dom';
 const JobPost = (props) => {
 
   const { title, description, Author, _id } = props.post;
@@ -41,7 +42,7 @@ const JobPost = (props) => {
         <div className="card mb-3 mx-auto mt-3" style={{ width: "60%" }}>
           <div className="card-body">
 
-            <h3 className=" border-bottom ">{Author.name}</h3>
+            <Link to={`see-company-profile/${Author._id}`}><h3 style={{ color: 'black' }} className=" border-bottom ">{Author.name}</h3></Link>
             <h4 className="mt-3 ">{title}</h4>
 
             <p className="card-text">{description}</p>
