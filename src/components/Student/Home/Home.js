@@ -10,9 +10,11 @@ const Home = () => {
     const [image, setImage] = useState()
     const [title, setTitle] = useState('')
     const [posts, setPosts] = useState([])
+    const [postBtn, setPostBtn] = useState('Add Post')
     // const [loading, setLoading] = useState(true)
 
     const handleAddPost = (e) => {
+        setPostBtn("Posting...")
         e.preventDefault();
         let fd = new FormData();
         fd.append('blogPic', image);
@@ -24,6 +26,7 @@ const Home = () => {
             .then(res => {
                 console.log(res)
                 setPosts([res.data, ...posts])
+                setPostBtn("Add Post")
             })
             .catch(err => {
                 console.log(err)
@@ -83,7 +86,7 @@ const Home = () => {
                                 setImage(event.target.files[0]);
                             }
                         } /> <br />
-                        <button onClick={handleAddPost} className="btn btn-success mt-3">Add Post</button>
+                        <button onClick={handleAddPost} className="btn btn-success mt-3">{postBtn}</button>
                     </div>
                     {
                         posts.map(post => <Posts post={post}></Posts>)

@@ -1,8 +1,22 @@
+import axios from 'axios';
 import React from 'react';
 import {
-    Link
+    Link, useHistory
 } from "react-router-dom";
 const AdminNavbar = () => {
+    const history = useHistory();
+    const handleLogout = () => {
+        // localStorage.removeItem('adminToken');
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/admin/logout')
+            .then(response => {
+                console.log(response)
+
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        history.push('/')
+    }
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light mb-3">
@@ -29,7 +43,7 @@ const AdminNavbar = () => {
                             <Link className="nav-link" to="/all_companies_list">All Companies list</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/login">Logout</a>
+                            <Link onClick={() => handleLogout()} className="nav-link" >Logout</Link>
                         </li>
 
                     </ul>

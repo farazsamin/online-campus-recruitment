@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import {
     Link, Redirect, useHistory
@@ -7,7 +8,14 @@ const StudentNavbar = () => {
     const history = useHistory();
     const handleLogout = () => {
         localStorage.removeItem('userToken');
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/user/logout')
+            .then(response => {
+                console.log(response)
 
+            })
+            .catch(err => {
+                console.log(err)
+            })
         history.push('/')
     }
     return (
@@ -30,7 +38,7 @@ const StudentNavbar = () => {
                             <Link className="nav-link" to="/resume">Your Resume</Link>
                         </li>
                         <li className="nav-item">
-                            <Link onClick={() => handleLogout()} className="nav-link" href="/">Logout</Link>
+                            <Link onClick={() => handleLogout()} className="nav-link" >Logout</Link>
                         </li>
 
                     </ul>

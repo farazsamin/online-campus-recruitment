@@ -16,7 +16,9 @@ const Posts = (props) => {
   const [comment, setComment] = useState('')
   const [userComments, setUserComments] = useState([])
 
+
   const handleAddComment = () => {
+
     axios.post(`https://iiuc-campus-recuitement-system.herokuapp.com/blog/user/${_id}/usercomment`, {
       comment: comment
     })

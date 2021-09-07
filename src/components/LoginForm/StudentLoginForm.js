@@ -6,9 +6,12 @@ const StudentLoginForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [error, setError] = useState('')
+    const [logInBtn, setLogInBtn] = useState('Log In As Student')
     // const [loggedin, setLoggedIn] = useState(false)
     const [loggedInUser, setLoggedInUser] = useContext(userContext)
     const handleStudentLogin = (e) => {
+        setLogInBtn("Logging In")
         e.preventDefault();
         axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/user/login', {
             email: email,
@@ -25,6 +28,8 @@ const StudentLoginForm = () => {
             })
             .catch((error) => {
                 console.log(error)
+                setError('Enter Valid Information')
+                setLogInBtn("Log In As Student")
             })
         // // window.location.reload();
 
@@ -58,7 +63,8 @@ const StudentLoginForm = () => {
                                 }
                             } />
                         </div>
-                        <button onClick={(e) => { handleStudentLogin(e) }} className="btn btn-primary" disabled={email && password ? false : true}>Log in As Student</button>
+                        <button onClick={(e) => { handleStudentLogin(e) }} className="btn btn-primary" disabled={email && password ? false : true}>{logInBtn}</button>
+                        <h6 className="mt-2" style={{ color: 'red' }}>{error}</h6>
                     </form>
                 </div>
             </div>

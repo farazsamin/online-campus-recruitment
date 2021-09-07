@@ -5,9 +5,12 @@ const CompanyLoginForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [error, setError] = useState('')
+    const [logInBtn, setLogInBtn] = useState('Log In As Company')
     // const [loggedin, setLoggedIn] = useState(false)
 
     const handleCompanyLogin = (e) => {
+        setLogInBtn("Logging In")
         e.preventDefault();
         console.log(email + password)
         axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/company/login', {
@@ -22,6 +25,8 @@ const CompanyLoginForm = () => {
             })
             .catch((error) => {
                 console.log(error.response.data.err)
+                setError('Enter Valid Information')
+                setLogInBtn("Log In As Company")
             })
         // // window.location.reload();
 
@@ -55,7 +60,8 @@ const CompanyLoginForm = () => {
                                 }
                             } />
                         </div>
-                        <button onClick={(e) => { handleCompanyLogin(e) }} className="btn btn-primary" disabled={email && password ? false : true}>Log in As Company</button>
+                        <button onClick={(e) => { handleCompanyLogin(e) }} className="btn btn-primary" disabled={email && password ? false : true}>{logInBtn}</button>
+                        <h6 className="mt-2" style={{ color: 'red' }}>{error}</h6>
                     </form>
                 </div>
             </div>
