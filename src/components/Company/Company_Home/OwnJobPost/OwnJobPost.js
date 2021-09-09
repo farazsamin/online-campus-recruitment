@@ -43,15 +43,17 @@ const OwnJobPost = () => {
             })
     }, [])
     return (
+
         <div className="row">
-            <div className="col-md-9 m-auto">
+
+            <div className="col-md-10 m-auto">
                 <h1 className="text-center">My Job Posts</h1>
                 {
                     myJobPosts.map(post => {
                         const { title, description, _id } = post;
                         return (
-                            <div className="container">
-                                <div class="card w-75 mt-3">
+                            <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="row mb-5">
+                                <div class="col-md-9 m-auto">
                                     <div class="card-body">
                                         <h5 class="card-title">{title}</h5>
                                         <p class="card-text">{description}</p>

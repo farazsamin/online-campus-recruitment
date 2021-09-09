@@ -47,6 +47,7 @@ import AllBlogsUser from './components/Alumni/BlogsByUser/AllBlogsUser'
 import SeeUserProfile from './components/SeeUserProfile/SeeUserProfile';
 import SeeAlumniProfile from './components/SeeAlumniProfile/SeeAlumniProfile';
 import SeeCompanyProfile from './components/SeeCompanyProfile/SeeCompanyProfile';
+import CandidateSearch from './components/Company/CandidateSearch/CandidateSearch'
 export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
@@ -151,6 +152,9 @@ function App() {
           </Route>
           <Route exact path="/all_companies_list">
             <AllCompaniesList></AllCompaniesList>
+          </Route>
+          <Route exact path="/search/specificUser">
+            <CandidateSearch></CandidateSearch>
           </Route>
 
 

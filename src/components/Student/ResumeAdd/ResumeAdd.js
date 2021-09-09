@@ -4,7 +4,7 @@ import axios from 'axios'
 import { SetToken } from '../../utilities/setToken';
 const ResumeAdd = () => {
     const [name, setName] = useState('')
-    const [skills, setSkills] = useState('')
+    const [skills, setSkills] = useState([])
     const [location, setLocation] = useState('')
     const [bio, setBio] = useState('')
     const [status, setStatus] = useState('')

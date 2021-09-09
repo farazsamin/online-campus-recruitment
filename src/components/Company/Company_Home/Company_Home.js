@@ -4,6 +4,7 @@ import CompanyNavbar from '../Navbar/Navbar';
 import { SetToken } from '../../utilities/setToken'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import OwnJobPost from './OwnJobPost/OwnJobPost'
 const AlumniHome = () => {
     const [posts, setposts] = useState([]);
     const [postContent, setPostContent] = useState('')
@@ -33,13 +34,6 @@ const AlumniHome = () => {
     }
 
 
-    // useEffect(() => {
-    //     axios.get('').then((response) => {
-    //         setPosts(response.data)
-    //         setLoading(false)
-    //     })
-    // }, [])
-
     useEffect(() => {
         SetToken(localStorage.getItem('companyToken'));
     }, [])
@@ -49,8 +43,10 @@ const AlumniHome = () => {
             <CompanyNavbar></CompanyNavbar>
             <div className="row">
                 <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 mb-3 text-center">
-                    <Link to="/company/job_post"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">My Job Posts</button></Link>
 
+                    <Link to="/search/specificUser"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">Search Candidates </button></Link>
+
+                    <Link to="/company/job_post"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">My Job Posts</button></Link>
 
                 </div>
                 <div className="col-md-6 m-auto " style={{ width: "80%", boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
@@ -73,6 +69,7 @@ const AlumniHome = () => {
                         posts.map(post => <Posts post={post}></Posts>)
                     }
 
+                    <OwnJobPost></OwnJobPost>
                 </div>
             </div>
         </>
