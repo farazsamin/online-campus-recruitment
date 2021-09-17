@@ -48,166 +48,176 @@ import SeeUserProfile from './components/SeeUserProfile/SeeUserProfile';
 import SeeAlumniProfile from './components/SeeAlumniProfile/SeeAlumniProfile';
 import SeeCompanyProfile from './components/SeeCompanyProfile/SeeCompanyProfile';
 import CandidateSearch from './components/Company/CandidateSearch/CandidateSearch'
+import ContestResult from './components/Admin/ContestResult/ContestResult';
 export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
   return (
-    <userContext.Provider value={[loggedInUser, setLoggedInUser]}>
-      <Router>
-        <Switch>
+    <div style={{
+      color: '#050505',
+      fontFamily: 'Lato,Arial,Helvetica,sans-serif'
+      // fontSize: '1.17em'
+    }}>
+      <userContext.Provider value={[loggedInUser, setLoggedInUser]} >
+        <Router>
+          <Switch>
 
-          {/* home */}
-          <Route exact path="/">
-            <LandingPage></LandingPage>
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route path="/login/student">
-            <StudentLoginForm />
-          </Route>
-          <Route path="/login/alumni">
-            <AlumniLoginForm></AlumniLoginForm>
-          </Route>
-          <Route path="/login/company">
-            <CompanyLoginForm></CompanyLoginForm>
-          </Route>
-          <Route path="/login/admin">
-            <AdminLoginForm></AdminLoginForm>
-          </Route>
-          <Route path="/registration/student">
-            <StudentRegistration></StudentRegistration>
-          </Route>
-          <Route path="/registration/admin">
-            <AdminRegistration></AdminRegistration>
-          </Route>
-          <Route path="/registration/alumni">
-            <AlumniRegistration></AlumniRegistration>
-          </Route>
-          <Route path="/registration/company">
-            <CompanyRegistration></CompanyRegistration>
-          </Route>
+            {/* home */}
+            <Route exact path="/">
+              <LandingPage></LandingPage>
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route path="/login/student">
+              <StudentLoginForm />
+            </Route>
+            <Route path="/login/alumni">
+              <AlumniLoginForm></AlumniLoginForm>
+            </Route>
+            <Route path="/login/company">
+              <CompanyLoginForm></CompanyLoginForm>
+            </Route>
+            <Route path="/login/admin">
+              <AdminLoginForm></AdminLoginForm>
+            </Route>
+            <Route path="/registration/student">
+              <StudentRegistration></StudentRegistration>
+            </Route>
+            <Route path="/registration/admin">
+              <AdminRegistration></AdminRegistration>
+            </Route>
+            <Route path="/registration/alumni">
+              <AlumniRegistration></AlumniRegistration>
+            </Route>
+            <Route path="/registration/company">
+              <CompanyRegistration></CompanyRegistration>
+            </Route>
 
-          {/* Student */}
+            {/* Student */}
 
-          <Route exact path="/student_home">
-            <StudentHome></StudentHome>
-          </Route>
-          <Route exact path="/all_students_list">
-            <AllStudentsList></AllStudentsList>
-          </Route>
-          <Route exact path="/resume">
-            <Resume />
-          </Route>
-          <Route exact path="/resume/add">
-            <ResumeAddButton></ResumeAddButton>
-          </Route>
-          <Route exact path="/resume/edit">
-            <ResumeEditButton></ResumeEditButton>
-          </Route>
-          <Route exact path="/all_job_posts">
-            <AllJobPosts></AllJobPosts>
-          </Route>
-          <Route exact path="/blog/alumni/all/user">
-            <AllBlogs></AllBlogs>
-          </Route>
-
-
-          {/* Alumni */}
-          <Route exact path="/alumni_home">
-            <AlumniHome></AlumniHome>
-          </Route>
-          <Route exact path="/profile/alumni/me">
-            <AlumniProfile></AlumniProfile>
-          </Route>
-          <Route exact path="/alumni_list">
-            <AlumniList></AlumniList>
-          </Route>
-          <Route exact path="/all_alumnies_list">
-            <AllAlumniesList></AllAlumniesList>
-          </Route>
-          <Route exact path="/search/user">
-            <AlumniUserSearch></AlumniUserSearch>
-          </Route>
-          <Route exact path="/alumni_profile/add">
-            <AlumniAddButton></AlumniAddButton>
-          </Route>
-          <Route exact path="/blog/user/all/alumni">
-            <AllBlogsUser></AllBlogsUser>
-          </Route>
+            <Route exact path="/student_home">
+              <StudentHome></StudentHome>
+            </Route>
+            <Route exact path="/all_students_list">
+              <AllStudentsList></AllStudentsList>
+            </Route>
+            <Route exact path="/resume">
+              <Resume />
+            </Route>
+            <Route exact path="/resume/add">
+              <ResumeAddButton></ResumeAddButton>
+            </Route>
+            <Route exact path="/resume/edit">
+              <ResumeEditButton></ResumeEditButton>
+            </Route>
+            <Route exact path="/all_job_posts">
+              <AllJobPosts></AllJobPosts>
+            </Route>
+            <Route exact path="/blog/alumni/all/user">
+              <AllBlogs></AllBlogs>
+            </Route>
 
 
-          {/* Company */}
-          <Route path="/company/job_post">
-            <OwnJobPost></OwnJobPost>
-          </Route>
-          <Route exact path="/company_home">
-            <CompanyHome></CompanyHome>
-          </Route>
-          <Route exact path="/company_about">
-            <CompanyAbout></CompanyAbout>
-          </Route>
-          <Route exact path="/company/add_info">
-            <CompanyInfoForm></CompanyInfoForm>
-          </Route>
-          <Route exact path="/all_companies_list">
-            <AllCompaniesList></AllCompaniesList>
-          </Route>
-          <Route exact path="/search/specificUser">
-            <CandidateSearch></CandidateSearch>
-          </Route>
+            {/* Alumni */}
+            <Route exact path="/alumni_home">
+              <AlumniHome></AlumniHome>
+            </Route>
+            <Route exact path="/profile/alumni/me">
+              <AlumniProfile></AlumniProfile>
+            </Route>
+            <Route exact path="/alumni_list">
+              <AlumniList></AlumniList>
+            </Route>
+            <Route exact path="/all_alumnies_list">
+              <AllAlumniesList></AllAlumniesList>
+            </Route>
+            <Route exact path="/search/user">
+              <AlumniUserSearch></AlumniUserSearch>
+            </Route>
+            <Route exact path="/alumni_profile/add">
+              <AlumniAddButton></AlumniAddButton>
+            </Route>
+            <Route exact path="/blog/user/all/alumni">
+              <AllBlogsUser></AllBlogsUser>
+            </Route>
+
+
+            {/* Company */}
+            <Route path="/company/job_post">
+              <OwnJobPost></OwnJobPost>
+            </Route>
+            <Route exact path="/company_home">
+              <CompanyHome></CompanyHome>
+            </Route>
+            <Route exact path="/company_about">
+              <CompanyAbout></CompanyAbout>
+            </Route>
+            <Route exact path="/company/add_info">
+              <CompanyInfoForm></CompanyInfoForm>
+            </Route>
+            <Route exact path="/all_companies_list">
+              <AllCompaniesList></AllCompaniesList>
+            </Route>
+            <Route exact path="/search/specificUser">
+              <CandidateSearch></CandidateSearch>
+            </Route>
 
 
 
 
-          {/* Admin */}
-          <Route exact path="/admin_home">
-            <AdminHome></AdminHome>
-          </Route>
-          <Route exact path="/admin/user_blog/all">
-            <UserBlog></UserBlog>
-          </Route>
-          <Route exact path="/admin/alumni_blog/all">
-            <AlumniBlog></AlumniBlog>
-          </Route>
-          <Route exact path="/admin/all/company">
-            <AllCompany></AllCompany>
-          </Route>
-          <Route exact path="/admin/allJobs">
-            <AllJobs></AllJobs>
-          </Route>
-          <Route exact path="/temporary/company">
-            <CompanyPending></CompanyPending>
-          </Route>
-          <Route exact path="/temporary/alumni">
-            <AlumniPending></AlumniPending>
-          </Route>
-          <Route exact path="/admin/search/user">
-            <UserSearch></UserSearch>
-          </Route>
-          <Route exact path="/admin/search/company">
-            <CompanySearch></CompanySearch>
-          </Route>
-          <Route exact path="/admin/search/alumni">
-            <AlumniSearch></AlumniSearch>
-          </Route>
+            {/* Admin */}
+            <Route exact path="/admin_home">
+              <AdminHome></AdminHome>
+            </Route>
+            <Route exact path="/admin/contestRanking">
+              <ContestResult></ContestResult>
+            </Route>
+            <Route exact path="/admin/user_blog/all">
+              <UserBlog></UserBlog>
+            </Route>
+            <Route exact path="/admin/alumni_blog/all">
+              <AlumniBlog></AlumniBlog>
+            </Route>
+            <Route exact path="/admin/all/company">
+              <AllCompany></AllCompany>
+            </Route>
+            <Route exact path="/admin/allJobs">
+              <AllJobs></AllJobs>
+            </Route>
+            <Route exact path="/temporary/company">
+              <CompanyPending></CompanyPending>
+            </Route>
+            <Route exact path="/temporary/alumni">
+              <AlumniPending></AlumniPending>
+            </Route>
+            <Route exact path="/admin/search/user">
+              <UserSearch></UserSearch>
+            </Route>
+            <Route exact path="/admin/search/company">
+              <CompanySearch></CompanySearch>
+            </Route>
+            <Route exact path="/admin/search/alumni">
+              <AlumniSearch></AlumniSearch>
+            </Route>
 
 
-          {/* See User Profile */}
-          <Route exact path="/see-user-profile/:_id">
-            <SeeUserProfile></SeeUserProfile>
-          </Route>
-          <Route exact path="/see-alumni-profile/:_id">
-            <SeeAlumniProfile></SeeAlumniProfile>
-          </Route>
-          <Route exact path="/see-company-profile/:_id">
-            <SeeCompanyProfile></SeeCompanyProfile>
-          </Route>
+            {/* See User Profile */}
+            <Route exact path="/see-user-profile/:_id">
+              <SeeUserProfile></SeeUserProfile>
+            </Route>
+            <Route exact path="/see-alumni-profile/:_id">
+              <SeeAlumniProfile></SeeAlumniProfile>
+            </Route>
+            <Route exact path="/see-company-profile/:_id">
+              <SeeCompanyProfile></SeeCompanyProfile>
+            </Route>
 
 
-        </Switch>
-      </Router>
-    </userContext.Provider>
+          </Switch>
+        </Router>
+      </userContext.Provider>
+    </div>
   )
 }
 

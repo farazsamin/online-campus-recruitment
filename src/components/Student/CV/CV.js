@@ -95,7 +95,12 @@ const ShowPic = () => {
         <div className="row mt-3 mb-5">
 
             <div className="col-md-9 m-auto text-center ">
-                <Link to="resume/add"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3">Add Info</button></Link>
+                {
+                    profileInfo ? <Link to="resume/add"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3" disabled={true}>Add Info</button></Link>
+                        :
+                        <Link to="resume/add"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3" disabled={false}>Add Info</button></Link>
+                }
+
                 <Link to="resume/edit"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3">Edit Info</button></Link>
 
                 {/* disabled={profileInfo ? true : false} */}

@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-solid-svg-icons'
-import Comment from './Comment';
 import axios from 'axios';
 import { SetToken } from '../../utilities/setToken';
+import { userContext } from '../../../App';
 const Posts = (props) => {
-  const { _id, title, description, image } = props.post;
+  const { _id, title, description, image, Author } = props.post;
 
   let img = new Buffer.from(image.data).toString('base64');
   img = `data:image/jpg;base64,${img}`;
@@ -15,7 +15,9 @@ const Posts = (props) => {
   const [cmnt, setCmnt] = useState(false)
   const [comment, setComment] = useState('')
   const [userComments, setUserComments] = useState([])
+  const [dlt, setDlt] = useState(false)
 
+  const [loggedInUser, setLoggedInUser] = useContext(userContext)
 
   const handleAddComment = () => {
 
@@ -50,6 +52,9 @@ const Posts = (props) => {
 
   useEffect(() => {
     SetToken(localStorage.getItem('userToken'));
+
+    console.log('log id ', loggedInUser.id)
+
     axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/blog/user/${_id}/allComments/user`)
       .then(response => {
         console.log(response)
@@ -58,6 +63,8 @@ const Posts = (props) => {
       .catch(err => {
         console.log(err.error)
       })
+
+
   }, [])
 
   return (
@@ -69,8 +76,8 @@ const Posts = (props) => {
       <hr />
 
       <span>
-        <FontAwesomeIcon icon={faHeart} size='2x' className="" style={{ marginLeft: '20%' }} onClick={handleLike} color={like} />
-        <FontAwesomeIcon onClick={handleComment} icon={faComment} size='2x' className="" style={{ marginLeft: '40%', marginRight: '1%', color: 'grey' }} />
+
+        <FontAwesomeIcon onClick={handleComment} icon={faComment} size='2x' className="" style={{ marginLeft: '45%', color: 'grey' }} />
         <span style={{ color: 'green', fontWeight: 'bolder' }}>{userComments.length}</span>
         {/* <button onClick={handleComment}></button> */}
       </span>
@@ -91,8 +98,10 @@ const Posts = (props) => {
         const { comment, userCommentMaker, alumniCommentMaker } = uc;
         return (
           <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', marginTop: '1%', padding: '1%' }}>
-            {alumniCommentMaker ? <p>{alumniCommentMaker.name} <sup>alumni</sup></p> : <p>{userCommentMaker.name} <sup>student</sup></p>}
+            {alumniCommentMaker ? <p>{alumniCommentMaker.name} <sup>alumni</sup></p>
+              : <p>{userCommentMaker.name} <sup>student</sup></p>}
             <p>{comment}</p>
+
           </div>
         )
       }) : <></>}

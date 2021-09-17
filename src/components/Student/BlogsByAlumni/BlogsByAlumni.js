@@ -67,8 +67,8 @@ const Posts = (props) => {
             <hr />
 
             <span>
-                <FontAwesomeIcon icon={faHeart} size='2x' className="" style={{ marginLeft: '20%' }} onClick={handleLike} color={like} />
-                <FontAwesomeIcon onClick={handleComment} icon={faComment} size='2x' className="" style={{ marginLeft: '40%', marginRight: '1%', color: 'grey' }} />
+
+                <FontAwesomeIcon onClick={handleComment} icon={faComment} size='2x' className="" style={{ marginLeft: '45%', color: 'grey' }} />
                 <span style={{ color: 'green', fontWeight: 'bolder' }}>{userComments.length}</span>
                 {/* <button onClick={handleComment}></button> */}
             </span>
