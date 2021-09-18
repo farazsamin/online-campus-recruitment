@@ -12,6 +12,7 @@ const ShowPic = () => {
     const [education, setEducation] = useState([])
     const [experience, setExperience] = useState([])
     const [codeforces, setCodeforces] = useState([])
+    const [user, setUser] = useState([])
     const [github, setGithub] = useState([])
     const [codeforcesInfo, setCodeforcesInfo] = useState([])
     const [cf, setCf] = useState(false)
@@ -68,6 +69,7 @@ const ShowPic = () => {
                 setSkills(response.data.skills)
                 setEducation(response.data.education[0])
                 setExperience(response.data.experience)
+                setUser(response.data.user)
                 console.log(response.data)
             })
             .catch(err => {
@@ -85,7 +87,7 @@ const ShowPic = () => {
     let img = new Buffer.from(profilePic).toString('base64');
     img = `data:image/jpg;base64,${img}`;
 
-    const { company, bio, location, status, website } = profileInfo;
+    const { company, bio, location, status, website, __v } = profileInfo;
     const { facebook, instagram } = socialInfo;
     const { school, college, university, fieldOfStudy } = education;
     const { description, from, to, title } = experience;
@@ -111,11 +113,12 @@ const ShowPic = () => {
                 {/* { console.log(img)} */}
                 <img style={{ margin: '1%', height: '20%', width: '20%', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px' }} className="rounded-circle" src={img} alt="" />
 
-
+                <h4 style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>Current Point : {__v}</h4>
                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                    <h2>Hello , I am {company}</h2>
+                    <h2>Hello , I am {user.name}</h2>
                     <h5>{status}</h5>
                     <p>Bio : {bio}</p>
+                    <p>Location :  {location}</p>
                     <a class="btn btn-primary" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={website} role="button"
                     ><i class="fab fa-facebook-f">Website</i>
                     </a>
@@ -125,8 +128,6 @@ const ShowPic = () => {
                     <a class="btn btn-primary" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={instagram} role="button"
                     ><i class="fab fa-facebook-f">LinkedIn</i>
                     </a>
-
-                    <p>Location :  {location}</p>
                     <br />
                 </div>
 

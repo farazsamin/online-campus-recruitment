@@ -26,7 +26,14 @@ const AlumniPending = () => {
             .catch(err => {
                 console.log(err)
             })
-
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/alumni')
+            .then(response => {
+                console.log(response.data)
+                setAlumniPending(response.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
 
     }
     const handleDecline = (id) => {
@@ -35,6 +42,14 @@ const AlumniPending = () => {
             .then(response => {
                 console.log(response.data)
 
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/alumni')
+            .then(response => {
+                console.log(response.data)
+                setAlumniPending(response.data)
             })
             .catch(err => {
                 console.log(err)

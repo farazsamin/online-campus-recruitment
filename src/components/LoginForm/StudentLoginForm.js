@@ -53,7 +53,7 @@ const StudentLoginForm = () => {
                                     setEmail(event.target.value);
                                 }
                             } />
-                            <small id="emailHelp" class="form-text text-muted">Enter right matric id.</small>
+                            {/* <small id="emailHelp" class="form-text text-muted">Enter right matric id.</small> */}
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>

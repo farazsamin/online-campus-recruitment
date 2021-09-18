@@ -29,7 +29,7 @@ const CandidateSearch = () => {
             <CompanyNavbar></CompanyNavbar>
             <div class="main">
                 <div class="input-group">
-                    <input type="text" onChange={(e) => setUserInput([e.target.value])} class="form-control" placeholder="Search Student" />
+                    <input type="text" onChange={(e) => setUserInput([e.target.value.toLowerCase()])} class="form-control" placeholder="Search Student" />
 
                     <div class="input-group-append">
                         <button disabled={userInput ? false : true} onClick={handleUserSearch} class="btn btn-secondary" type="button">

@@ -5,6 +5,7 @@ import { faComment } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 import { SetToken } from '../../utilities/setToken';
 import { userContext } from '../../../App';
+import { Link } from 'react-router-dom';
 const Posts = (props) => {
   const { _id, title, description, image, Author } = props.post;
 
@@ -69,7 +70,7 @@ const Posts = (props) => {
 
   return (
     <div className="m-2 p-3" style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
-      <p>Author</p>
+      <Link to={`/see-user-profile/${Author._id}`}><p>{Author.name}</p></Link>
       <h5 className="mt-3 mb-3">{title}</h5>
       <img style={{ width: '100%' }} className="img-responsive" src={img} alt="Card  cap" />
       <p className="mt-2">{description}</p>
@@ -94,19 +95,21 @@ const Posts = (props) => {
           <button onClick={handleAddComment} className="btn btn-primary">Comment</button>
         </div>
       </div>
-      {cmnt ? userComments.map(uc => {
-        const { comment, userCommentMaker, alumniCommentMaker } = uc;
-        return (
-          <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', marginTop: '1%', padding: '1%' }}>
-            {alumniCommentMaker ? <p>{alumniCommentMaker.name} <sup>alumni</sup></p>
-              : <p>{userCommentMaker.name} <sup>student</sup></p>}
-            <p>{comment}</p>
+      {
+        cmnt ? userComments.map(uc => {
+          const { comment, userCommentMaker, alumniCommentMaker } = uc;
+          return (
+            <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', marginTop: '1%', padding: '1%' }}>
+              {alumniCommentMaker ? <p>{alumniCommentMaker.name} <sup>alumni</sup></p>
+                : <p>{userCommentMaker.name} <sup>student</sup></p>}
+              <p>{comment}</p>
 
-          </div>
-        )
-      }) : <></>}
+            </div>
+          )
+        }) : <></>
+      }
 
-    </div>
+    </div >
   );
 };
 

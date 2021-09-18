@@ -38,7 +38,7 @@ const AlumniHome = () => {
         SetToken(localStorage.getItem('alumniToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/blog/alumni/all/alumni')
             .then(response => {
-
+                console.log(response.data)
                 setPosts(response.data.blogs)
             })
             .catch(err => {

@@ -65,6 +65,8 @@ const Home = () => {
                     <Link to="all_job_posts"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">See All Job Posts</button></Link>
                     <Link to="blog/alumni/all/user"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">See All Alumni Posts</button></Link>
                     <Link to="all_job_posts"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">See All Job Posts</button></Link>
+                    <Link to="my/appliedjobs"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">Applied Job Posts</button></Link>
+                    <Link to="/studentContestRanking"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">Contest Results</button></Link>
 
                 </div>
                 <div className="col-md-6 m-auto " style={{ width: "80%", boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>

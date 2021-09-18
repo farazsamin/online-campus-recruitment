@@ -38,7 +38,7 @@ const SeeCompanyProfile = () => {
 
     const { About, currentEmployeeNumber, mission, vision, website } = userInfo
     const { name, email } = info;
-    const { facebook, instagram, linkedin, youtube, twitter } = socialInfo
+    // const { linkedin, youtube, twitter } = socialInfo
     // const { instagram } = socialInfo
     return (
 
@@ -46,15 +46,17 @@ const SeeCompanyProfile = () => {
             <div className="col-md-9 m-auto text-center" style={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
                 <img style={{ margin: '1%', height: '20%', width: '20%', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px' }} className="rounded-circle" src={img} alt="" />
                 <h2 className="mb-3 mt-4">Hi, I am {name}</h2>
-                <h5>{About}</h5>
+                <div className="col-md-9 m-auto text-center p-5" >
+                    <h5>" {About}"</h5>
+                </div>
 
                 <div style={{ color: '#050505', fontFamily: 'Lato,Arial,Helvetica,sans-serif', fontSize: '1.17em' }} className="col-sm-6 m-auto text-center">
                     <a className="m-2" href={website}>Website</a>
-                    <a className="m-2" href={linkedin}>LinkedIn</a>
+                    {/* <a className="m-2" href={linkedin}>LinkedIn</a>
                     <a className="m-2" href={youtube}>Youtube</a>
                     <a className="m-2" href={facebook}>Facebook</a>
                     <a className="m-2" href={twitter}>Twitter</a>
-                    <a className="m-2" href={instagram}>Instagram</a>
+                    <a className="m-2" href={instagram}>Instagram</a> */}
                 </div>
 
                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>

@@ -49,6 +49,8 @@ import SeeAlumniProfile from './components/SeeAlumniProfile/SeeAlumniProfile';
 import SeeCompanyProfile from './components/SeeCompanyProfile/SeeCompanyProfile';
 import CandidateSearch from './components/Company/CandidateSearch/CandidateSearch'
 import ContestResult from './components/Admin/ContestResult/ContestResult';
+import MyAppliedJobs from './components/Student/MyAppliedJobs/MyAppliedJobs';
+import StudentContestResult from './components/StudentContestResult/StudentContestResult';
 export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
@@ -113,6 +115,9 @@ function App() {
             </Route>
             <Route exact path="/all_job_posts">
               <AllJobPosts></AllJobPosts>
+            </Route>
+            <Route exact path="/my/appliedjobs">
+              <MyAppliedJobs></MyAppliedJobs>
             </Route>
             <Route exact path="/blog/alumni/all/user">
               <AllBlogs></AllBlogs>
@@ -206,11 +211,17 @@ function App() {
             <Route exact path="/see-user-profile/:_id">
               <SeeUserProfile></SeeUserProfile>
             </Route>
-            <Route exact path="/see-alumni-profile/:_id">
+            {/* <Route exact path="/see-alumni-profile/:_id">
+              <SeeAlumniProfile></SeeAlumniProfile>
+            </Route> */}
+            <Route exact path="/alumni/watch/alumni/:_id">
               <SeeAlumniProfile></SeeAlumniProfile>
             </Route>
             <Route exact path="/see-company-profile/:_id">
               <SeeCompanyProfile></SeeCompanyProfile>
+            </Route>
+            <Route exact path="/studentContestRanking">
+              <StudentContestResult></StudentContestResult>
             </Route>
 
 

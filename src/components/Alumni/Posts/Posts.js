@@ -4,9 +4,10 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 import { SetToken } from '../../utilities/setToken';
+import { Link } from 'react-router-dom';
 
 const Posts = (props) => {
-  const { _id, title, description, image, React } = props.post;
+  const { _id, title, description, image, React, Author } = props.post;
   const [like, setLike] = useState('')
   const [comment, setComment] = useState('')
   const [alumniComments, setAlumniComments] = useState([])
@@ -73,7 +74,7 @@ const Posts = (props) => {
   return (
 
     <div className="mt-2 p-3" style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
-      <p>Author</p>
+      <Link to={`/see-alumni-profile/${Author._id}`}><p>{Author.name}</p></Link>
       <h5 className="mt-3 mb-3">{title}</h5>
       <img style={{ width: '100%' }} className="img-responsive" src={img} alt="Card  cap" />
       <p className="mt-2">{description}</p>
