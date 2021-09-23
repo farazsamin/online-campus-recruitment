@@ -47,6 +47,7 @@ const AlumniHome = () => {
                     <Link to="/search/specificUser"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">Search Candidates </button></Link>
 
                     <Link to="/company/job_post"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">My Job Posts</button></Link>
+                    <Link to="/studentContestRanking"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">See Contest Result</button></Link>
 
                 </div>
                 <div className="col-md-6 m-auto " style={{ width: "80%", boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>

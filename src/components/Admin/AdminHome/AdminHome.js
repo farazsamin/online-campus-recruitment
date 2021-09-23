@@ -37,6 +37,12 @@ const AdminHome = () => {
                 <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
                     <Link to="/admin/search/alumni"> <h6>Search Alumni</h6></Link>
                 </div>
+                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
+                    <Link to="/admin/UserBlog/all"> <h6>All Student Posts</h6></Link>
+                </div>
+                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
+                    <Link to="/admin/AlumniBlog/all"> <h6>All Alumni Posts</h6></Link>
+                </div>
             </div>
         </div>
     );

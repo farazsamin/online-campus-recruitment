@@ -30,9 +30,7 @@ const OwnJobPost = () => {
     }
     useEffect(() => {
         SetToken(localStorage.getItem('companyToken'));
-        const allJobPost = () => {
 
-        }
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/job/myJobsPost')
             .then(response => {
                 console.log(response.data)
