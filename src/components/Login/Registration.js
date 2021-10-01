@@ -2,9 +2,9 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Login.css'
+import './Registration.css'
 
-const Login = () => {
+const Registration = () => {
     return (
         <div className="bannerImg">
             <div style={{ height: '100vh' }}>
@@ -72,10 +72,10 @@ const Login = () => {
 
                     <div className="col-md-4 mt-5 pt-5 ">
 
-                        <Link to="/login/student"><button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Login As Student</button></Link>
-                        <Link to="/login/alumni"><button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Login As Alumni</button></Link>
-                        <Link to="/login/company"> <button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Login As Company</button></Link>
-                        <Link to="/login/admin"><button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Login As Admin</button></Link>
+                        <Link to="/registration/student"><button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Registration As Student</button></Link>
+                        <Link to="/registration/alumni"><button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Registration As Alumni</button></Link>
+                        <Link to="/registration/company"> <button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Registration As Company</button></Link>
+                        <Link to="/registration/admin"><button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Registration As Admin</button></Link>
                     </div>
 
 
@@ -86,7 +86,7 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Registration;
 
 
 

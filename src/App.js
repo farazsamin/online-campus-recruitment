@@ -53,6 +53,7 @@ import MyAppliedJobs from './components/Student/MyAppliedJobs/MyAppliedJobs';
 import StudentContestResult from './components/StudentContestResult/StudentContestResult';
 import AllStudentPost from './components/Admin/StudentPost/AllStudentPost';
 import AllAlumniPost from './components/Admin/AlumniPost/AllAlumniPost';
+import Registration from './components/Login/Registration';
 export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
@@ -79,11 +80,14 @@ function App() {
             <Route path="/login/alumni">
               <AlumniLoginForm></AlumniLoginForm>
             </Route>
-            <Route path="/login/company">
+            <Route exact path="/login/company">
               <CompanyLoginForm></CompanyLoginForm>
             </Route>
             <Route path="/login/admin">
               <AdminLoginForm></AdminLoginForm>
+            </Route>
+            <Route exact path="/registration">
+              <Registration></Registration>
             </Route>
             <Route path="/registration/student">
               <StudentRegistration></StudentRegistration>
