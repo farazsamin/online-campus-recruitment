@@ -19,11 +19,12 @@ const StudentRegistration = () => {
         )
             .then((response) => {
                 console.log(response)
-                setIsAuthenticated(true)
-                localStorage.setItem('userToken', response.data.token)
+                setIsAuthenticated(false)
+                // localStorage.setItem('userToken', response.data.token)
             })
             .catch((error) => {
                 console.log(error);
+
             })
         // window.location.reload();
 

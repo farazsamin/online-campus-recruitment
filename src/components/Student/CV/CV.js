@@ -3,6 +3,9 @@ import axios from 'axios'
 import { SetToken } from '../../utilities/setToken';
 import { Link } from 'react-router-dom';
 import './CV.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartBar, faCode, faGlobe, faHandPointUp, faLaptopCode, faList, faLocationArrow, faUniversity } from '@fortawesome/free-solid-svg-icons';
+import { faConnectdevelop, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 const ShowPic = () => {
 
     const [profilePic, setProfilePic] = useState([])
@@ -113,33 +116,33 @@ const ShowPic = () => {
                 {/* { console.log(img)} */}
                 <img style={{ margin: '1%', height: '20%', width: '20%', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px' }} className="rounded-circle" src={img} alt="" />
 
-                <h4 style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>Current Point : {__v}</h4>
+                <h4 style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}><FontAwesomeIcon icon={faCode} className="mr-2" />Current Point : {__v}</h4>
                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                    <h2>Hello , I am {user.name}</h2>
-                    <h5>{status}</h5>
-                    <p>Bio : {bio}</p>
-                    <p>Location :  {location}</p>
+                    <h2 className="mb-2">" Hello , I am {user.name} "</h2>
+                    <h5><FontAwesomeIcon icon={faLaptopCode} className="mr-2" />{status}</h5>
+                    <p> {bio}</p>
+                    <p><FontAwesomeIcon icon={faLocationArrow} className="mr-2" />Location :  {location}</p>
                     <a class="btn btn-primary" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={website} role="button"
-                    ><i class="fab fa-facebook-f">Website</i>
+                    ><FontAwesomeIcon icon={faGlobe} className="mr-2" />Website
                     </a>
                     <a class="btn btn-primary m-2" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={facebook} role="button"
-                    ><i class="fab fa-facebook-f">Github</i>
+                    ><FontAwesomeIcon icon={faGithub} className="mr-2" />Github
                     </a>
                     <a class="btn btn-primary" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={instagram} role="button"
-                    ><i class="fab fa-facebook-f">LinkedIn</i>
+                    ><FontAwesomeIcon icon={faLinkedin} className="mr-2" />LinkedIn
                     </a>
                     <br />
                 </div>
 
 
                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                    <h2>Skills</h2>
+                    <h2><FontAwesomeIcon icon={faList} className="mr-2" />Skills</h2>
                     <p>{skills + ' '}</p>
                     <br />
                 </div>
 
                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                    <h2>Codeforces Info</h2>
+                    <h2><FontAwesomeIcon icon={faConnectdevelop} className="mr-2" />Codeforces Info</h2>
                     <div className="row mt-3">
                         <div className="col-md-6 divider">
                             <p>Handle</p>
@@ -164,9 +167,9 @@ const ShowPic = () => {
 
 
 
-                <h2 className="mb-2" style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>Projects</h2>
+
                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                    <h2 className="mb-2">Education </h2>
+                    <h2 className="mb-2"><FontAwesomeIcon icon={faUniversity} className="mr-2" />Education </h2>
                     <div className="row m-3">
                         <div className="col-md-6 divider">
                             <p>University</p>
@@ -187,7 +190,7 @@ const ShowPic = () => {
 
                 </div>
                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                    <h2>Experience</h2>
+                    <h2><FontAwesomeIcon icon={faChartBar} className="mr-2" />Experience</h2>
                     {
                         experience.map(ex => {
                             return (
@@ -206,7 +209,7 @@ const ShowPic = () => {
                 </div>
 
                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                    <button className="btn btn-success" onClick={handlecfclick}>Particpated Codeforces Contests</button>
+                    <button className="btn btn-success" onClick={handlecfclick}><FontAwesomeIcon icon={faConnectdevelop} className="mr-2" />Particpated Codeforces Contests</button>
                     {
                         cf ?
                             codeforces.slice(0).reverse().map(cd => {
@@ -221,17 +224,23 @@ const ShowPic = () => {
 
                 </div>
                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                    <button className="btn btn-success" onClick={handleghclick}>Github Projects</button>
+                    <button className="btn btn-success" onClick={handleghclick}><FontAwesomeIcon icon={faConnectdevelop} className="mr-2" />Github Projects</button>
 
                     {
                         gh ?
                             github.map(gh => {
                                 return (
-                                    <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                                        <p>Project Name : {gh.name}</p>
-                                        <a href={gh.clone_url} target="_blank">Clone</a>
+                                    <div className="row">
+                                        <div className="col-md-8 m-auto">
+                                            <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
+                                                <p>Project Name : {gh.name}</p>
+                                                <a href={gh.clone_url} target="_blank">Clone</a>
+
+                                            </div>
+                                        </div>
 
                                     </div>
+
                                 )
                             }) : <div></div>
                     }
@@ -239,7 +248,7 @@ const ShowPic = () => {
                 </div>
 
             </div>
-        </div>
+        </div >
 
     );
 };

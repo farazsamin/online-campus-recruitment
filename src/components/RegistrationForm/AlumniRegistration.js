@@ -20,7 +20,7 @@ const AlumniRegistration = () => {
             .then((response) => {
                 console.log(response)
                 setIsAuthenticated(false)
-                localStorage.setItem('alumniToken', response.data.token)
+                // localStorage.setItem('alumniToken', response.data.token)
             })
             .catch((error) => {
                 console.log(error);

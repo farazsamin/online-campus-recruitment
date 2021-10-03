@@ -41,19 +41,27 @@ const AlumniPending = () => {
         axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/alumni/${id}/No/signup`)
             .then(response => {
                 console.log(response.data)
+                axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/alumni')
+                    .then(response => {
+                        console.log(response.data)
+                        setAlumniPending(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            })
+            .catch(err => {
+                console.log(err)
+                axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/alumni')
+                    .then(response => {
+                        console.log(response.data)
+                        setAlumniPending(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            })
 
-            })
-            .catch(err => {
-                console.log(err)
-            })
-        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/alumni')
-            .then(response => {
-                console.log(response.data)
-                setAlumniPending(response.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
 
     }
     return (
