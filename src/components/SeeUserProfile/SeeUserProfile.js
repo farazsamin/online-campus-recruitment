@@ -4,6 +4,9 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SetToken } from '../utilities/setToken';
 import CompanyNavbar from '../Company/Navbar/Navbar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartBar, faCode, faGlobe, faLaptopCode, faList, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
+import { faConnectdevelop, faGithub } from '@fortawesome/free-brands-svg-icons';
 const SeeUserProfile = () => {
     let { _id } = useParams();
     const [userInfo, setUserInfo] = useState([])
@@ -74,7 +77,7 @@ const SeeUserProfile = () => {
     let img = new Buffer.from(profilePic).toString('base64');
     img = `data:image/jpg;base64,${img}`;
 
-    const { bio, status, codeforceusername, company, githubusername, location, website } = userInfo
+    const { bio, status, codeforceusername, company, githubusername, location, website, __v } = userInfo
     const { name, email } = info;
     const { avatar, maxRank, maxRating, handle, rank, rating } = cfInfo;
     // const { instagram } = socialInfo
@@ -85,8 +88,10 @@ const SeeUserProfile = () => {
             <div className="row mt-5">
                 <div className="col-md-9 m-auto text-center" style={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
                     <img style={{ margin: '1%', height: '20%', width: '20%', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px' }} className="rounded-circle" src={img} alt="" />
+
+                    <h4 style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}><FontAwesomeIcon icon={faCode} className="mr-2" />Current Point : {__v}</h4>
                     <h2 className="mb-3 mt-4">Hi, I am {name}</h2>
-                    <h5>{status}</h5>
+                    <h5><FontAwesomeIcon icon={faLaptopCode} className="mr-2" />{status}</h5>
                     <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
 
                         <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }} className="row m-3">
@@ -96,10 +101,10 @@ const SeeUserProfile = () => {
                                 <p>Current Company </p>
                                 {/* <p>LinkedIn</p> */}
                                 <p>Codeforeces Handle </p>
-                                <p>Github User Name</p>
-                                <p>Website</p>
+                                <p><FontAwesomeIcon icon={faGithub} className="mr-2" />Github User Name</p>
+                                <p><FontAwesomeIcon icon={faGlobe} className="mr-2" />Website</p>
                                 <p>Email</p>
-                                <p>Location</p>
+                                <p><FontAwesomeIcon icon={faLocationArrow} className="mr-2" />Location</p>
                                 <br />
                             </div>
                             <div style={{ color: '#050505', fontFamily: 'Lato,Arial,Helvetica,sans-serif', fontSize: '1.17em' }} className="col-sm-6">
@@ -115,7 +120,7 @@ const SeeUserProfile = () => {
                             </div>
                         </div>
                         <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                            <h3>Skills</h3>
+                            <h3><FontAwesomeIcon icon={faList} className="mr-2" />Skills</h3>
                             {
                                 skills.map(sk => {
                                     return (
@@ -128,7 +133,7 @@ const SeeUserProfile = () => {
                         </div>
 
                         <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                            <h2>Codeforces Info</h2>
+                            <h2><FontAwesomeIcon icon={faConnectdevelop} className="mr-2" />Codeforces Info</h2>
                             <div className="row mt-3">
                                 <div className="col-md-6 divider">
                                     <p>Handle</p>
@@ -149,7 +154,7 @@ const SeeUserProfile = () => {
 
 
                         </div>
-                        <h3 style={{ color: '#050505', fontFamily: 'Lato,Arial,Helvetica,sans-serif', fontSize: '1.57em', fontWeight: 'bold' }} className="text-center mt-5">Experience</h3>
+                        <h3 style={{ color: '#050505', fontFamily: 'Lato,Arial,Helvetica,sans-serif', fontSize: '1.57em', fontWeight: 'bold' }} className="text-center mt-5"><FontAwesomeIcon icon={faChartBar} className="mr-2" />Experience</h3>
                         {
                             experience.map(ex => {
                                 const { company, title, description, from, to, location } = ex
@@ -177,7 +182,7 @@ const SeeUserProfile = () => {
                             })
                         }
                         <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                            <button className="btn btn-success" onClick={handlecfclick}>Particpated Codeforces Contests</button>
+                            <button className="btn btn-success" onClick={handlecfclick}><FontAwesomeIcon icon={faConnectdevelop} className="mr-2" />Particpated Codeforces Contests</button>
                             {
                                 cf ?
                                     codeforces.slice(0).reverse().map(cd => {
@@ -205,7 +210,7 @@ const SeeUserProfile = () => {
                         </div>
 
                         <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                            <button className="btn btn-success" onClick={handleghclick}>Github Projects</button>
+                            <button className="btn btn-success" onClick={handleghclick}><FontAwesomeIcon icon={faConnectdevelop} className="mr-2" />Github Projects</button>
 
                             {
                                 gh ?

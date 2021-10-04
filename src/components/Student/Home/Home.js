@@ -93,7 +93,7 @@ const Home = () => {
                             }
                         } /> <br />
 
-                        <button onClick={handleAddPost} className="btn btn-success mt-3">{postBtn}</button>
+                        <button onClick={handleAddPost} className="btn btn-success">{postBtn}</button>
                     </div>
                     {
                         posts.map(post => <Posts post={post}></Posts>)

@@ -52,7 +52,7 @@ const AlumniHome = () => {
                 </div>
                 <div className="col-md-6 m-auto " style={{ width: "80%", boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
                     <div className="form-group">
-                        <p>Add Your Post : </p>
+                        <p>Add Your Job Post : </p>
                         <input placeholder="title" className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
                             (event) => {
                                 setPostTitle(event.target.value);

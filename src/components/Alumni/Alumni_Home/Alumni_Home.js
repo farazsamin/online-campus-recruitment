@@ -50,18 +50,16 @@ const AlumniHome = () => {
         <>
             <AlumniNavbar></AlumniNavbar>
             <div className="row">
-                <div className="col-md-4 mt-5 pt-5">
 
-                </div>
-                <div className="col-md-6">
+                <div className="col-md-6 m-auto " style={{ width: "80%", boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
                     <div className="form-group">
-                        <p>Add Your Post : </p>
-                        <input type="text" name="" id="" value={title} onChange={
+                        <h4 className="mb-2 mt-2">Add Your Post : </h4>
+                        <input style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} placeholder="Title" type="text" name="" id="" value={title} onChange={
                             (event) => {
                                 setTitle(event.target.value);
                             }
                         } /> <br />
-                        <textarea style={{ width: '80%', height: '100px' }} value={description} type="text" name="post-content" id="" onChange={
+                        <textarea placeholder="Content" style={{ width: '100%', border: 'none', height: '100px', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="p-2 mb-3" value={description} type="text" name="post-content" id="" onChange={
                             (event) => {
                                 setDescription(event.target.value);
                             }
@@ -71,7 +69,7 @@ const AlumniHome = () => {
                                 setImage(event.target.files[0]);
                             }
                         } /> <br />
-                        <button onClick={handleAddPost} className="btn btn-success mt-3">Add Post</button>
+                        <button onClick={handleAddPost} className="btn btn-success">Add Post</button>
                     </div>
                     {
                         posts.map(post => <Posts post={post}></Posts>)
