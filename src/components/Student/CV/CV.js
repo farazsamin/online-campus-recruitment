@@ -6,6 +6,27 @@ import './CV.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartBar, faCode, faGlobe, faHandPointUp, faLaptopCode, faList, faLocationArrow, faUniversity } from '@fortawesome/free-solid-svg-icons';
 import { faConnectdevelop, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { BiMessageSquareAdd } from "react-icons/bi";
+import { AiFillEdit } from "react-icons/ai";
+import { VscDiffRenamed } from "react-icons/vsc";
+import { GiRank1 } from "react-icons/gi";
+import { GiRank3 } from "react-icons/gi";
+import { GiVibratingShield } from "react-icons/gi";
+import { FcRating } from "react-icons/fc";
+import { IoCodeSharp } from "react-icons/io5";
+import { FaUniversity } from "react-icons/fa";
+import { BiCategory } from "react-icons/bi";
+import { GrCertificate } from "react-icons/gr";
+import { GoDiffRenamed } from "react-icons/go";
+import { MdTitle } from "react-icons/md";
+import { MdOutlineDescription } from "react-icons/md";
+import { BsFillSkipEndFill } from "react-icons/bs";
+import { IoLocationSharp } from "react-icons/io5";
+import { IoNavigateSharp } from "react-icons/io5";
+import { IoCheckmarkSharp } from "react-icons/io5";
+import { BiCodeCurly } from "react-icons/bi";
+import { MdEmail } from "react-icons/md";
+
 const ShowPic = () => {
 
     const [profilePic, setProfilePic] = useState([])
@@ -101,12 +122,12 @@ const ShowPic = () => {
 
             <div className="col-md-9 m-auto text-center ">
                 {
-                    profileInfo ? <Link to="resume/add"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3" disabled={true}>Add Info</button></Link>
+                    profileInfo ? <Link to="resume/add"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3" disabled={true}><BiMessageSquareAdd className="mr-1 mb-1" />Add Info</button></Link>
                         :
-                        <Link to="resume/add"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3" disabled={false}>Add Info</button></Link>
+                        <Link to="resume/add"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3" disabled={false}><BiMessageSquareAdd className="mr-1 mb-1" />Add Info</button></Link>
                 }
 
-                <Link to="resume/edit"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3">Edit Info</button></Link>
+                <Link to="resume/edit"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3"><AiFillEdit className="mr-1 mb-1" />Edit Info</button></Link>
 
                 {/* disabled={profileInfo ? true : false} */}
             </div>
@@ -142,14 +163,14 @@ const ShowPic = () => {
                 </div>
 
                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                    <h2><FontAwesomeIcon icon={faConnectdevelop} className="mr-2" />Codeforces Info</h2>
+                    <h2><IoCodeSharp className="mr-2 mb-1" />Codeforces Info</h2>
                     <div className="row mt-3">
                         <div className="col-md-6 divider">
-                            <p>Handle</p>
-                            <p>Rank</p>
-                            <p>MaxRank</p>
-                            <p>Rating</p>
-                            <p>MaxRating</p>
+                            <p><VscDiffRenamed className="mr-1 mb-1" />Handle</p>
+                            <p><GiRank1 className="mr-1 mb-1" />Rank</p>
+                            <p><GiRank3 className="mr-1 mb-1" />MaxRank</p>
+                            <p><GiVibratingShield className="mr-1 mb-1" />Rating</p>
+                            <p><FcRating className="mr-1 mb-1" />MaxRating</p>
 
                         </div>
                         <div style={{ fontWeight: 'bolder' }} className="col-md-6">
@@ -172,10 +193,10 @@ const ShowPic = () => {
                     <h2 className="mb-2"><FontAwesomeIcon icon={faUniversity} className="mr-2" />Education </h2>
                     <div className="row m-3">
                         <div className="col-md-6 divider">
-                            <p>University</p>
-                            <p>Field of Study </p>
-                            <p>HSC </p>
-                            <p>SSC </p>
+                            <p><FaUniversity className="mr-1 mb-1" />University</p>
+                            <p><BiCategory className="mr-1 mb-1" />Field of Study </p>
+                            <p><GrCertificate className="mr-1 mb-1" />HSC </p>
+                            <p><GrCertificate className="mr-1 mb-1" />SSC </p>
                             <br />
                         </div>
                         <div className="col-md-6">
@@ -195,12 +216,27 @@ const ShowPic = () => {
                         experience.map(ex => {
                             return (
                                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                                    <p>Company Name : {ex.company}</p>
-                                    <p>Title : {ex.title}</p>
-                                    <p>Description : {ex.description}</p>
-                                    <p>From : {ex.from}</p>
-                                    <p>To : {ex.to}</p>
-                                    <p>Location : {ex.location}</p>
+
+                                    <div className="row m-3">
+                                        <div className="col-md-6 divider">
+                                            <p><GoDiffRenamed className="mr-1 mb-1" />Company Name</p>
+                                            <p><MdTitle className="mr-1 mb-1" />Title </p>
+                                            <p><MdOutlineDescription className="mr-1 mb-1" />Description  </p>
+                                            <p><BsFillSkipEndFill className="mr-1 mb-1" />From </p>
+                                            <p><BsFillSkipEndFill className="mr-1 mb-1" />To </p>
+                                            <p><IoLocationSharp className="mr-1 mb-1" />Location</p>
+
+                                        </div>
+                                        <div className="col-md-6">
+                                            <p> {ex.company}</p>
+                                            <p> {ex.title}</p>
+                                            <p> {ex.description}</p>
+                                            <p> {ex.from}</p>
+                                            <p> {ex.to}</p>
+                                            <p>  {ex.location}</p>
+                                        </div>
+                                    </div>
+
                                 </div>
                             )
                         })

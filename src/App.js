@@ -60,8 +60,8 @@ function App() {
   return (
     <div style={{
       color: '#050505',
-      fontFamily: 'Lato,Arial,Helvetica,sans-serif'
-      // fontSize: '1.17em'
+      fontFamily: 'Lato,Arial,Helvetica,sans-serif',
+      fontSize: '1.17em'
     }}>
       <userContext.Provider value={[loggedInUser, setLoggedInUser]} >
         <Router>
