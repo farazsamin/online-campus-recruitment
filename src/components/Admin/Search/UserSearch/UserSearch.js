@@ -24,6 +24,27 @@ const UserSearch = () => {
                 console.log(err)
             })
     }
+
+    const handleDeleteUser = (_id) => {
+        SetToken(localStorage.getItem('userToken'));
+        axios.delete(`https://iiuc-campus-recuitement-system.herokuapp.com/delete/admin/user/${_id}`)
+            .then(response => {
+                console.log(response.data)
+                axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/admin/search/user?search=${userInput}`)
+                    .then(response => {
+                        console.log(response.data)
+                        setUsers(response.data.users)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+
+    }
     return (
         <div>
             <AdminNavbar></AdminNavbar>
@@ -45,11 +66,12 @@ const UserSearch = () => {
                     {
 
                         users.map(userList => {
-                            const { name, email } = userList
+                            const { name, email, _id } = userList
                             return (
                                 <div className="m-3 p-2" style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
                                     <p >Name : {name}</p>
                                     <p>Email: {email}</p>
+                                    <button onClick={() => handleDeleteUser(_id)} className="btn btn-danger">Delete</button>
                                 </div>
                             );
                         })

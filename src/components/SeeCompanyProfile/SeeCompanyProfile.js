@@ -3,6 +3,11 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SetToken } from '../utilities/setToken';
+import { FcAbout } from "react-icons/fc";
+import { AiOutlineAim } from "react-icons/ai";
+import { SiSinglestore } from "react-icons/si";
+import { MdOutlineFormatListNumberedRtl } from "react-icons/md";
+import { IoEarthSharp } from "react-icons/io5";
 
 const SeeCompanyProfile = () => {
     let { _id } = useParams();
@@ -45,9 +50,9 @@ const SeeCompanyProfile = () => {
         <div className="row mt-5">
             <div className="col-md-9 m-auto text-center" style={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
                 <img style={{ margin: '1%', height: '20%', width: '20%', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px' }} className="rounded-circle" src={img} alt="" />
-                <h2 className="mb-3 mt-4">Hi, I am {name}</h2>
+                <h2 className="mb-3 mt-4">Hi, We are {name}</h2>
                 <div className="col-md-9 m-auto text-center p-5" >
-                    <h5>" {About}"</h5>
+                    <h5><FcAbout className="mr-2 mb-1" />" {About}"</h5>
                 </div>
 
                 <div style={{ color: '#050505', fontFamily: 'Lato,Arial,Helvetica,sans-serif', fontSize: '1.17em' }} className="col-sm-6 m-auto text-center">
@@ -64,9 +69,9 @@ const SeeCompanyProfile = () => {
                     <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }} className="row m-3">
                         <div style={{ color: '#050505', fontFamily: 'Lato,Arial,Helvetica,sans-serif', fontSize: '1.17em', fontWeight: 'bold', borderRight: '1px solid lightgray' }} className="col-sm-6">
 
-                            <p>Current Employee Number</p>
-                            <p>Mission</p>
-                            <p>Vission</p>
+                            <p><MdOutlineFormatListNumberedRtl className="mr-2 mb-1" />Current Employee Number</p>
+                            <p><AiOutlineAim className="mr-2 mb-1" />Mission</p>
+                            <p><SiSinglestore className="mr-2 mb-1" />Vission</p>
 
                             <br />
                         </div>

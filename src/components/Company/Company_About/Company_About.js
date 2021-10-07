@@ -3,6 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SetToken } from '../../utilities/setToken';
 import CompanyNavbar from '../Navbar/Navbar'
+import { FcAbout } from "react-icons/fc";
+import { AiOutlineAim } from "react-icons/ai";
+import { SiSinglestore } from "react-icons/si";
+import { MdOutlineFormatListNumberedRtl } from "react-icons/md";
+import { IoEarthSharp } from "react-icons/io5";
+
+
 const Company_About = () => {
     const [companyAbout, setCompanyAbout] = useState({})
     const [profilePic, setProfilePic] = useState([])
@@ -39,28 +46,36 @@ const Company_About = () => {
 
             <div className="row mt-3 mb-5">
                 <div className="col-md-9 m-auto text-center">
-                    <Link to="/company/add_info"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3">Add Info</button></Link>
+                    {/* {
+                        companyAbout ?
+                            <Link to="/company/add_info"><button disabled={true} style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3">Add Info</button></Link> */}
+                    {/* : */}
+                    <Link to="/company/add_info"><button disabled={false} style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3">Add Info</button></Link>
+                    {/* } */}
+
 
                 </div>
                 <div className="col-md-9 m-auto text-center" style={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
+
                     <img style={{ margin: '1%', height: '20%', width: '20%', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px' }} className="rounded-circle" src={img} alt="" />
+
                     <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                        <h3 className="text-center">About : {companyAbout.About}</h3>
-                        <h3 className="text-center">Mission : {companyAbout.mission}</h3>
-                        <h3 className="text-center">Vision : {companyAbout.vision} </h3>
-                        <h3 className="text-center">Current Employees Number : {companyAbout.currentEmployeeNumber}</h3>
-                        <h3 className="text-center">Website : {companyAbout.website}</h3>
+                        <p className="text-center"><FcAbout className="mr-2 mb-1" />About : {companyAbout.About}</p>
+                        <p className="text-center"><AiOutlineAim className="mr-2 mb-1" />Mission : {companyAbout.mission}</p>
+                        <p className="text-center"><SiSinglestore className="mr-2 mb-1" />Vision : {companyAbout.vision} </p>
+                        <p className="text-center"><MdOutlineFormatListNumberedRtl className="mr-2 mb-1" />Current Employees Number : {companyAbout.currentEmployeeNumber}</p>
+                        <p className="text-center"><FcAbout className="mr-2 mb-1" /><IoEarthSharp className="mr-2 mb-1" />Website : {companyAbout.website}</p>
                     </div>
-                    {/* <h3 className="text-center">Facebook</h3>
-                    <h3>{companyAbout.social.facebook}</h3>
-                    <h3 className="text-center">Instagram</h3>
-                    <h3>{companyAbout.social.instagram}</h3>
-                    <h3 className="text-center">LinkedIn</h3>
-                    <h3>{companyAbout.social.linkedin}</h3>
-                    <h3 className="text-center">Twitter</h3>
-                    <h3>{companyAbout.social.twitter}</h3>
-                    <h3 className="text-center">Youtube</h3>
-                    <h3>{companyAbout.social.youtube}</h3> */}
+                    {/* <p className="text-center">Facebook</p>
+                    <p>{companyAbout.social.facebook}</p>
+                    <p className="text-center">Instagram</p>
+                    <p>{companyAbout.social.instagram}</p>
+                    <p className="text-center">LinkedIn</p>
+                    <p>{companyAbout.social.linkedin}</p>
+                    <p className="text-center">Twitter</p>
+                    <p>{companyAbout.social.twitter}</p>
+                    <p className="text-center">Youtube</p>
+                    <p>{companyAbout.social.youtube}</p> */}
 
                 </div>
             </div>

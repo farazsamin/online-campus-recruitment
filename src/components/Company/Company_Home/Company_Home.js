@@ -5,18 +5,55 @@ import { SetToken } from '../../utilities/setToken'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import OwnJobPost from './OwnJobPost/OwnJobPost'
+import AppliedUsers from './OwnJobPost/AppliedUsers';
 const AlumniHome = () => {
-    const [posts, setposts] = useState([]);
+
     const [postContent, setPostContent] = useState('')
     const [postTitle, setPostTitle] = useState('')
+    const [jobPost, setJobPost] = useState('Add Job Post')
 
     // const [posts, setPosts] = useState([])
     // const [loading, setLoading] = useState(true)
+    const [myJobPosts, setMyJobPosts] = useState([])
+
+    const handleDeleteJobPost = (_id) => {
+        SetToken(localStorage.getItem('companyToken'));
+        axios.delete(`https://iiuc-campus-recuitement-system.herokuapp.com/job/myJob/${_id}`)
+            .then(response => {
+                console.log(response.data)
+                axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/job/myJobsPost')
+                    .then(response => {
+                        console.log(response.data)
+                        setMyJobPosts(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+
+    }
+    useEffect(() => {
+        SetToken(localStorage.getItem('companyToken'));
+
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/job/myJobsPost')
+            .then(response => {
+                console.log(response.data)
+                setMyJobPosts(response.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
 
 
 
     const handleAddPost = (e) => {
         e.preventDefault();
+        setJobPost("Adding Job Post..")
         axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/job/jobPost', {
             title: postTitle,
             description: postContent
@@ -26,6 +63,15 @@ const AlumniHome = () => {
                 // console.log(response)
                 setPostTitle('')
                 setPostContent('')
+                setJobPost("Add Job Post")
+                axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/job/myJobsPost')
+                    .then(response => {
+                        console.log(response.data)
+                        setMyJobPosts(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
             })
             .catch((err) => {
                 console.log(err.response.data.err)
@@ -53,24 +99,43 @@ const AlumniHome = () => {
                 <div className="col-md-6 m-auto " style={{ width: "80%", boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
                     <div className="form-group">
                         <p>Add Your Job Post : </p>
-                        <input placeholder="title" className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
+                        <input placeholder="title" className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" value={postTitle} onChange={
                             (event) => {
                                 setPostTitle(event.target.value);
                             }
                         } /> <br />
-                        <textarea placeholder="content" className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="post-content" id="" onChange={
+                        <textarea placeholder="content" className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="post-content" id="" value={postContent} onChange={
                             (event) => {
                                 setPostContent(event.target.value);
                             }
                         } /> <br />
 
-                        <button onClick={handleAddPost} className="btn btn-success mt-3">Add Job Post</button>
+                        <button onClick={handleAddPost} className="btn btn-success mt-3">{jobPost}</button>
                     </div>
                     {
-                        posts.map(post => <Posts post={post}></Posts>)
+                        myJobPosts.map(post => {
+                            const { title, description, _id } = post;
+                            return (
+                                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="row mb-5">
+                                    <div class="col-md-9 m-auto">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{title}</h5>
+                                            <p class="card-text">{description}</p>
+                                            <button onClick={() => handleDeleteJobPost(_id)} className="btn btn-danger">Delete</button>
+                                            {/* <a style={{ marginLeft: '3%' }} href="f" class="btn btn-primary">Edit</a> */}
+                                            <div>
+                                                <h2 className="text-center mt-2 mb-2">Applied Users</h2>
+                                                <AppliedUsers _id={_id}></AppliedUsers>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            )
+                        })
                     }
 
-                    <OwnJobPost></OwnJobPost>
                 </div>
             </div>
         </>

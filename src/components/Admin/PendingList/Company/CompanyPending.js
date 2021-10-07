@@ -29,7 +29,14 @@ const CompanyPending = () => {
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/company')
             .then(response => {
                 console.log(response.data)
-                setCompanyPending(response.data)
+                axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/company')
+                    .then(response => {
+                        console.log(response.data)
+                        setCompanyPending(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
             })
             .catch(err => {
                 console.log(err)
@@ -42,20 +49,20 @@ const CompanyPending = () => {
         axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/company/${id}/No/signup`)
             .then(response => {
                 console.log(response.data)
-
+                axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/company')
+                    .then(response => {
+                        console.log(response.data)
+                        setCompanyPending(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
             })
             .catch(err => {
                 console.log(err)
             })
 
-        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/company')
-            .then(response => {
-                console.log(response.data)
-                setCompanyPending(response.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+
 
     }
     return (

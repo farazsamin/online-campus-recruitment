@@ -14,19 +14,20 @@ const OwnJobPost = () => {
         axios.delete(`https://iiuc-campus-recuitement-system.herokuapp.com/job/myJob/${_id}`)
             .then(response => {
                 console.log(response.data)
+                axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/job/myJobsPost')
+                    .then(response => {
+                        console.log(response.data)
+                        setMyJobPosts(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
             })
             .catch(err => {
                 console.log(err)
             })
 
-        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/job/myJobsPost')
-            .then(response => {
-                console.log(response.data)
-                setMyJobPosts(response.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+
     }
     useEffect(() => {
         SetToken(localStorage.getItem('companyToken'));
