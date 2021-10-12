@@ -6,6 +6,8 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 import OwnJobPost from './OwnJobPost/OwnJobPost'
 import AppliedUsers from './OwnJobPost/AppliedUsers';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell, faCaretRight, faPlus, faPoll, faPollH, faSearch } from '@fortawesome/free-solid-svg-icons';
 const AlumniHome = () => {
 
     const [postContent, setPostContent] = useState('')
@@ -90,10 +92,10 @@ const AlumniHome = () => {
             <div className="row">
                 <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 mb-3 text-center">
 
-                    <Link to="/search/specificUser"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">Search Candidates </button></Link>
+                    <Link to="/search/specificUser"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3"><FontAwesomeIcon icon={faSearch} className="mr-2" />Search Candidates </button></Link>
 
-                    <Link to="/company/job_post"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">My Job Posts</button></Link>
-                    <Link to="/studentContestRanking"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3">See Contest Result</button></Link>
+                    <Link to="/company/job_post"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3"><FontAwesomeIcon icon={faCaretRight} className="mr-2" />My Job Posts</button></Link>
+                    <Link to="/studentContestRanking"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3"><FontAwesomeIcon icon={faPoll} className="mr-2" />See Contest Result</button></Link>
 
                 </div>
                 <div className="col-md-6 m-auto " style={{ width: "80%", boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
@@ -110,7 +112,7 @@ const AlumniHome = () => {
                             }
                         } /> <br />
 
-                        <button onClick={handleAddPost} className="btn btn-success mt-3">{jobPost}</button>
+                        <button onClick={handleAddPost} className="btn btn-success mt-3"><FontAwesomeIcon icon={faPlus} className="mr-2" />{jobPost}</button>
                     </div>
                     {
                         myJobPosts.map(post => {

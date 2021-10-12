@@ -5,7 +5,7 @@ import axios from 'axios'
 import { SetToken } from '../../utilities/setToken';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faChalkboard, faComment, faHandPointUp, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faChalkboard, faComment, faHandPointUp, faPlus, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import './Home.css'
 const Home = () => {
     // const [posts, setposts] = useState([]);
@@ -93,7 +93,7 @@ const Home = () => {
                             }
                         } /> <br />
 
-                        <button onClick={handleAddPost} className="btn btn-success">{postBtn}</button>
+                        <button onClick={handleAddPost} className="btn btn-success"><FontAwesomeIcon icon={faPlus} className="mr-2" />{postBtn}</button>
                     </div>
                     {
                         posts.map(post => <Posts post={post}></Posts>)

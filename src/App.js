@@ -54,6 +54,7 @@ import StudentContestResult from './components/StudentContestResult/StudentConte
 import AllStudentPost from './components/Admin/StudentPost/AllStudentPost';
 import AllAlumniPost from './components/Admin/AlumniPost/AllAlumniPost';
 import Registration from './components/Login/Registration';
+import SeeOtherAlumni from './components/SeeAlumniProfile/SeeOtherAlumni';
 export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
@@ -225,6 +226,9 @@ function App() {
             </Route>
             <Route exact path="/see-alumni-profile/:_id">
               <SeeAlumniProfile></SeeAlumniProfile>
+            </Route>
+            <Route exact path="/see-other-alumni-profile/:_id">
+              <SeeOtherAlumni></SeeOtherAlumni>
             </Route>
             <Route exact path="/alumni/watch/alumni/:_id">
               <SeeAlumniProfile></SeeAlumniProfile>

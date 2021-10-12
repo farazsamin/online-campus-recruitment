@@ -6,6 +6,8 @@ import data from '../../../Data/data.json'
 import { post } from 'jquery';
 import axios from 'axios'
 import { SetToken } from '../../utilities/setToken';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 const AlumniHome = () => {
     const [description, setDescription] = useState('')
     const [image, setImage] = useState()
@@ -69,7 +71,7 @@ const AlumniHome = () => {
                                 setImage(event.target.files[0]);
                             }
                         } /> <br />
-                        <button onClick={handleAddPost} className="btn btn-success">Add Post</button>
+                        <button onClick={handleAddPost} className="btn btn-success"><FontAwesomeIcon icon={faPlus} className="mr-2" />Add Post</button>
                     </div>
                     {
                         posts.map(post => <Posts post={post}></Posts>)
