@@ -64,7 +64,7 @@ const Company_About = () => {
                         <p className="text-center"><AiOutlineAim className="mr-2 mb-1" />Mission : {companyAbout.mission}</p>
                         <p className="text-center"><SiSinglestore className="mr-2 mb-1" />Vision : {companyAbout.vision} </p>
                         <p className="text-center"><MdOutlineFormatListNumberedRtl className="mr-2 mb-1" />Current Employees Number : {companyAbout.currentEmployeeNumber}</p>
-                        <p className="text-center"><FcAbout className="mr-2 mb-1" /><IoEarthSharp className="mr-2 mb-1" />Website : {companyAbout.website}</p>
+                        <p className="text-center"><IoEarthSharp className="mr-2 mb-1" />Website : {companyAbout.website}</p>
                     </div>
                     {/* <p className="text-center">Facebook</p>
                     <p>{companyAbout.social.facebook}</p>

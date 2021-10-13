@@ -116,7 +116,7 @@ const ResumeAdd = () => {
     }
 
     const handleUploadPic = (e) => {
-        e.preventDefault();
+
         let fd = new FormData();
         fd.append('profilePic', profilePic);
 

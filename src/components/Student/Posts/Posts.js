@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faQuoteLeft, faQuoteRight } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 import { SetToken } from '../../utilities/setToken';
 import { userContext } from '../../../App';
 import { Link } from 'react-router-dom';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 const Posts = (props) => {
   const { _id, title, description, image, Author } = props.post;
 
@@ -70,8 +71,8 @@ const Posts = (props) => {
 
   return (
     <div className="m-2 p-3" style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
-      <Link to={`/see-user-profile/${Author._id}`}><p>{Author.name}</p></Link>
-      <h5 className="mt-3 mb-3">{title}</h5>
+      <Link to={`/see-user-profile/${Author._id}`}><p><FontAwesomeIcon icon={faUser} className="mr-2" />{Author.name}</p></Link>
+      <h5 className="mt-3 mb-3"><FontAwesomeIcon icon={faQuoteLeft} style={{ fontSize: "40%" }} className="mr-2 mb-2" />{title}<FontAwesomeIcon icon={faQuoteRight} style={{ fontSize: "40%" }} className="ml-2 mb-2" /></h5>
       <img style={{ width: '100%' }} className="img-responsive" src={img} alt="Card  cap" />
       <p className="mt-2">{description}</p>
       <hr />
@@ -84,15 +85,15 @@ const Posts = (props) => {
       </span>
       <hr />
       <div className="row">
-        <div className="col-md-10">
+        <div className="col-md-9">
           <input onChange={
             (event) => {
               setComment(event.target.value);
             }
           } placeholder="Write Your Comment" value={comment} style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="p-2" type="textarea" name="" id="" />
         </div>
-        <div className="col-md-2">
-          <button onClick={handleAddComment} className="btn btn-primary">Comment</button>
+        <div className="col-md-3">
+          <button onClick={handleAddComment} className="btn btn-primary"><FontAwesomeIcon icon={faComment} className="mr-2" />Comment</button>
         </div>
       </div>
       {

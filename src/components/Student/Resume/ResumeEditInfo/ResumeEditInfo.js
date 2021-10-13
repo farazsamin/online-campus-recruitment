@@ -24,7 +24,10 @@ const ResumeEditInfo = () => {
     const [toEnd, setToEnd] = useState('')
     const [desc, setDesc] = useState('')
     const [profilePic, setProfilePic] = useState()
-    const [success, setSuccess] = useState(false)
+    const [infoOk, setInfoOk] = useState(false)
+    const [eduOk, setEduOk] = useState(false)
+    const [expOk, setExpOk] = useState(false)
+    const [ppOk, setPPOk] = useState(false)
 
 
     //Get Start
@@ -96,7 +99,7 @@ const ResumeEditInfo = () => {
                 setGithubUserName('')
                 setFb('')
                 setIns('')
-                setSuccess(true)
+                setInfoOk(true)
 
             })
             .catch(err => {
@@ -120,7 +123,7 @@ const ResumeEditInfo = () => {
                 setClg('')
                 setUni('')
                 setFos('')
-                setSuccess(true)
+                setEduOk(true)
 
             })
             .catch(err => {
@@ -149,7 +152,7 @@ const ResumeEditInfo = () => {
                 setFrm('')
                 setToEnd('')
                 setDesc('')
-                setSuccess(true)
+                setExpOk(true)
 
             })
             .catch(err => {
@@ -158,13 +161,15 @@ const ResumeEditInfo = () => {
     }
 
     const handleUploadPic = (e) => {
-        e.preventDefault();
+        SetToken(localStorage.getItem('userToken'));
+
         let fd = new FormData();
         fd.append('profilePic', profilePic);
 
-        axios.put('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/profilePic', fd)
+        axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/profilePic', fd)
             .then(res => {
                 console.log(res)
+                setPPOk(true)
             })
             .catch(err => {
                 console.log(err)
@@ -232,7 +237,7 @@ const ResumeEditInfo = () => {
 
                 <button className="btn btn-success mt-3" onClick={handleAddToYourResume}>Add To Your Resume</button>
                 {
-                    success ?
+                    infoOk ?
                         <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
                             Data Updated Successfully!
                         </div> :
@@ -275,7 +280,7 @@ const ResumeEditInfo = () => {
 
                 <button className="btn btn-success mt-3" onClick={handleEduInfo}>Add To Your Resume</button>
                 {
-                    success ?
+                    eduOk ?
                         <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
                             Data Updated Successfully!
                         </div> :
@@ -329,7 +334,7 @@ const ResumeEditInfo = () => {
 
                 <button className="btn btn-success mt-3" onClick={handleExperience}>Add To Your Resume</button>
                 {
-                    success ?
+                    expOk ?
                         <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
                             Data Updated Successfully!
                         </div> :
@@ -348,6 +353,13 @@ const ResumeEditInfo = () => {
                     }
                 } /> <br />
                 <button onClick={handleUploadPic} className="btn btn-success mt-3">Change  Profile Pic</button>
+                {
+                    ppOk ?
+                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
+                            Data Updated Successfully!
+                        </div> :
+                        <div></div>
+                }
             </div>
 
 
