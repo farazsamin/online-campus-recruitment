@@ -63,6 +63,9 @@ const StudentLoginForm = () => {
                                 }
                             } />
                         </div>
+                        <div>
+                            <p style={{ color: 'gray', fontSize: '.9rem' }}><Link to="/user/forgotPassword">Forget Password?</Link> </p>
+                        </div>
                         <button onClick={(e) => { handleStudentLogin(e) }} className="btn btn-primary" disabled={email && password ? false : true}>{logInBtn}</button>
                         <h6 className="mt-2" style={{ color: 'red' }}>{error}</h6>
                     </form>

@@ -16,6 +16,9 @@ const AdminHome = () => {
                 </div>
 
                 <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
+                    <Link to="/temporary/user"> <h6>Student Pending  Registration</h6></Link>
+                </div>
+                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">
                     <Link to="/temporary/company"> <h6>Company Pending  Registration</h6></Link>
                 </div>
                 <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="col-md-2 p-4 m-2">

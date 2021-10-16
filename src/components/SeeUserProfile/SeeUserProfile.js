@@ -179,6 +179,10 @@ const SeeUserProfile = () => {
                         {
                             experience.map(ex => {
                                 const { company, title, description, from, to, location } = ex
+                                let fromDate = new Date(ex.from);
+                                fromDate = fromDate.getDate() + '/' + fromDate.getMonth() + '/' + fromDate.getFullYear();
+                                let ToDate = new Date(ex.to);
+                                ToDate = ToDate.getDate() + '/' + ToDate.getMonth() + '/' + ToDate.getFullYear();
                                 return (
                                     <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }} >
 
@@ -196,8 +200,8 @@ const SeeUserProfile = () => {
                                                 <p> {ex.company}</p>
                                                 <p> {ex.title}</p>
                                                 <p> {ex.description}</p>
-                                                <p> {ex.from}</p>
-                                                <p> {ex.to}</p>
+                                                <p> {fromDate}</p>
+                                                <p> {ToDate}</p>
                                                 <p>  {ex.location}</p>
                                             </div>
                                         </div>

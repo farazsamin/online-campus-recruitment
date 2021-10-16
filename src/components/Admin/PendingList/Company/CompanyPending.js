@@ -67,7 +67,7 @@ const CompanyPending = () => {
     }
     return (
         <>
-            <h1 className="text-center mt-3">Company Registration List Pending</h1>
+            <h1 className="text-center mt-3">Company Registration Pending List </h1>
             <div className="row mt-5">
 
                 <div className="col-md-9 m-auto text-center">

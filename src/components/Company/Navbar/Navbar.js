@@ -5,7 +5,7 @@ import {
 const AlumniNavbar = () => {
     const history = useHistory();
     const handleLogout = () => {
-        localStorage.removeItem('alumniToken');
+        localStorage.removeItem('companyToken');
 
         history.push('/')
     }

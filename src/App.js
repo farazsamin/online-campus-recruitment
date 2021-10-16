@@ -55,6 +55,8 @@ import AllStudentPost from './components/Admin/StudentPost/AllStudentPost';
 import AllAlumniPost from './components/Admin/AlumniPost/AllAlumniPost';
 import Registration from './components/Login/Registration';
 import SeeOtherAlumni from './components/SeeAlumniProfile/SeeOtherAlumni';
+import StudentPending from './components/Admin/PendingList/Student/StudentPending';
+import ForgetPassStudent from './components/ForgetPass/ForgetPassStudent/ForgetPassStudent';
 export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
@@ -107,6 +109,9 @@ function App() {
 
             <Route exact path="/student_home">
               <StudentHome></StudentHome>
+            </Route>
+            <Route exact path="/user/forgotPassword">
+              <ForgetPassStudent></ForgetPassStudent>
             </Route>
             <Route exact path="/all_students_list">
               <AllStudentsList></AllStudentsList>
@@ -208,6 +213,9 @@ function App() {
             </Route>
             <Route exact path="/temporary/alumni">
               <AlumniPending></AlumniPending>
+            </Route>
+            <Route exact path="/temporary/user">
+              <StudentPending></StudentPending>
             </Route>
             <Route exact path="/admin/search/user">
               <UserSearch></UserSearch>

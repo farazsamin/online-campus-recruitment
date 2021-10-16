@@ -2,14 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { SetToken } from '../../../utilities/setToken';
 
-const AlumniPending = () => {
-    const [alumniPending, setAlumniPending] = useState([])
+const StudentPending = () => {
+    const [studentPending, setStudentPending] = useState([])
     useEffect(() => {
         SetToken(localStorage.getItem('userToken'));
-        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/alumni')
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/user')
             .then(response => {
                 console.log(response.data)
-                setAlumniPending(response.data)
+                setStudentPending(response.data)
             })
             .catch(err => {
                 console.log(err)
@@ -18,33 +18,35 @@ const AlumniPending = () => {
 
     const handleAccept = (id) => {
         console.log(id)
-        axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/alumni/${id}/yes/signup`)
+        axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/user/${id}/yes/signup`)
             .then(response => {
                 console.log(response.data)
+                axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/user')
+                    .then(response => {
+                        console.log(response.data)
+                        setStudentPending(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
 
             })
             .catch(err => {
                 console.log(err)
             })
-        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/alumni')
-            .then(response => {
-                console.log(response.data)
-                setAlumniPending(response.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+
+
 
     }
     const handleDecline = (id) => {
         console.log(id)
-        axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/alumni/${id}/No/signup`)
+        axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/user/${id}/No/signup`)
             .then(response => {
                 console.log(response.data)
-                axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/alumni')
+                axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/user')
                     .then(response => {
                         console.log(response.data)
-                        setAlumniPending(response.data)
+                        setStudentPending(response.data)
                     })
                     .catch(err => {
                         console.log(err)
@@ -52,21 +54,14 @@ const AlumniPending = () => {
             })
             .catch(err => {
                 console.log(err)
-                axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/alumni')
-                    .then(response => {
-                        console.log(response.data)
-                        setAlumniPending(response.data)
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
             })
+
 
 
     }
     return (
         <>
-            <h1 className="text-center mt-3">Alumni Registration Pending List </h1>
+            <h1 className="text-center mt-3">Student Registration Pending List </h1>
             <div className="row mt-5">
 
                 <div className="col-md-9 m-auto text-center">
@@ -82,12 +77,12 @@ const AlumniPending = () => {
                         <tbody>
 
                             {
-                                alumniPending.map(alumni =>
+                                studentPending.map(student =>
                                     <tr>
-                                        <td>{alumni.name}</td>
-                                        <td>{alumni.email}</td>
-                                        <td><button onClick={() => handleAccept(alumni._id)} className="btn btn-success">Accept</button></td>
-                                        <td><button onClick={() => handleDecline(alumni._id)} className="btn btn-danger">Decline</button></td>
+                                        <td>{student.name}</td>
+                                        <td>{student.email}</td>
+                                        <td><button onClick={() => handleAccept(student._id)} className="btn btn-success">Accept</button></td>
+                                        <td><button onClick={() => handleDecline(student._id)} className="btn btn-danger">Decline</button></td>
                                     </tr>
                                 )
                             }
@@ -101,4 +96,4 @@ const AlumniPending = () => {
     );
 };
 
-export default AlumniPending;
+export default StudentPending;

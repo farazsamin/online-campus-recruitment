@@ -26,6 +26,7 @@ import { IoNavigateSharp } from "react-icons/io5";
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { BiCodeCurly } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
+import moment from 'moment';
 
 const ShowPic = () => {
 
@@ -115,6 +116,7 @@ const ShowPic = () => {
     const { facebook, instagram } = socialInfo;
     const { school, college, university, fieldOfStudy } = education;
     const { description, from, to, title } = experience;
+
     const { avatar, maxRank, maxRating, handle, rank, rating } = codeforcesInfo;
 
     return (
@@ -214,6 +216,10 @@ const ShowPic = () => {
                     <h2><FontAwesomeIcon icon={faChartBar} className="mr-2" />Experience</h2>
                     {
                         experience.map(ex => {
+                            let fromDate = new Date(ex.from);
+                            fromDate = fromDate.getDate() + '/' + fromDate.getMonth() + '/' + fromDate.getFullYear();
+                            let ToDate = new Date(ex.to);
+                            ToDate = ToDate.getDate() + '/' + ToDate.getMonth() + '/' + ToDate.getFullYear();
                             return (
                                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
 
@@ -231,8 +237,8 @@ const ShowPic = () => {
                                             <p> {ex.company}</p>
                                             <p> {ex.title}</p>
                                             <p> {ex.description}</p>
-                                            <p> {ex.from}</p>
-                                            <p> {ex.to}</p>
+                                            <p>{fromDate}</p>
+                                            <p> {ToDate}</p>
                                             <p>  {ex.location}</p>
                                         </div>
                                     </div>
@@ -284,7 +290,7 @@ const ShowPic = () => {
                 </div>
 
             </div>
-        </div >
+        </div>
 
     );
 };
