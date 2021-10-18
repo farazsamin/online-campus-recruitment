@@ -57,6 +57,7 @@ import Registration from './components/Login/Registration';
 import SeeOtherAlumni from './components/SeeAlumniProfile/SeeOtherAlumni';
 import StudentPending from './components/Admin/PendingList/Student/StudentPending';
 import ForgetPassStudent from './components/ForgetPass/ForgetPassStudent/ForgetPassStudent';
+import ChangePassUser from './components/ChangePass/ChangePassUser';
 export const userContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
@@ -112,6 +113,9 @@ function App() {
             </Route>
             <Route exact path="/user/forgotPassword">
               <ForgetPassStudent></ForgetPassStudent>
+            </Route>
+            <Route exact path="/user/me/passwordChange">
+              <ChangePassUser></ChangePassUser>
             </Route>
             <Route exact path="/all_students_list">
               <AllStudentsList></AllStudentsList>
