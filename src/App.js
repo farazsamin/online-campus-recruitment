@@ -114,7 +114,7 @@ function App() {
             <Route exact path="/user/forgotPassword">
               <ForgetPassStudent></ForgetPassStudent>
             </Route>
-            <Route exact path="/user/me/passwordChange">
+            <Route exact path="/user/password/:_id">
               <ChangePassUser></ChangePassUser>
             </Route>
             <Route exact path="/all_students_list">
