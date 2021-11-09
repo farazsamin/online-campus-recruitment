@@ -73,7 +73,7 @@ const Posts = (props) => {
 
   return (
     <div className="m-2 p-3" style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
-      <Link to={`/see-user-profile/${Author._id}`}><p><FontAwesomeIcon icon={faUser} className="mr-2" />{Author.name}</p></Link>
+      <Link to={`/see-user-profile/${Author._id}`}><p style={{ color: 'black' }}><FontAwesomeIcon icon={faUser} className="mr-2" />{Author.name}</p></Link>
       <p><FontAwesomeIcon icon={faClock} style={{ fontSize: "100%" }} className="mr-2" />{format(createdAt)}</p>
       <h5 className="mt-3 mb-3"><FontAwesomeIcon icon={faQuoteLeft} style={{ fontSize: "40%" }} className="mr-2 mb-2" />{title}<FontAwesomeIcon icon={faQuoteRight} style={{ fontSize: "40%" }} className="ml-2 mb-2" /></h5>
       <img style={{ width: '100%' }} className="img-responsive" src={img} alt="Card  cap" />

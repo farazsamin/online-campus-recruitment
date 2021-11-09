@@ -5,7 +5,6 @@ const AdminLoginForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isAuthenticated, setIsAuthenticated] = useState(false)
-    const [error, setError] = useState('')
     const [logInBtn, setLogInBtn] = useState('Log In As Admin')
     // const [loggedin, setLoggedIn] = useState(false)
 
@@ -24,8 +23,8 @@ const AdminLoginForm = () => {
                 localStorage.setItem('userToken', response.data.token)
             })
             .catch((error) => {
-                console.log(error)
-                setError('Enter Valid Information')
+                console.log(error.response.data.err)
+                alert(error.response.data.err)
                 setLogInBtn("Log In As Admin")
             })
         // // window.location.reload();
@@ -61,7 +60,7 @@ const AdminLoginForm = () => {
                             } />
                         </div>
                         <button onClick={(e) => { handleAdminLogin(e) }} className="btn btn-primary" disabled={email && password ? false : true}>{logInBtn}</button>
-                        <h6 className="mt-2" style={{ color: 'red' }}>{error}</h6>
+
                     </form>
                 </div>
             </div>

@@ -8,6 +8,7 @@ const AlumniRegistration = () => {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [text, setText] = useState('')
     // const [loggedin, setLoggedIn] = useState(true)
     const handleAlumniReg = (e) => {
         e.preventDefault();
@@ -20,10 +21,14 @@ const AlumniRegistration = () => {
             .then((response) => {
                 console.log(response)
                 setIsAuthenticated(false)
+                setText("Your Registration Request is sent to ADMIN")
                 // localStorage.setItem('alumniToken', response.data.token)
             })
             .catch((error) => {
-                console.log(error);
+
+                console.log(error.response.data.err)
+                alert(error.response.data.err)
+                setText("Error Occured")
             })
         // window.location.reload();
 
@@ -67,6 +72,7 @@ const AlumniRegistration = () => {
                             } />
                         </div>
                         <button onClick={handleAlumniReg} className="btn btn-primary" disabled={email && password ? false : true}>Registration  As Alumni</button>
+                        <h5 className="text-success">{text}</h5>
                     </form>
                 </div>
             </div>

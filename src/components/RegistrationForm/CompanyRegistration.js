@@ -8,6 +8,7 @@ const CompanyRegistration = () => {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [text, setText] = useState('')
     // const [loggedin, setLoggedIn] = useState(true)
     const handleCompanyReg = (e) => {
         e.preventDefault();
@@ -20,10 +21,12 @@ const CompanyRegistration = () => {
             .then((response) => {
                 console.log(response)
                 setIsAuthenticated(false)
-                localStorage.setItem('userToken', response.data.token)
+                setText("Your Registration Request is sent to ADMIN")
+
             })
             .catch((error) => {
                 console.log(error);
+                setText("Error Occured")
             })
         // window.location.reload();
 
@@ -67,6 +70,7 @@ const CompanyRegistration = () => {
                             } />
                         </div>
                         <button onClick={handleCompanyReg} className="btn btn-primary" disabled={email && password ? false : true}>Registration  As Company</button>
+                        <h5 className="text-success">{text}</h5>
                     </form>
                 </div>
             </div>

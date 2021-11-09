@@ -5,7 +5,6 @@ const AlumniLoginForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isAuthenticated, setIsAuthenticated] = useState(false)
-    const [error, setError] = useState('')
     const [logInBtn, setLogInBtn] = useState('Log In As Alumni')
     // const [loggedin, setLoggedIn] = useState(false)
 
@@ -25,7 +24,7 @@ const AlumniLoginForm = () => {
             })
             .catch((error) => {
                 console.log(error.response.data.err)
-                setError('Enter Valid Information')
+                alert(error.response.data.err)
                 setLogInBtn("Log In As Alumni")
             })
         // // window.location.reload();
@@ -61,7 +60,7 @@ const AlumniLoginForm = () => {
                             } />
                         </div>
                         <button onClick={(e) => { handleAlumniLogin(e) }} className="btn btn-primary" disabled={email && password ? false : true}>{logInBtn}</button>
-                        <h6 className="mt-2" style={{ color: 'red' }}>{error}</h6>
+
                     </form>
                 </div>
             </div>

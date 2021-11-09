@@ -8,6 +8,7 @@ const StudentRegistration = () => {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [text, setText] = useState('')
     // const [loggedin, setLoggedIn] = useState(true)
     const handleStudentLogin = (e) => {
         e.preventDefault();
@@ -20,10 +21,12 @@ const StudentRegistration = () => {
             .then((response) => {
                 console.log(response)
                 setIsAuthenticated(false)
+                setText("Your Registration Request is sent to ADMIN")
                 // localStorage.setItem('userToken', response.data.token)
             })
             .catch((error) => {
                 console.log(error);
+                setText("Error Occured")
 
             })
         // window.location.reload();
@@ -48,7 +51,7 @@ const StudentRegistration = () => {
                                     setName(event.target.value);
                                 }
                             } />
-                            <small id="emailHelp" class="form-text text-muted">Enter right matric id.</small>
+
                         </div>
                         <div class="form-group">
                             <label htmlFor="exampleInputEmail1">Email Id Yours :</label>
@@ -57,7 +60,7 @@ const StudentRegistration = () => {
                                     setEmail(event.target.value);
                                 }
                             } />
-                            <small id="emailHelp" class="form-text text-muted">Enter right matric id.</small>
+
                         </div>
                         <div class="form-group">
                             <label htmlFor="exampleInputPassword1">Password</label>
@@ -68,6 +71,7 @@ const StudentRegistration = () => {
                             } />
                         </div>
                         <button onClick={handleStudentLogin} className="btn btn-primary" disabled={email && password ? false : true}>Registration in As Student</button>
+                        <h5 className="text-success">{text}</h5>
                     </form>
                 </div>
             </div>

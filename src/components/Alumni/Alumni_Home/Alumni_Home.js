@@ -8,11 +8,13 @@ import axios from 'axios'
 import { SetToken } from '../../utilities/setToken';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import loadingPic from '../../utilities/images/loading.gif'
 const AlumniHome = () => {
     const [description, setDescription] = useState('')
     const [image, setImage] = useState()
     const [title, setTitle] = useState('')
     const [posts, setPosts] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const handleAddPost = (e) => {
         e.preventDefault();
@@ -27,6 +29,7 @@ const AlumniHome = () => {
             .then(res => {
                 console.log(res)
                 setPosts([res.data, ...posts])
+
             })
             .catch(err => {
                 console.log(err)
@@ -42,6 +45,7 @@ const AlumniHome = () => {
             .then(response => {
                 console.log(response.data)
                 setPosts(response.data.blogs)
+                setLoading(false)
             })
             .catch(err => {
                 console.log(err)
@@ -73,8 +77,17 @@ const AlumniHome = () => {
                         } /> <br />
                         <button onClick={handleAddPost} className="btn btn-success"><FontAwesomeIcon icon={faPlus} className="mr-2" />Add Post</button>
                     </div>
+
                     {
-                        posts.map(post => <Posts post={post}></Posts>)
+                        loading ? <div className="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img className="mx-auto w-25 d-block" src={loadingPic}></img>
+                                </div>
+                            </div>
+                        </div>
+                            :
+                            posts.map(post => <Posts post={post}></Posts>)
                     }
 
                 </div>

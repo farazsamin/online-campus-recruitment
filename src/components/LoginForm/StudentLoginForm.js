@@ -6,7 +6,7 @@ const StudentLoginForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isAuthenticated, setIsAuthenticated] = useState(false)
-    const [error, setError] = useState('')
+
     const [logInBtn, setLogInBtn] = useState('Log In As Student')
     // const [loggedin, setLoggedIn] = useState(false)
     const [loggedInUser, setLoggedInUser] = useContext(userContext)
@@ -27,8 +27,8 @@ const StudentLoginForm = () => {
                 localStorage.setItem('userToken', response.data.token)
             })
             .catch((error) => {
-                console.log(error)
-                setError('Enter Valid Information')
+                console.log(error.response.data.err)
+                alert(error.response.data.err)
                 setLogInBtn("Log In As Student")
             })
         // // window.location.reload();
@@ -67,7 +67,7 @@ const StudentLoginForm = () => {
                             <p style={{ color: 'gray', fontSize: '.9rem' }}><Link to="/user/forgotPassword">Forget Password?</Link> </p>
                         </div>
                         <button onClick={(e) => { handleStudentLogin(e) }} className="btn btn-primary" disabled={email && password ? false : true}>{logInBtn}</button>
-                        <h6 className="mt-2" style={{ color: 'red' }}>{error}</h6>
+
                     </form>
                 </div>
             </div>

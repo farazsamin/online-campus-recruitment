@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faChalkboard, faComment, faHandPointUp, faPlus, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import './Home.css'
+import loadingPic from '../../utilities/images/loading.gif'
 const Home = () => {
     // const [posts, setposts] = useState([]);
     const [description, setDescription] = useState('')
@@ -14,6 +15,8 @@ const Home = () => {
     const [title, setTitle] = useState('')
     const [posts, setPosts] = useState([])
     const [postBtn, setPostBtn] = useState('Add Post')
+    const [loading, setLoading] = useState(true)
+
     // const [loading, setLoading] = useState(true)
 
     const handleAddPost = (e) => {
@@ -52,6 +55,7 @@ const Home = () => {
             .then(response => {
                 console.log(response)
                 setPosts(response.data.blogs)
+                setLoading(false)
             })
             .catch(err => {
                 console.log(err)
@@ -95,9 +99,17 @@ const Home = () => {
 
                         <button onClick={handleAddPost} className="btn btn-success"><FontAwesomeIcon icon={faPlus} className="mr-2" />{postBtn}</button>
                     </div>
-                    {
+                    {loading ? <div className="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img className="mx-auto w-25 d-block" src={loadingPic}></img>
+                            </div>
+                        </div>
+                    </div>
+                        :
                         posts.map(post => <Posts post={post}></Posts>)
                     }
+
 
                 </div>
             </div>
