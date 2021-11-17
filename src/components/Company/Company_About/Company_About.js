@@ -50,7 +50,7 @@ const Company_About = () => {
                         companyAbout ?
                             <Link to="/company/add_info"><button disabled={true} style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3">Add Info</button></Link> */}
                     {/* : */}
-                    <Link to="/company/add_info"><button disabled={false} style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3">Add Info</button></Link>
+                    <Link to="/company/add_info"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3">Add Info</button></Link>
                     {/* } */}
 
 

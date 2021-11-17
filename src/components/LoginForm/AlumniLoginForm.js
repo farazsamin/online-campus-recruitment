@@ -23,8 +23,8 @@ const AlumniLoginForm = () => {
                 localStorage.setItem('alumniToken', response.data.token)
             })
             .catch((error) => {
-                console.log(error.response.data.err)
-                alert(error.response.data.err)
+                console.log(error.response.data.error)
+                alert(error.response.data.error)
                 setLogInBtn("Log In As Alumni")
             })
         // // window.location.reload();

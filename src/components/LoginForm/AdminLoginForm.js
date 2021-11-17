@@ -20,11 +20,11 @@ const AdminLoginForm = () => {
             .then((response) => {
                 console.log(response)
                 setIsAuthenticated(true)
-                localStorage.setItem('userToken', response.data.token)
+                localStorage.setItem('adminToken', response.data.token)
             })
             .catch((error) => {
-                console.log(error.response.data.err)
-                alert(error.response.data.err)
+                console.log(error.response.data.error)
+                alert(error.response.data.error)
                 setLogInBtn("Log In As Admin")
             })
         // // window.location.reload();

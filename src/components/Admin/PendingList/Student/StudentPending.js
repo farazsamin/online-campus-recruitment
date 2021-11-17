@@ -5,14 +5,14 @@ import { SetToken } from '../../../utilities/setToken';
 const StudentPending = () => {
     const [studentPending, setStudentPending] = useState([])
     useEffect(() => {
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('adminToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/user')
             .then(response => {
                 console.log(response.data)
                 setStudentPending(response.data)
             })
             .catch(err => {
-                console.log(err)
+                console.log(err.response.data.err)
             })
     }, [])
 
@@ -32,7 +32,8 @@ const StudentPending = () => {
 
             })
             .catch(err => {
-                console.log(err)
+                console.log(err.response.data.err)
+                alert(err.response.data.err)
             })
 
 

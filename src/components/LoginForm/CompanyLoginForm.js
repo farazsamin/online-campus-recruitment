@@ -24,8 +24,8 @@ const CompanyLoginForm = () => {
                 localStorage.setItem('companyToken', response.data.token)
             })
             .catch((error) => {
-                console.log(error.response.data.err)
-                alert(error.response.data.err)
+                console.log(error.response.data.error)
+                alert(error.response.data.error)
                 setLogInBtn("Log In As Company")
             })
         // // window.location.reload();

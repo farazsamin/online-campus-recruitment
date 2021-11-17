@@ -9,16 +9,20 @@ import { SetToken } from '../../utilities/setToken';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import loadingPic from '../../utilities/images/loading.gif'
+const PAGE_NUMBER = 0;
 const AlumniHome = () => {
     const [description, setDescription] = useState('')
     const [image, setImage] = useState()
     const [title, setTitle] = useState('')
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(true)
+    const [postBtn, setPostBtn] = useState('Add Post')
+    const [page, setPage] = useState(PAGE_NUMBER)
 
     const handleAddPost = (e) => {
         e.preventDefault();
-        SetToken(localStorage.getItem('userToken'));
+        setPostBtn("Posting...")
+        SetToken(localStorage.getItem('alumniToken'));
         let fd = new FormData();
         fd.append('title', title);
         fd.append('description', description);
@@ -29,10 +33,13 @@ const AlumniHome = () => {
             .then(res => {
                 console.log(res)
                 setPosts([res.data, ...posts])
+                setPostBtn("Add Post")
 
             })
             .catch(err => {
                 console.log(err)
+                setPostBtn("Add Post")
+                alert(err.response.data.error)
             })
 
         // window.location.reload();
@@ -41,16 +48,33 @@ const AlumniHome = () => {
 
     useEffect(() => {
         SetToken(localStorage.getItem('alumniToken'));
-        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/blog/alumni/all/alumni')
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/blog/alumni/all/alumni', { params: { page: page } })
             .then(response => {
                 console.log(response.data)
-                setPosts(response.data.blogs)
+                setPosts([...posts, ...response.data.blogs])
                 setLoading(false)
             })
             .catch(err => {
                 console.log(err)
+                alert(err.response.data.error)
             })
-    }, [])
+    }, [page])
+
+    const scrollToEnd = () => {
+        setPage(page + 1)
+        console.log(page)
+    }
+    window.onscroll = function () {
+        // console.log("inner", window.innerHeight)
+        // console.log("top", document.documentElement.scrollTop)
+        // console.log("offset", document.documentElement.offsetHeight)
+        if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight) {
+            console.log("workings")
+            scrollToEnd()
+        }
+        console.log("123")
+
+    }
 
     return (
         <>
@@ -75,7 +99,7 @@ const AlumniHome = () => {
                                 setImage(event.target.files[0]);
                             }
                         } /> <br />
-                        <button onClick={handleAddPost} className="btn btn-success"><FontAwesomeIcon icon={faPlus} className="mr-2" />Add Post</button>
+                        <button onClick={handleAddPost} className="btn btn-success"><FontAwesomeIcon icon={faPlus} className="mr-2" />{postBtn}</button>
                     </div>
 
                     {

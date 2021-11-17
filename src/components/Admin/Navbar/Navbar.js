@@ -6,7 +6,7 @@ import {
 const AdminNavbar = () => {
     const history = useHistory();
     const handleLogout = () => {
-        // localStorage.removeItem('adminToken');
+        localStorage.removeItem('adminToken');
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/admin/logout')
             .then(response => {
                 console.log(response)

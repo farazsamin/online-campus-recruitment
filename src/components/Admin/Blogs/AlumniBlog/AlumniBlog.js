@@ -5,7 +5,7 @@ import { SetToken } from '../../../utilities/setToken';
 const AlumniBlog = () => {
     const [posts, setPosts] = useState([])
     useEffect(() => {
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('adminToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/admin/AlumniBlog/all')
             .then(response => {
                 console.log(response.data.blogs)

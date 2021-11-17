@@ -43,9 +43,9 @@ const StudentContestResult = () => {
                             <div style={{ width: "80%", boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px', borderLeft: '10px solid blue' }} className="col-md-9 m-auto text-center mt-5 p-5">
                                 <h2><FontAwesomeIcon icon={faKeyboard} className="mr-2" />{cn.description}</h2>
                                 <p><FontAwesomeIcon icon={faClock} className="mr-2" />{fromDate}</p>
-                                <Link to={`/see-user-profile/${cn.first.user}`}><h3><FontAwesomeIcon icon={faChevronRight} className="mr-2" />First : {cn.first.bio}</h3></Link>
-                                <Link to={`/see-user-profile/${cn.second.user}`}><h3><FontAwesomeIcon icon={faChevronRight} className="mr-2" />Second : {cn.second.bio}</h3></Link>
-                                <Link to={`/see-user-profile/${cn.third.user}`}> <h3><FontAwesomeIcon icon={faChevronRight} className="mr-2" />Third : {cn.third.bio}</h3></Link>
+                                <h3><FontAwesomeIcon icon={faChevronRight} className="mr-2" />First : {cn.first.user.name}</h3>
+                                <h3><FontAwesomeIcon icon={faChevronRight} className="mr-2" />Second : {cn.second.user.name}</h3>
+                                <h3><FontAwesomeIcon icon={faChevronRight} className="mr-2" />Third : {cn.third.user.name}</h3>
                             </div>
                         )
 

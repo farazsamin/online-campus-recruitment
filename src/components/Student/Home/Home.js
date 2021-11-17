@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faChalkboard, faComment, faHandPointUp, faPlus, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import './Home.css'
 import loadingPic from '../../utilities/images/loading.gif'
+
+const PAGE_NUMBER = 0;
 const Home = () => {
     // const [posts, setposts] = useState([]);
     const [description, setDescription] = useState('')
@@ -16,6 +18,7 @@ const Home = () => {
     const [posts, setPosts] = useState([])
     const [postBtn, setPostBtn] = useState('Add Post')
     const [loading, setLoading] = useState(true)
+    const [page, setPage] = useState(PAGE_NUMBER)
 
     // const [loading, setLoading] = useState(true)
 
@@ -36,6 +39,8 @@ const Home = () => {
             })
             .catch(err => {
                 console.log(err)
+                setPostBtn("Add Post")
+                alert(err.response.data.error)
             })
 
         // window.location.reload();
@@ -51,19 +56,41 @@ const Home = () => {
 
     useEffect(() => {
         SetToken(localStorage.getItem('userToken'));
-        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/blog/user/all/user')
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/blog/user/all/user', { params: { page: page } })
             .then(response => {
-                console.log(response)
-                setPosts(response.data.blogs)
+                console.log(response.data.blogs)
+                console.log(posts)
                 setLoading(false)
+                setPosts([...posts, ...response.data.blogs])
             })
             .catch(err => {
                 console.log(err)
             })
-    }, [])
+    }, [page])
     // if(!localStorage.getItem('userToken')){
     //     return <Redirect to="/login/student"></Redirect>
     // }
+    const scrollToEnd = () => {
+        setPage(page + 1)
+        console.log(page)
+    }
+    window.onscroll = function () {
+        console.log("inner", window.innerHeight)
+        console.log("top", document.documentElement.scrollTop)
+        console.log("offset", document.documentElement.offsetHeight)
+        if (window.scrollY + window.innerHeight >=
+            document.documentElement.scrollHeight) {
+            setLoading(true)
+            scrollToEnd()
+        }
+        console.log("123")
+        // if (document.documentElement.scrollHeight - document.documentElement.scrollTop === document.documentElement.clientHeight) {
+
+        //     scrollToEnd()
+
+
+        // }
+    }
     return (
         <>
             <StudentNavbar></StudentNavbar>
@@ -75,6 +102,7 @@ const Home = () => {
 
                     <Link to="my/appliedjobs"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3"><FontAwesomeIcon icon={faHandPointUp} className="mr-2" />Applied Job Posts</button></Link>
                     <Link to="/studentContestRanking"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3"><FontAwesomeIcon icon={faChalkboard} className="mr-2" />Contest Results</button></Link>
+                    <Link to="/resume/add"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3"><FontAwesomeIcon icon={faChalkboard} className="mr-2" />Add Info to Resume</button></Link>
 
                 </div>
                 <div className="col-md-6 m-auto " style={{ width: "80%", boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
@@ -99,16 +127,18 @@ const Home = () => {
 
                         <button onClick={handleAddPost} className="btn btn-success"><FontAwesomeIcon icon={faPlus} className="mr-2" />{postBtn}</button>
                     </div>
-                    {loading ? <div className="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <img className="mx-auto w-25 d-block" src={loadingPic}></img>
-                            </div>
-                        </div>
-                    </div>
-                        :
-                        posts.map(post => <Posts post={post}></Posts>)
+                    {
+                        posts.length > 0 && posts.map(post => <Posts post={post}></Posts>)
                     }
+                    {/* {
+                        loading ? <div className="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img className="mx-auto w-25 d-block" src={loadingPic}></img>
+                                </div>
+                            </div>
+                        </div> : <></>
+                    } */}
 
 
                 </div>

@@ -9,7 +9,7 @@ const AlumniSearch = () => {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('adminToken'));
     }, [])
 
     const handleUserSearch = () => {
@@ -25,7 +25,7 @@ const AlumniSearch = () => {
             })
     }
     const handleDeleteUser = (_id) => {
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('adminToken'));
         axios.delete(`https://iiuc-campus-recuitement-system.herokuapp.com/delete/admin/alumni/${_id}`)
             .then(response => {
                 console.log(response.data)

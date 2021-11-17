@@ -7,7 +7,7 @@ const AllStudentsList = () => {
     const [studentList, setStudentList] = useState([])
 
     useEffect(() => {
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('adminToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/admin/all/users')
             .then(response => {
                 console.log(response.data.users)

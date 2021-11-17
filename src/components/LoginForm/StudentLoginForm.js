@@ -27,8 +27,8 @@ const StudentLoginForm = () => {
                 localStorage.setItem('userToken', response.data.token)
             })
             .catch((error) => {
-                console.log(error.response.data.err)
-                alert(error.response.data.err)
+                console.log(error.response.data.error)
+                alert(error.response.data.error)
                 setLogInBtn("Log In As Student")
             })
         // // window.location.reload();

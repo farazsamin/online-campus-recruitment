@@ -9,9 +9,11 @@ const AlumniRegistration = () => {
     const [password, setPassword] = useState('')
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [text, setText] = useState('')
+    const [reg, setReg] = useState("Registration in As Alumni")
     // const [loggedin, setLoggedIn] = useState(true)
     const handleAlumniReg = (e) => {
         e.preventDefault();
+        setReg("Registrationing....")
         axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/alumni/signup', {
             email: email,
             name: name,
@@ -22,6 +24,7 @@ const AlumniRegistration = () => {
                 console.log(response)
                 setIsAuthenticated(false)
                 setText("Your Registration Request is sent to ADMIN")
+                setReg("Registration in As Alumni")
                 // localStorage.setItem('alumniToken', response.data.token)
             })
             .catch((error) => {
@@ -29,6 +32,7 @@ const AlumniRegistration = () => {
                 console.log(error.response.data.err)
                 alert(error.response.data.err)
                 setText("Error Occured")
+                setReg("Registration in As Student")
             })
         // window.location.reload();
 
@@ -64,14 +68,14 @@ const AlumniRegistration = () => {
 
                         </div>
                         <div class="form-group">
-                            <label htmlFor="exampleInputPassword1">Password</label>
+                            <label htmlFor="exampleInputPassword1">Password<small>( Must be greater than 6 characters)</small></label>
                             <input type="password" class="form-control" required id="exampleInputPassword1" placeholder="Password" onChange={
                                 (event) => {
                                     setPassword(event.target.value);
                                 }
                             } />
                         </div>
-                        <button onClick={handleAlumniReg} className="btn btn-primary" disabled={email && password ? false : true}>Registration  As Alumni</button>
+                        <button onClick={handleAlumniReg} className="btn btn-primary" disabled={email && password.length > 6 ? false : true}>{reg}</button>
                         <h5 className="text-success">{text}</h5>
                     </form>
                 </div>

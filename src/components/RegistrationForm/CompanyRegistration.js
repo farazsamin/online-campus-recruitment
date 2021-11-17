@@ -8,10 +8,12 @@ const CompanyRegistration = () => {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [reg, setReg] = useState("Registration in As Company")
     const [text, setText] = useState('')
     // const [loggedin, setLoggedIn] = useState(true)
     const handleCompanyReg = (e) => {
         e.preventDefault();
+        setReg("Registrationing....")
         axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/temporary/company/signup', {
             email: email,
             name: name,
@@ -21,12 +23,14 @@ const CompanyRegistration = () => {
             .then((response) => {
                 console.log(response)
                 setIsAuthenticated(false)
+                setReg("Registration in As Company")
                 setText("Your Registration Request is sent to ADMIN")
 
             })
             .catch((error) => {
                 console.log(error);
                 setText("Error Occured")
+                setReg("Registration in As Student")
             })
         // window.location.reload();
 
@@ -62,14 +66,14 @@ const CompanyRegistration = () => {
 
                         </div>
                         <div class="form-group">
-                            <label htmlFor="exampleInputPassword1">Password</label>
+                            <label htmlFor="exampleInputPassword1">Password<small> (Must be greater than 6 characters)</small></label>
                             <input type="password" class="form-control" required id="exampleInputPassword1" placeholder="Password" onChange={
                                 (event) => {
                                     setPassword(event.target.value);
                                 }
                             } />
                         </div>
-                        <button onClick={handleCompanyReg} className="btn btn-primary" disabled={email && password ? false : true}>Registration  As Company</button>
+                        <button onClick={handleCompanyReg} className="btn btn-primary" disabled={email && password.length > 6 ? false : true}>{reg}</button>
                         <h5 className="text-success">{text}</h5>
                     </form>
                 </div>

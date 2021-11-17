@@ -25,6 +25,7 @@ const AlumniProfile = () => {
             })
             .catch(err => {
                 console.log(err)
+                setLoading(false)
             })
 
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/profile/alumni/profile/me/profilePic')
@@ -60,7 +61,7 @@ const AlumniProfile = () => {
 
                         <div className="col-md-9 m-auto text-center ">
                             <Link to="/alumni_profile/add"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3">Add Info</button></Link>
-                            <Link to="resume/edit"><button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white mr-4 mb-3">Edit Info</button></Link>
+
 
                             {/* disabled={profileInfo ? true : false} */}
                         </div>

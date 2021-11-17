@@ -5,7 +5,7 @@ import { SetToken } from '../../utilities/setToken';
 const AllCompany = () => {
     const [companies, setCompanies] = useState([])
     useEffect(() => {
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('adminToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/admin/all/company')
             .then(response => {
                 console.log(response.data.company)

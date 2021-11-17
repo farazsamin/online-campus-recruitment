@@ -11,7 +11,7 @@ const ContestResult = () => {
 
     const handleAddContest = (e) => {
         e.preventDefault();
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('adminToken'));
         let fd = new FormData();
         fd.append('first', first);
         fd.append('second', second);

@@ -8,10 +8,12 @@ const StudentRegistration = () => {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [reg, setReg] = useState("Registration in As Student")
     const [text, setText] = useState('')
     // const [loggedin, setLoggedIn] = useState(true)
-    const handleStudentLogin = (e) => {
+    const handleStudentReg = (e) => {
         e.preventDefault();
+        setReg("Registrationing....")
         axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/user/signup', {
             name: name,
             email: email,
@@ -20,13 +22,17 @@ const StudentRegistration = () => {
         )
             .then((response) => {
                 console.log(response)
+                alert("Your Registration Request is sent to ADMIN")
                 setIsAuthenticated(false)
-                setText("Your Registration Request is sent to ADMIN")
+                setReg("Registration in As Student")
+
                 // localStorage.setItem('userToken', response.data.token)
             })
             .catch((error) => {
-                console.log(error);
-                setText("Error Occured")
+                console.log(error.response.data.error);
+                alert("Error Occured")
+                setReg("Registration in As Student")
+
 
             })
         // window.location.reload();
@@ -63,14 +69,14 @@ const StudentRegistration = () => {
 
                         </div>
                         <div class="form-group">
-                            <label htmlFor="exampleInputPassword1">Password</label>
+                            <label htmlFor="exampleInputPassword1">Password<small>( Must be greater than 6 characters)</small></label>
                             <input type="password" class="form-control" required id="exampleInputPassword1" placeholder="Password" onChange={
                                 (event) => {
                                     setPassword(event.target.value);
                                 }
                             } />
                         </div>
-                        <button onClick={handleStudentLogin} className="btn btn-primary" disabled={email && password ? false : true}>Registration in As Student</button>
+                        <button onClick={handleStudentReg} className="btn btn-primary" disabled={email && password.length > 6 ? false : true}>{reg}</button>
                         <h5 className="text-success">{text}</h5>
                     </form>
                 </div>

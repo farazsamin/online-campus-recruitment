@@ -46,7 +46,7 @@ const AlumniAdd = () => {
                 setCodeforcesusername('')
                 setWebsite('')
                 setLinkedin('')
-                setSuccess(true)
+                alert("Data Added Successfully")
 
             })
             .catch(err => {
@@ -68,7 +68,7 @@ const AlumniAdd = () => {
                 setSchool('')
                 setCollege('')
                 setBscPassingYear('')
-                setSuccess(true)
+                alert("Data Added Successfully")
 
             })
             .catch(err => {
@@ -97,7 +97,7 @@ const AlumniAdd = () => {
                 setTo('')
                 setLocation('')
                 setDescription('')
-                setSuccess(true)
+                alert("Data Added Successfully")
 
             })
             .catch(err => {
@@ -113,6 +113,7 @@ const AlumniAdd = () => {
         axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/alumni/profile/me', fd)
             .then(res => {
                 console.log(res)
+                alert("Data Added Successfully")
             })
             .catch(err => {
                 console.log(err)
@@ -126,6 +127,7 @@ const AlumniAdd = () => {
         <div className="p-5">
 
             <h1 className="text-center">Add Your Info</h1>
+            <p className="text-center">You have to fill up All the Information</p>
             <hr />
 
             <div>
@@ -174,13 +176,7 @@ const AlumniAdd = () => {
                 } />
 
                 <button className="btn btn-success mt-3" disabled={passingYear && status && currentJob && githubusername && codeforcesusername && website && linkedin ? false : true} onClick={handleAddToYourResume}>Add To Your Resume</button>
-                {
-                    success ?
-                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
-                            Data Updated Successfully!
-                        </div> :
-                        <div></div>
-                }
+
             </div>
 
 
@@ -212,13 +208,7 @@ const AlumniAdd = () => {
 
 
                 <button className="btn btn-success mt-3" disabled={school && college && bscPassingYear ? false : true} onClick={handleEduInfo}>Add To Your Resume</button>
-                {
-                    success ?
-                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
-                            Data Updated Successfully!
-                        </div> :
-                        <div></div>
-                }
+
             </div>
 
 
@@ -265,13 +255,7 @@ const AlumniAdd = () => {
 
 
                 <button className="btn btn-success mt-3" disabled={title && company && location && from && to && description ? false : true} onClick={handleExperience}>Add To Your Resume</button>
-                {
-                    success ?
-                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
-                            Data Updated Successfully!
-                        </div> :
-                        <div></div>
-                }
+
             </div>
 
 

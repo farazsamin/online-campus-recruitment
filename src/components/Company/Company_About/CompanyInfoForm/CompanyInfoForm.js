@@ -27,6 +27,7 @@ const CompanyInfoForm = () => {
         axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/company/uploadProfilePic', fd)
             .then(res => {
                 console.log(res)
+                alert("Data Added Successfully")
             })
             .catch(err => {
                 console.log(err)
@@ -67,6 +68,7 @@ const CompanyInfoForm = () => {
                 setLinkedin('')
                 setNoOfEmployee('')
                 console.log(response)
+                alert("Data Added Successfully")
 
             })
             .catch((err) => {

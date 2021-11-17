@@ -8,7 +8,7 @@ const AllAlumniPost = () => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('adminToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/admin/AlumniBlog/all')
             .then(response => {
                 console.log(response)
@@ -21,7 +21,7 @@ const AllAlumniPost = () => {
 
     const handleDelelteAlumniPost = (_id) => {
 
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('adminToken'));
         axios.delete(`https://iiuc-campus-recuitement-system.herokuapp.com/delete/admin/AlumniBlog/${_id}`)
             .then(response => {
                 console.log(response.data)

@@ -3,17 +3,20 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SetToken } from '../../utilities/setToken';
 import CompanyNavbar from '../Navbar/Navbar';
+import loadingPic from '../../utilities/images/loading.gif'
 const CandidateSearch = () => {
     const [userInput, setUserInput] = useState([])
     const [users, setUsers] = useState([])
     const [click, setClick] = useState(false)
+    const [loading, setLoading] = useState(false)
     const handleUserSearch = () => {
-        console.log(userInput)
+        setLoading(true)
         axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/search/specificUser`, { params: { skills: userInput } })
             .then(response => {
                 setUsers(response.data.user)
                 console.log(response.data.user)
                 setClick(true)
+                setLoading(false)
 
             })
             .catch(err => {
@@ -48,18 +51,27 @@ const CandidateSearch = () => {
                             <div></div>
                     }
                     {
-
-                        users.map(userList => {
-                            const { user } = userList
-                            return (
-                                <div className="m-3 p-2" style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
-                                    {/* <p>{_id}</p> */}
-                                    <p >Name : {user.name}</p>
-                                    <p>Email: {user.email}</p>
-                                    <Link to={`/see-user-profile/${user._id}`}><button className="btn btn-success text-center">See Profile</button></Link>
+                        loading ? <div className="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img className="mx-auto w-25 d-block" src={loadingPic}></img>
                                 </div>
-                            );
-                        })
+                            </div>
+                        </div>
+                            :
+
+
+                            users.map(userList => {
+                                const { user } = userList
+                                return (
+                                    <div className="m-3 p-2" style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
+                                        {/* <p>{_id}</p> */}
+                                        <p >Name : {user.name}</p>
+                                        <p>Email: {user.email}</p>
+                                        <Link to={`/see-user-profile/${user._id}`}><button className="btn btn-success text-center">See Profile</button></Link>
+                                    </div>
+                                );
+                            })
                     }
                 </div>
             </div>

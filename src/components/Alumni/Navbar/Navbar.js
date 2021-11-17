@@ -32,6 +32,9 @@ const AlumniNavbar = () => {
                         <li className="nav-item active">
                             <Link className="nav-link" to="/profile/alumni/me">My Profile</Link>
                         </li>
+                        <li className="nav-item active">
+                            <Link className="nav-link" to="/alumni_profile/add">Add Info</Link>
+                        </li>
                         <li className="nav-item">
                             <a onClick={() => handleLogout()} className="nav-link" href="/">Logout</a>
                         </li>

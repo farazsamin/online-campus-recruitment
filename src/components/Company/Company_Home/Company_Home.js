@@ -8,11 +8,13 @@ import OwnJobPost from './OwnJobPost/OwnJobPost'
 import AppliedUsers from './OwnJobPost/AppliedUsers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faCaretRight, faPlus, faPoll, faPollH, faSearch } from '@fortawesome/free-solid-svg-icons';
+import loadingPic from '../../utilities/images/loading.gif'
 const AlumniHome = () => {
 
     const [postContent, setPostContent] = useState('')
     const [postTitle, setPostTitle] = useState('')
     const [jobPost, setJobPost] = useState('Add Job Post')
+    const [loading, setLoading] = useState(true)
 
     // const [posts, setPosts] = useState([])
     // const [loading, setLoading] = useState(true)
@@ -45,6 +47,7 @@ const AlumniHome = () => {
             .then(response => {
                 console.log(response.data)
                 setMyJobPosts(response.data)
+                setLoading(false)
             })
             .catch(err => {
                 console.log(err)
@@ -76,7 +79,9 @@ const AlumniHome = () => {
                     })
             })
             .catch((err) => {
-                console.log(err.response.data.err)
+                console.log(err.response.data.error)
+                setJobPost("Add Job Post")
+                alert(err.response.data.error)
             })
         // window.location.reload();
     }
@@ -96,6 +101,7 @@ const AlumniHome = () => {
 
                     <Link to="/company/job_post"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3"><FontAwesomeIcon icon={faCaretRight} className="mr-2" />My Job Posts</button></Link>
                     <Link to="/studentContestRanking"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3"><FontAwesomeIcon icon={faPoll} className="mr-2" />See Contest Result</button></Link>
+                    <Link to="/company/add_info"> <button style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="btn btn-white m-2 p-3"><FontAwesomeIcon icon={faPlus} className="mr-2" />Add Info to Profile</button></Link>
 
                 </div>
                 <div className="col-md-6 m-auto " style={{ width: "80%", boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
@@ -115,27 +121,35 @@ const AlumniHome = () => {
                         <button onClick={handleAddPost} className="btn btn-success mt-3"><FontAwesomeIcon icon={faPlus} className="mr-2" />{jobPost}</button>
                     </div>
                     {
-                        myJobPosts.map(post => {
-                            const { title, description, _id } = post;
-                            return (
-                                <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="row mb-5">
-                                    <div class="col-md-9 m-auto">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{title}</h5>
-                                            <p class="card-text">{description}</p>
-                                            <button onClick={() => handleDeleteJobPost(_id)} className="btn btn-danger">Delete</button>
-                                            {/* <a style={{ marginLeft: '3%' }} href="f" class="btn btn-primary">Edit</a> */}
-                                            <div>
-                                                <h2 className="text-center mt-2 mb-2">Applied Users</h2>
-                                                <AppliedUsers _id={_id}></AppliedUsers>
+                        loading ? <div className="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img className="mx-auto w-25 d-block" src={loadingPic}></img>
+                                </div>
+                            </div>
+                        </div>
+                            :
+                            myJobPosts.map(post => {
+                                const { title, description, _id } = post;
+                                return (
+                                    <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="row mb-5">
+                                        <div class="col-md-9 m-auto">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{title}</h5>
+                                                <p class="card-text">{description}</p>
+                                                <button onClick={() => handleDeleteJobPost(_id)} className="btn btn-danger">Delete</button>
+                                                {/* <a style={{ marginLeft: '3%' }} href="f" class="btn btn-primary">Edit</a> */}
+                                                <div>
+                                                    <h2 className="text-center mt-2 mb-2">Applied Users</h2>
+                                                    <AppliedUsers _id={_id}></AppliedUsers>
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                </div>
-                            )
-                        })
+                                    </div>
+                                )
+                            })
                     }
 
                 </div>

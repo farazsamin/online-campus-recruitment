@@ -28,7 +28,7 @@ import AllJobPosts from './components/Student/AllJobPosts/AllJobPosts';
 import OwnJobPost from './components/Company/Company_Home/OwnJobPost/OwnJobPost';
 import CompanyInfoForm from './components/Company/Company_About/CompanyInfoForm/CompanyInfoForm';
 import AlumniProfile from './components/Alumni/AlumniProfile/AlumniProfile';
-import ResumeAddButton from './components/Student/Resume/ResumeAddButton/ResumeAddButton';
+import ResumeAdd from './components/Student/ResumeAdd/ResumeAdd';
 import ResumeEditButton from './components/Student/Resume/ResumeEditButton/ResumeEditButton';
 import UserBlog from './components/Admin/Blogs/UserBlog/UserBlog';
 import AlumniBlog from './components/Admin/Blogs/AlumniBlog/AlumniBlog';
@@ -124,7 +124,7 @@ function App() {
               <Resume />
             </Route>
             <Route exact path="/resume/add">
-              <ResumeAddButton></ResumeAddButton>
+              <ResumeAdd></ResumeAdd>
             </Route>
             <Route exact path="/resume/edit">
               <ResumeEditButton></ResumeEditButton>

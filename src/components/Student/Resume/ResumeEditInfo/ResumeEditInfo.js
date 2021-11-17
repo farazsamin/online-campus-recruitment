@@ -10,7 +10,7 @@ const ResumeEditInfo = () => {
     const [bios, setBios] = useState('')
     const [stat, setStat] = useState('')
     const [web, setWeb] = useState('')
-    const [githubUserName, setGithubUserName] = useState('')
+    const [githubName, setGithubName] = useState('')
     const [fb, setFb] = useState('')
     const [ins, setIns] = useState('')
     const [scl, setScl] = useState('')
@@ -66,8 +66,8 @@ const ResumeEditInfo = () => {
             })
     }, [])
 
-    const { company, bio, location, status, website } = profileInfo;
-    const { facebook, instagram } = socialInfo;
+    const { company, bio, location, status, website, githubusername } = profileInfo;
+
     const { school, college, university, fieldOfStudy } = education;
     const { description, from, to, title } = experience;
 
@@ -84,9 +84,8 @@ const ResumeEditInfo = () => {
             bio: bios,
             status: stat,
             website: web,
-            githubUserName: githubUserName,
-            facebook: fb,
-            instagram: ins
+            githubusername: githubName,
+
         })
             .then(res => {
                 console.log(res)
@@ -96,10 +95,9 @@ const ResumeEditInfo = () => {
                 setBios('')
                 setStat('')
                 setWeb('')
-                setGithubUserName('')
-                setFb('')
-                setIns('')
-                setInfoOk(true)
+                setGithubName('')
+
+                alert("Data Added Successfully")
 
             })
             .catch(err => {
@@ -123,7 +121,7 @@ const ResumeEditInfo = () => {
                 setClg('')
                 setUni('')
                 setFos('')
-                setEduOk(true)
+                alert("Data Added Successfully")
 
             })
             .catch(err => {
@@ -152,7 +150,7 @@ const ResumeEditInfo = () => {
                 setFrm('')
                 setToEnd('')
                 setDesc('')
-                setExpOk(true)
+                alert("Data Added Successfully")
 
             })
             .catch(err => {
@@ -169,7 +167,7 @@ const ResumeEditInfo = () => {
         axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/profilePic', fd)
             .then(res => {
                 console.log(res)
-                setPPOk(true)
+                alert("Data Added Successfully")
             })
             .catch(err => {
                 console.log(err)
@@ -223,26 +221,15 @@ const ResumeEditInfo = () => {
                     }
                 } />
                 <label htmlFor="">Github Username</label>
-                <input type="text" name="" id="" defaultValue={githubUserName} onChange={
+                <input type="text" name="" id="" defaultValue={githubusername} onChange={
                     (event) => {
-                        setGithubUserName(event.target.value);
-                    }
-                } />
-                <label htmlFor="">LinkedIn</label>
-                <input type="text" name="" id="" defaultValue={facebook} onChange={
-                    (event) => {
-                        setFb(event.target.value);
+                        setGithubName(event.target.value);
                     }
                 } />
 
+
                 <button className="btn btn-success mt-3" onClick={handleAddToYourResume}>Add To Your Resume</button>
-                {
-                    infoOk ?
-                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
-                            Data Updated Successfully!
-                        </div> :
-                        <div></div>
-                }
+
             </div>
 
 
@@ -279,13 +266,7 @@ const ResumeEditInfo = () => {
                 } />
 
                 <button className="btn btn-success mt-3" onClick={handleEduInfo}>Add To Your Resume</button>
-                {
-                    eduOk ?
-                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
-                            Data Updated Successfully!
-                        </div> :
-                        <div></div>
-                }
+
             </div>
 
 
@@ -333,13 +314,7 @@ const ResumeEditInfo = () => {
 
 
                 <button className="btn btn-success mt-3" onClick={handleExperience}>Add To Your Resume</button>
-                {
-                    expOk ?
-                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
-                            Data Updated Successfully!
-                        </div> :
-                        <div></div>
-                }
+
             </div>
 
 
@@ -353,13 +328,7 @@ const ResumeEditInfo = () => {
                     }
                 } /> <br />
                 <button onClick={handleUploadPic} className="btn btn-success mt-3">Change  Profile Pic</button>
-                {
-                    ppOk ?
-                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
-                            Data Updated Successfully!
-                        </div> :
-                        <div></div>
-                }
+
             </div>
 
 

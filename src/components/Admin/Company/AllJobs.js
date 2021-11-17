@@ -7,7 +7,7 @@ import { SetToken } from '../../utilities/setToken';
 const AllJobs = () => {
     const [myJobPosts, setMyJobPosts] = useState([])
     useEffect(() => {
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('adminToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/admin/allJobs')
             .then(response => {
                 console.log(response.data)

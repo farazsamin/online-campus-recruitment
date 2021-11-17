@@ -41,6 +41,7 @@ const SeeUserProfile = () => {
     const [gh, setGh] = useState(false)
     const [codeforces, setCodeforces] = useState([])
     const [github, setGithub] = useState([])
+    const [reputation, setReputation] = useState(0)
     useEffect(() => {
         SetToken(localStorage.getItem('companyToken'));
         axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/profile/${_id}`)
@@ -86,6 +87,17 @@ const SeeUserProfile = () => {
             .catch(err => {
                 console.log(err)
             })
+
+        axios.get(`https://iiuc-campus-recuitement-system.herokuapp.com/profile/user/${_id}/reputation`)
+            .then(response => {
+                // setProfilePic()
+                setReputation(response.data)
+                // console.log(response)
+
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }, [])
 
     const handlecfclick = () => {
@@ -110,7 +122,7 @@ const SeeUserProfile = () => {
                 <div className="col-md-9 m-auto text-center" style={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
                     <img style={{ margin: '1%', height: '20%', width: '20%', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px' }} className="rounded-circle" src={img} alt="" />
 
-                    <h4 style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}><FontAwesomeIcon icon={faCode} className="mr-2" />Current Point : {__v}</h4>
+                    <h4 style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}><FontAwesomeIcon icon={faCode} className="mr-2" />Current Point : {reputation}</h4>
                     <h2 className="mb-3 mt-4">Hi, I am {name}</h2>
                     <h5><FontAwesomeIcon icon={faLaptopCode} className="mr-2" />{status}</h5>
                     <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>

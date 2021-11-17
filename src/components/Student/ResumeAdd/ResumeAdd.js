@@ -38,8 +38,6 @@ const ResumeAdd = () => {
             status: status,
             website: website,
             githubusername: githubUserName,
-            facebook: facebook,
-            instagram: instagram,
             codeforceusername: codeforceusername
         })
             .then(res => {
@@ -51,10 +49,10 @@ const ResumeAdd = () => {
                 setStatus('')
                 setWebsite('')
                 setGithubUserName('')
-                setFacebook('')
+
                 setInstagram('')
                 setCodeforceusername('')
-                setSuccess(true)
+                alert("Data Added Successfully")
 
             })
             .catch(err => {
@@ -78,7 +76,7 @@ const ResumeAdd = () => {
                 setClg('')
                 setUni('')
                 setFos('')
-                setSuccess(true)
+                alert("Data Added Successfully")
 
             })
             .catch(err => {
@@ -107,7 +105,7 @@ const ResumeAdd = () => {
                 setFrom('')
                 setTo('')
                 setDesc('')
-                setSuccess(true)
+                alert("Data Added Successfully")
 
             })
             .catch(err => {
@@ -123,6 +121,7 @@ const ResumeAdd = () => {
         axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/me/profilePic', fd)
             .then(res => {
                 console.log(res)
+                alert("Data Added Successfully")
             })
             .catch(err => {
                 console.log(err)
@@ -136,6 +135,7 @@ const ResumeAdd = () => {
         <div className="p-5">
 
             <h1 className="text-center">Add Your Info</h1>
+            <p className="text-center">You Have to Fill up All the Information!!!</p>
             <hr />
 
             <div>
@@ -187,21 +187,10 @@ const ResumeAdd = () => {
                         setGithubUserName(event.target.value);
                     }
                 } />
-                <label htmlFor="">LinkedIn</label>
-                <input type="text" name="" id="" value={facebook} onChange={
-                    (event) => {
-                        setFacebook(event.target.value);
-                    }
-                } />
 
-                <button className="btn btn-success mt-3" disabled={name && skills && location && bio && status && website && githubUserName && facebook ? false : true} onClick={handleAddToYourResume}>Add To Your Resume</button>
-                {
-                    success ?
-                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
-                            Data Updated Successfully!
-                        </div> :
-                        <div></div>
-                }
+
+                <button className="btn btn-success mt-3" disabled={name && skills && location && bio && status && website && githubUserName ? false : true} onClick={handleAddToYourResume}>Add To Your Resume</button>
+
             </div>
 
 
@@ -238,13 +227,7 @@ const ResumeAdd = () => {
                 } />
 
                 <button className="btn btn-success mt-3" disabled={school && clg && uni && fos ? false : true} onClick={handleEduInfo}>Add To Your Resume</button>
-                {
-                    success ?
-                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
-                            Data Updated Successfully!
-                        </div> :
-                        <div></div>
-                }
+
             </div>
 
 
@@ -292,13 +275,7 @@ const ResumeAdd = () => {
 
 
                 <button className="btn btn-success mt-3" disabled={title && company && comLoc && from && to && desc ? false : true} onClick={handleExperience}>Add To Your Resume</button>
-                {
-                    success ?
-                        <div style={{ width: "50%" }} class="mt-2 alert alert-success" role="alert">
-                            Data Updated Successfully!
-                        </div> :
-                        <div></div>
-                }
+
             </div>
 
 

@@ -4,27 +4,47 @@ import StudentNavbar from '../Navbar/Navbar';
 import axios from 'axios'
 import { SetToken } from '../../utilities/setToken';
 import loadingPic from '../../utilities/images/loading.gif'
+const PAGE_NUMBER = 0;
 const Home = () => {
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(true)
+    const [page, setPage] = useState(PAGE_NUMBER)
     // const [loading, setLoading] = useState(true)
 
 
     useEffect(() => {
         SetToken(localStorage.getItem('alumniToken'));
-        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/blog/user/all/alumni')
+        axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/blog/user/all/alumni', { params: { page: page } })
             .then(response => {
                 console.log(response)
-                setPosts(response.data.blogs)
+                setPosts([...posts, ...response.data.blogs])
                 setLoading(false)
             })
             .catch(err => {
                 console.log(err)
             })
-    }, [])
-    // if(!localStorage.getItem('userToken')){
-    //     return <Redirect to="/login/student"></Redirect>
-    // }
+    }, [page])
+
+    const scrollToEnd = () => {
+        setPage(page + 1)
+        console.log(page)
+    }
+    window.onscroll = function () {
+        // console.log("inner", window.innerHeight)
+        // console.log("top", document.documentElement.scrollTop)
+        // console.log("offset", document.documentElement.offsetHeight)
+        if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight) {
+            console.log("workings")
+            scrollToEnd()
+        }
+        console.log("123")
+        // if (document.documentElement.scrollHeight - document.documentElement.scrollTop === document.documentElement.clientHeight) {
+
+        //     scrollToEnd()
+
+
+        // }
+    }
     return (
         <>
             <StudentNavbar></StudentNavbar>
