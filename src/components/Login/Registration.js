@@ -75,7 +75,7 @@ const Registration = () => {
                         <Link to="/registration/student"><button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Registration As Student</button></Link>
                         <Link to="/registration/alumni"><button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Registration As Alumni</button></Link>
                         <Link to="/registration/company"> <button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Registration As Company</button></Link>
-                        <Link to="/registration/admin"><button type="button" className="login-button btn btn-white border border-white btn-lg btn-block mb-3">Registration As Admin</button></Link>
+
                     </div>
 
 

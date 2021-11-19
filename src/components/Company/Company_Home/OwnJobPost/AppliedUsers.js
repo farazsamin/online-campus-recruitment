@@ -20,31 +20,42 @@ const AppliedUsers = (props) => {
             })
     }, [])
     return (
-        <div>
+        <>
             {
-                appliedUsers.map(au => {
+                appliedUsers ?
 
-                    const { name, _id } = au.user
-                    {/* console.log(au.user) */ }
-                    return (
-                        <div>
+                    <div>
+                        {
+                            appliedUsers.map(au => {
 
-                            <div className="row mt-3">
-                                <div className="col-md-8">
-                                    <p className="text-center">{name}</p>
-                                </div>
-                                <div className="col-md-4">
-                                    <Link to={`/see-user-profile/${_id}`}><button className="btn btn-success text-center">See Profile</button></Link>
-                                    {/* <SeeUserProfile _id={_id}></SeeUserProfile> */}
-                                </div>
-                            </div>
-                            {/* <p>{user.name}</p> */}
-                        </div>
-                    )
-                })
+                                const { name, _id } = au.user
+                                {/* console.log(au.user) */ }
+                                return (
+                                    <div>
+
+                                        <div className="row mt-3">
+                                            <div className="col-md-8">
+                                                <p className="text-center">{name}</p>
+                                            </div>
+                                            <div className="col-md-4">
+                                                <Link to={`/see-user-profile/${_id}`}><button className="btn btn-success text-center">See Profile</button></Link>
+                                                {/* <SeeUserProfile _id={_id}></SeeUserProfile> */}
+                                            </div>
+                                        </div>
+                                        {/* <p>{user.name}</p> */}
+                                    </div>
+                                )
+                            })
+                        }
+
+                    </div>
+                    :
+                    <div>
+                        <p className="text-center mt-3">No Applied User</p>
+                    </div>
+
             }
-
-        </div>
+        </>
     );
 };
 

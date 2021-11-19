@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { SetToken } from '../../utilities/setToken';
 import AlumniNavbar from '../Navbar/Navbar';
 import loadingPic from '../../utilities/images/loading.gif'
+import SeeOtherAlumni from '../../SeeAlumniProfile/SeeOtherAlumni';
 const AlumniProfile = () => {
     const [profilePic, setProfilePic] = useState([])
     const [profileInfo, setProfileInfo] = useState([])
@@ -11,11 +12,13 @@ const AlumniProfile = () => {
     const [education, setEducation] = useState([])
     const [experience, setExperience] = useState([])
     const [loading, setLoading] = useState(true)
+    const [alumni, setAlumni] = useState()
     useEffect(() => {
         SetToken(localStorage.getItem('alumniToken'));
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/profile/alumni/me')
             .then(response => {
-                console.log(response.data.alumniProfile)
+                console.log(response)
+                setAlumni(response.data.alumniProfile.alumni)
                 setProfileInfo(response.data.alumniProfile)
                 setSocialInfo(response.data.alumniProfile.social)
                 setEducation(response.data.alumniProfile.education[0])
@@ -40,8 +43,8 @@ const AlumniProfile = () => {
     let img = new Buffer.from(profilePic).toString('base64');
     img = `data:image/jpg;base64,${img}`;
 
-    const { status, about, currentJob, passingYear, githubusername, website, codeforceusername } = profileInfo
-    const { facebook, linkdein } = socialInfo
+    const { status, currentJob, passingYear, githubusername, website, codeforceusername } = profileInfo
+    const { linkedin } = socialInfo
     const { BscPassingYear, college, school } = education
     const { company, location, title, from, to, description } = experience
     return (
@@ -71,18 +74,13 @@ const AlumniProfile = () => {
                             <img style={{ margin: '1%', height: '20%', width: '20%', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px' }} className="rounded-circle" src={img} alt="" />
 
                             <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                                <h2>Hello , I am {about}</h2>
+                                <h2>Hello , I am {alumni.name}</h2>
                                 <h5>{status}</h5>
                                 <p>Current Job : {currentJob}</p>
-                                <a class="btn btn-primary" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={website} role="button"
-                                ><i class="fab fa-facebook-f">Website</i>
+                                <a rel="noreferrer" target="_blank" href={website} role="button"
+                                >{website}
                                 </a>
-                                <a class="btn btn-primary m-2" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={facebook} role="button"
-                                ><i class="fab fa-facebook-f">Facebook</i>
-                                </a>
-                                <a class="btn btn-primary" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={linkdein} role="button"
-                                ><i class="fab fa-facebook-f">LinkedIn</i>
-                                </a>
+
 
                                 <p>Location :  {location}</p>
                                 <br />
@@ -136,7 +134,7 @@ const AlumniProfile = () => {
 
                     </div>
             }
-        </div>
+        </div >
 
     );
 };

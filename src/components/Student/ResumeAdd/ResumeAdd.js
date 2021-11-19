@@ -5,6 +5,7 @@ import { SetToken } from '../../utilities/setToken';
 const ResumeAdd = () => {
     const [name, setName] = useState('')
     const [skills, setSkills] = useState([])
+    const [achievements, setAchievements] = useState([])
     const [location, setLocation] = useState('')
     const [bio, setBio] = useState('')
     const [status, setStatus] = useState('')
@@ -38,7 +39,8 @@ const ResumeAdd = () => {
             status: status,
             website: website,
             githubusername: githubUserName,
-            codeforceusername: codeforceusername
+            codeforceusername: codeforceusername,
+            achievements: achievements
         })
             .then(res => {
                 console.log(res)
@@ -49,7 +51,7 @@ const ResumeAdd = () => {
                 setStatus('')
                 setWebsite('')
                 setGithubUserName('')
-
+                setAchievements(' ')
                 setInstagram('')
                 setCodeforceusername('')
                 alert("Data Added Successfully")
@@ -149,6 +151,12 @@ const ResumeAdd = () => {
                 <input type="text" name="" id="" value={skills} onChange={
                     (event) => {
                         setSkills(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Achievements</label>
+                <input type="text" name="" id="" value={achievements} onChange={
+                    (event) => {
+                        setAchievements(event.target.value);
                     }
                 } />
                 <label htmlFor="">Location</label>

@@ -135,8 +135,8 @@ const AlumniHome = () => {
                                     <div style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} className="row mb-5">
                                         <div class="col-md-9 m-auto">
                                             <div class="card-body">
-                                                <h5 class="card-title">{title}</h5>
-                                                <p class="card-text">{description}</p>
+                                                <h5 style={{ fontWeight: "bolder" }} class="card-title">{title}</h5>
+                                                <p style={{ lineHeight: 1.6, fontSize: "18px", letterSpacing: 1, color: "#5e5a5a" }} class="card-text">{description}</p>
                                                 <button onClick={() => handleDeleteJobPost(_id)} className="btn btn-danger">Delete</button>
                                                 {/* <a style={{ marginLeft: '3%' }} href="f" class="btn btn-primary">Edit</a> */}
                                                 <div>

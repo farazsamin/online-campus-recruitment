@@ -43,9 +43,9 @@ const JobPost = (props) => {
           <div className="card-body">
 
             <Link to={`see-company-profile/${Author._id}`}><h3 style={{ color: 'black' }} className=" border-bottom ">{Author.name}</h3></Link>
-            <h4 className="mt-3 ">{title}</h4>
+            <h5 style={{ fontWeight: "bolder" }} className="mt-3 ">{title}</h5>
 
-            <p className="card-text">{description}</p>
+            <p style={{ lineHeight: 1.6, fontSize: "18px", letterSpacing: 1, color: "#5e5a5a" }} className="card-text">{description}</p>
           </div>
           <hr />
           <button className="btn btn-success" onClick={handleApplyForJob} disabled={disable}>{text}</button>

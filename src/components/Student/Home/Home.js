@@ -19,6 +19,7 @@ const Home = () => {
     const [postBtn, setPostBtn] = useState('Add Post')
     const [loading, setLoading] = useState(true)
     const [page, setPage] = useState(PAGE_NUMBER)
+    const [end, setEnd] = useState(false)
 
     // const [loading, setLoading] = useState(true)
 
@@ -33,7 +34,7 @@ const Home = () => {
         setDescription('')
         axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/blog/user', fd)
             .then(res => {
-                console.log(res)
+                console.log(res.data)
                 setPosts([res.data, ...posts])
                 setPostBtn("Add Post")
             })
@@ -59,12 +60,13 @@ const Home = () => {
         axios.get('https://iiuc-campus-recuitement-system.herokuapp.com/blog/user/all/user', { params: { page: page } })
             .then(response => {
                 console.log(response.data.blogs)
-                console.log(posts)
+                // console.log(posts)
                 setLoading(false)
                 setPosts([...posts, ...response.data.blogs])
             })
             .catch(err => {
                 console.log(err)
+
             })
     }, [page])
     // if(!localStorage.getItem('userToken')){
@@ -75,12 +77,11 @@ const Home = () => {
         console.log(page)
     }
     window.onscroll = function () {
-        console.log("inner", window.innerHeight)
-        console.log("top", document.documentElement.scrollTop)
-        console.log("offset", document.documentElement.offsetHeight)
+        // console.log("inner", window.innerHeight)
+        // console.log("top", document.documentElement.scrollTop)
+        // console.log("offset", document.documentElement.offsetHeight)
         if (window.scrollY + window.innerHeight >=
             document.documentElement.scrollHeight) {
-            setLoading(true)
             scrollToEnd()
         }
         console.log("123")
@@ -128,16 +129,19 @@ const Home = () => {
                         <button onClick={handleAddPost} className="btn btn-success"><FontAwesomeIcon icon={faPlus} className="mr-2" />{postBtn}</button>
                     </div>
                     {
-                        posts.length > 0 && posts.map(post => <Posts post={post}></Posts>)
-                    }
-                    {/* {
                         loading ? <div className="container">
                             <div class="row">
                                 <div class="col-md-12">
                                     <img className="mx-auto w-25 d-block" src={loadingPic}></img>
                                 </div>
                             </div>
-                        </div> : <></>
+                        </div> :
+
+                            posts.length > 0 && posts.map(post => <Posts post={post}></Posts>)
+
+                    }
+                    {/* {
+                       end? <p>End</p> : <p>Loading...</p>
                     } */}
 
 

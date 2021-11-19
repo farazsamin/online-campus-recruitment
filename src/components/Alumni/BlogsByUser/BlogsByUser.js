@@ -60,14 +60,15 @@ const Posts = (props) => {
 
     return (
         <div className="m-2 p-3 " style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
-            <Link to={`/see-user-profile/${Author._id}`}><p style={{ color: 'black' }}>{Author.name}</p></Link>
+            {/* <Link to={`/see-user-profile/${Author._id}`}></Link> */}
+            <p style={{ color: 'black' }}>{Author.name}</p>
             <h5 className="mt-3 mb-3">{title}</h5>
             <img style={{ width: '100%' }} className="img-responsive" src={img} alt="Card  cap" />
             <p className="mt-2">{description}</p>
             <hr />
 
             <span>
-                <FontAwesomeIcon icon={faHeart} size='2x' className="" style={{ marginLeft: '20%' }} onClick={handleLike} color={like} />
+
                 <FontAwesomeIcon onClick={handleComment} icon={faComment} size='2x' className="" style={{ marginLeft: '40%', marginRight: '1%', color: 'grey' }} />
                 <span style={{ color: 'green', fontWeight: 'bolder' }}>{userComments.length}</span>
                 {/* <button onClick={handleComment}></button> */}

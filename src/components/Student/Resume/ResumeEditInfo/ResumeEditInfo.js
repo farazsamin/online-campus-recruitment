@@ -28,7 +28,8 @@ const ResumeEditInfo = () => {
     const [eduOk, setEduOk] = useState(false)
     const [expOk, setExpOk] = useState(false)
     const [ppOk, setPPOk] = useState(false)
-
+    const [achievement, setAchievement] = useState('')
+    const [acv, setAcv] = useState('')
 
     //Get Start
     const [pp, setPp] = useState([])
@@ -59,7 +60,8 @@ const ResumeEditInfo = () => {
                 setExperience(response.data.experience[0])
                 setEduId(response.data.education[0]._id)
                 setExpId(response.data.experience[0]._id)
-                console.log(response.data)
+                setAcv(response.data.achievements[0])
+                console.log(response.data.achievements[0])
             })
             .catch(err => {
                 console.log(err)
@@ -85,6 +87,7 @@ const ResumeEditInfo = () => {
             status: stat,
             website: web,
             githubusername: githubName,
+            achievements: achievement
 
         })
             .then(res => {
@@ -96,6 +99,7 @@ const ResumeEditInfo = () => {
                 setStat('')
                 setWeb('')
                 setGithubName('')
+                setAchievement('')
 
                 alert("Data Added Successfully")
 
@@ -194,6 +198,12 @@ const ResumeEditInfo = () => {
                 <input type="text" name="" id="" defaultValue={skills} onChange={
                     (event) => {
                         setSkill(event.target.value);
+                    }
+                } />
+                <label htmlFor="">Achievements</label>
+                <input type="text" name="" id="" defaultValue={acv} onChange={
+                    (event) => {
+                        setAchievement(event.target.value);
                     }
                 } />
                 <label htmlFor="">Location</label>

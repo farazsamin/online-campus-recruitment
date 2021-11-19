@@ -117,7 +117,7 @@ const ShowPic = () => {
     let img = new Buffer.from(profilePic).toString('base64');
     img = `data:image/jpg;base64,${img}`;
 
-    const { bio, location, status, website, githubusername } = profileInfo;
+    const { bio, location, status, website, githubusername, achievements } = profileInfo;
 
     const { school, college, university, fieldOfStudy } = education;
     const { description, from, to, title } = experience;
@@ -159,12 +159,10 @@ const ShowPic = () => {
                                 <h5><FontAwesomeIcon icon={faLaptopCode} className="mr-2" />{status}</h5>
                                 <p> {bio}</p>
                                 <p><FontAwesomeIcon icon={faLocationArrow} className="mr-2" />Location :  {location}</p>
-                                <a class="btn btn-primary" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={website} role="button"
-                                ><FontAwesomeIcon icon={faGlobe} className="mr-2" />Website
+                                <a rel="noreferrer" target="_blank" href={website} role="button"
+                                >{website}
                                 </a>
-                                <a class="btn btn-primary m-2" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={githubusername} role="button"
-                                ><FontAwesomeIcon icon={faGithub} className="mr-2" />Github
-                                </a>
+
                                 {/* <a class="btn btn-primary" style={{ backgroundColor: '#3b5998' }} rel="noreferrer" target="_blank" href={linkedin} role="button"
                                 ><FontAwesomeIcon icon={faLinkedin} className="mr-2" />LinkedIn
                                 </a> */}
@@ -175,6 +173,27 @@ const ShowPic = () => {
                             <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
                                 <h2><FontAwesomeIcon icon={faList} className="mr-2" />Skills</h2>
                                 <p>{skills + ' '}</p>
+                                <br />
+                            </div>
+
+                            <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
+                                <h2><FontAwesomeIcon icon={faList} className="mr-2" />Achievements</h2>
+                                {achievements ?
+
+                                    achievements.map(ac => {
+                                        return (
+                                            <div>
+                                                <p>{achievements + ' '}</p>
+
+                                            </div>
+
+
+                                        )
+                                    })
+                                    :
+                                    <div>No Achivements</div>
+                                }
+
                                 <br />
                             </div>
 
@@ -271,7 +290,19 @@ const ShowPic = () => {
                                         codeforces.slice(0).reverse().map(cd => {
                                             return (
                                                 <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', margin: '2% 5%', padding: '1%' }}>
-                                                    <p>Current Rating : {cd.newRating}</p>
+                                                    <div className="row">
+                                                        <div className="col-md-6 divider">
+                                                            <p>Contest Name</p>
+                                                            <p>After Contest Rating</p>
+                                                            <p>After Contest Rank</p>
+                                                        </div>
+                                                        <div style={{ fontWeight: 'bolder' }} className="col-md-6">
+                                                            <p>{cd.contestName}</p>
+                                                            <p>{cd.newRating}</p>
+                                                            <p>{rank}</p>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             )
                                         }) : <div></div>

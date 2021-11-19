@@ -17,7 +17,7 @@ const CompanyInfoForm = () => {
     const [noOfEmployee, setNoOfEmployee] = useState(0)
 
     useEffect(() => {
-        SetToken(localStorage.getItem('userToken'));
+        SetToken(localStorage.getItem('companyToken'));
     }, [])
 
     const handleAddProfilePic = (e) => {
@@ -41,13 +41,7 @@ const CompanyInfoForm = () => {
         e.preventDefault();
         axios.post('https://iiuc-campus-recuitement-system.herokuapp.com/profile/company/me', {
             establish: establish,
-            mission: mission,
-            vision: vision,
             About: about,
-            facebook: facebook,
-            instagram: instagram,
-            youtube: youtube,
-            twitter: twitter,
             website: website,
             linkedin: linkedin,
             currentEmployeeNumber: noOfEmployee
@@ -88,48 +82,14 @@ const CompanyInfoForm = () => {
                             setEstablish(event.target.value);
                         }
                     } /> <br />
-                    <label className="d-block" htmlFor="">Mission : </label>
-                    <textarea className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" id="" onChange={
-                        (event) => {
-                            setMission(event.target.value);
-                        }
-                    } /> <br />
-                    <label className="d-block" htmlFor="">Vision</label>
-                    <textarea className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" id="" onChange={
-                        (event) => {
-                            setVision(event.target.value);
-                        }
-                    } /> <br />
+
                     <label className="d-block" htmlFor="">About</label>
                     <textarea className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" id="" onChange={
                         (event) => {
                             setAbout(event.target.value);
                         }
                     } /> <br />
-                    <label htmlFor="">Facebook: </label>
-                    <input className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
-                        (event) => {
-                            setFacebook(event.target.value);
-                        }
-                    } /> <br />
-                    <label htmlFor="">Instagram: </label>
-                    <input className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
-                        (event) => {
-                            setInstagram(event.target.value);
-                        }
-                    } /> <br />
-                    <label htmlFor="">Youtube: </label>
-                    <input className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
-                        (event) => {
-                            setYoutube(event.target.value);
-                        }
-                    } /> <br />
-                    <label htmlFor="">Twitter : </label>
-                    <input className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
-                        (event) => {
-                            setTwitter(event.target.value);
-                        }
-                    } /> <br />
+
                     <label htmlFor="">Website: </label>
                     <input className="p-2" style={{ width: '100%', border: 'none', boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }} type="text" name="" id="" onChange={
                         (event) => {

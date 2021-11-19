@@ -74,15 +74,15 @@ const Posts = (props) => {
   return (
 
     <div className="mt-2 p-3" style={{ boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px' }}>
-      <Link to={`/see-other-alumni-profile/${Author._id}`}><p>{Author.name}</p></Link>
-      <h5 className="mt-3 mb-3">{title}</h5>
+      <Link to={`/see-other-alumni-profile/${Author._id}`}><p style={{ color: "black" }}>{Author.name ? Author.name : "My Profile"}</p></Link>
+      <h5 style={{ fontSize: "18px", fontWeight: "bolder" }} className="mt-3 mb-3">{title}</h5>
       <img style={{ width: '100%' }} className="img-responsive" src={img} alt="Card  cap" />
-      <p className="mt-2">{description}</p>
+      <p style={{ lineHeight: 1.6, fontSize: "18px", letterSpacing: 1, color: "#5e5a5a" }} className="mt-2">{description}</p>
       <hr />
       <span>
 
 
-        <FontAwesomeIcon icon={faComment} size='2x' className="" style={{ marginLeft: '40%', marginBottom: '10px' }} onClick={handleComment} /> <span style={{ color: 'green', fontWeight: 'bolder' }}>{alumniComments.length}</span>
+        <FontAwesomeIcon icon={faComment} size='2x' className="" style={{ fontSize: "26px", marginLeft: '40%', marginBottom: '10px' }} onClick={handleComment} /> <span style={{ color: 'green', fontWeight: 'bolder' }}>{alumniComments.length}</span>
       </span>
       <hr />
       <div className="row">
@@ -101,8 +101,8 @@ const Posts = (props) => {
         const { comment, alumniCommentMaker, userCommentMaker } = ac;
         return (
           <div style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', marginTop: '1%', padding: '1%' }}>
-            {alumniCommentMaker ? <p>{alumniCommentMaker.name} <sup>alumni</sup></p> : <p>{userCommentMaker.name} <sup>student</sup></p>}
-            <p>{comment}</p>
+            {alumniCommentMaker ? <p style={{ fontSize: "18px", fontWeight: "bolder" }}>{alumniCommentMaker.name} <sup>alumni</sup></p> : <p>{userCommentMaker.name} <sup>student</sup></p>}
+            <p style={{ lineHeight: 1.6, fontSize: "18px", letterSpacing: 1, color: "#5e5a5a" }}>{comment}</p>
           </div>
         )
       }) : <></>}

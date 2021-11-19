@@ -32,10 +32,12 @@ const ContestResult = () => {
                 setThird('')
                 setDescription('')
                 setDate('')
+                alert("Data Added Successfully")
 
             })
             .catch(err => {
                 console.log(err)
+                alert(err.response.data.err)
             })
 
     }

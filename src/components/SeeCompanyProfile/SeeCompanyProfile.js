@@ -41,7 +41,7 @@ const SeeCompanyProfile = () => {
     let img = new Buffer.from(profilePic).toString('base64');
     img = `data:image/jpg;base64,${img}`;
 
-    const { About, currentEmployeeNumber, mission, vision, website } = userInfo
+    const { About, currentEmployeeNumber, website } = userInfo
     const { name, email } = info;
     // const { linkedin, youtube, twitter } = socialInfo
     // const { instagram } = socialInfo
@@ -56,7 +56,7 @@ const SeeCompanyProfile = () => {
                 </div>
 
                 <div style={{ color: '#050505', fontFamily: 'Lato,Arial,Helvetica,sans-serif', fontSize: '1.17em' }} className="col-sm-6 m-auto text-center">
-                    <a className="m-2" href={website}>Website</a>
+                    <a className="m-2" href={website}>{website}</a>
                     {/* <a className="m-2" href={linkedin}>LinkedIn</a>
                     <a className="m-2" href={youtube}>Youtube</a>
                     <a className="m-2" href={facebook}>Facebook</a>
@@ -70,8 +70,7 @@ const SeeCompanyProfile = () => {
                         <div style={{ color: '#050505', fontFamily: 'Lato,Arial,Helvetica,sans-serif', fontSize: '1.17em', fontWeight: 'bold', borderRight: '1px solid lightgray' }} className="col-sm-6">
 
                             <p><MdOutlineFormatListNumberedRtl className="mr-2 mb-1" />Current Employee Number</p>
-                            <p><AiOutlineAim className="mr-2 mb-1" />Mission</p>
-                            <p><SiSinglestore className="mr-2 mb-1" />Vission</p>
+
 
                             <br />
                         </div>
@@ -79,8 +78,7 @@ const SeeCompanyProfile = () => {
 
                         <div style={{ color: '#050505', fontFamily: 'Lato,Arial,Helvetica,sans-serif', fontSize: '1.17em' }} className="col-sm-6">
                             <p>{currentEmployeeNumber}</p>
-                            <p>{mission}</p>
-                            <p>{vision}</p>
+
                             <br />
                         </div>
 
