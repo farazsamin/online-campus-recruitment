@@ -4,7 +4,7 @@ import { SetToken } from '../../utilities/setToken';
 import { Link } from 'react-router-dom';
 import './CV.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartBar, faCode, faGlobe, faHandPointUp, faLaptopCode, faList, faLocationArrow, faUniversity } from '@fortawesome/free-solid-svg-icons';
+import { faChartBar, faCode, faGlobe, faHandPointUp, faLaptopCode, faList, faLocationArrow, faTrophy, faUniversity } from '@fortawesome/free-solid-svg-icons';
 import { faConnectdevelop, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { BiMessageSquareAdd } from "react-icons/bi";
 import { AiFillEdit } from "react-icons/ai";
@@ -182,8 +182,9 @@ const ShowPic = () => {
 
                                     achievements.map(ac => {
                                         return (
-                                            <div>
-                                                <p>{achievements + ' '}</p>
+                                            <div className="mt-3">
+                                                <p><FontAwesomeIcon icon={faTrophy} className="mr-2" />{ac}</p>
+
 
                                             </div>
 

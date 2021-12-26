@@ -60,7 +60,7 @@ const ResumeEditInfo = () => {
                 setExperience(response.data.experience[0])
                 setEduId(response.data.education[0]._id)
                 setExpId(response.data.experience[0]._id)
-                setAcv(response.data.achievements[0])
+                setAcv(response.data.achievements)
                 console.log(response.data.achievements[0])
             })
             .catch(err => {
